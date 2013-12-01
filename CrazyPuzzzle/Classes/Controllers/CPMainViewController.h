@@ -53,7 +53,7 @@
     NSInteger _currentLevel;  // 当前level
     NSInteger _currentGolden; // 当前金币数量
     NSString *_currentAnswer; // 答案
-    NSInteger _currentWordIndex;  // 当前应该填字的位置：1 2 3 4
+    NSInteger _currentWordIndex;  // 当前应该填字的位置：从1开始
     
     BOOL _isWrong;
     BOOL _answerBtnSelectWhenWrong;
@@ -61,8 +61,7 @@
 }
 
 @property (strong,nonatomic) NSArray *dataSource;
-@property (strong,nonatomic) NSArray *words;// 不用这个，直接用字符串
-@property (strong,nonatomic) NSMutableString *wordsString; //所有汉字
+@property (strong,nonatomic) NSMutableString *wordsString; //所有备选字母
 @property (strong,nonatomic) NSString *currentPreparedString;// 随机后，顺序显示的串
 @property (strong,nonatomic) NSMutableDictionary *maps;
 
@@ -84,7 +83,7 @@
 - (IBAction)answerButtonSelected:(id)sender;
 
 // 建立文字面板，把答案混淆在里面
-- (void)setupContainerView;
+- (void)setupCandidateContainerView;
 
 
 @end

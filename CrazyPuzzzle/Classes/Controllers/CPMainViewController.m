@@ -47,10 +47,6 @@
 #define CP_ShareView_Animation_Duration 0.6
 
 
-
-
-
-
 //TODO::需要随机加入26个字母中的几个字母
 static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -71,40 +67,39 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 @implementation CPMainViewController
 
--(void)responseReceived:(NSNotification*)notification
+
+- (void)viewDidLoad
 {
-    //从服务器端请求数据
-    NSMutableArray * array = [[NSMutableArray alloc]init];
-#if 0
-    NSString *file = [MAIN_BUDDLE pathForResource:@"question" ofType:@"plist"];
-    [array addObjectsFromArray:[NSArray arrayWithContentsOfFile:file]];
-#else
-    if([notification.object isKindOfClass:[NSArray class]])
-    {
-        [array addObjectsFromArray:(NSArray*)notification.object];
-    }
-#endif
-    self.dataSource = array;
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
     
-    [self startNewLevel];
+    [self loadLocalSettings];
+    //请求网络数据
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(responseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
+    [[RMQuestionsRequest sharedInstance]startAsynchronous];
     
-    // 动画打开
-    [self showAnimating];
+    UIEdgeInsets edge = UIEdgeInsetsMake(48, 20, 30, 20);
+    [self initPromptView:edge];
+    [self initShareView:edge];
+    [self initPassedView:edge];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification) name:kCPPaidForGoldsNotificatioin object:nil];
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+//进入下一关
 - (IBAction)next:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [self hidePassedView];
     
-    [UIView animateWithDuration:0.75 animations:^{
-        
-        [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
-        
-        
-    } completion:^(BOOL finished){
-        _answerCorrectView.hidden = YES;
-        [self.view sendSubviewToBack:_answerCorrectView];
-        
-    }];
     
     // 配置好下一题的环境(下面的内容可以放在一个单独的函数中，与viewdidload中的复用)
     _currentLevel ++;
@@ -119,6 +114,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self startNewLevel];
 }
 
+//进行新一关的准备工作
 -(void)startNewLevel
 {
     _currentWordIndex = 0;
@@ -146,60 +142,12 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     CGRect rc = CGRectMake(0, _firstBtn.frame.origin.y, APP_SCREEN_WIDTH, _firstBtn.frame.size.height);
     [self setupAnswerViews:rc];
-    [self setupContainerView];
-}
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"]){
-        _currentLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"] intValue];
-        
-    }else{
-        _currentLevel = CP_Initial_Level;
-        [USER_DEFAULT setInteger:CP_Initial_Level forKey:@"CurrentLevel"];
-    }
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"]){
-        _currentGolden = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"] intValue];
-        
-    }else{
-        _currentGolden = CP_Initial_Golden;
-        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:@"CurrentGolden"];
-    }
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(responseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
-    [[RMQuestionsRequest sharedInstance]startAsynchronous];
-    
-    
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidePrompView)];
-    [_prompMaskView addGestureRecognizer:tap];
-    UIEdgeInsets edge = UIEdgeInsetsMake(48, 20, 30, 20);
-    _prompBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
-    _prompTitleLabel.text = @"提示";
-    //_prompContentLabel.text = [USER_DEFAULT objectForKey:@"MyGoldenScore" ]>= ? :@"没有足够的道具，前往小卖部购买？";
-    _prompView.hidden = YES;
-    
-    
-    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShareView)];
-    [_shareMaskView addGestureRecognizer:tap2];
-    _shareBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
-    _shareTitleLabel.text = @"去微信求助";
-    _shareContentLabel.text = [NSString stringWithFormat:@"今天首次分享到朋友圈赠送%d金币",CP_Gift_For_Share_To_FriendZone];
-    _shareView.hidden = YES;
-    [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
-    
-    
-    _answerCorrectBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
-    _yourGiftLabel.text = [NSString stringWithFormat:@"+ %d",CP_Gift_Per_Idioms];
-    _yourRankingLabel.text = [NSString stringWithFormat:@"您击败了%d%%的玩家",CP_Lose_To_You];
-    _answerCorrectView.hidden = YES;
-    [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification) name:kCPPaidForGoldsNotificatioin object:nil];
+    [self setupCandidateContainerView];
 }
 
-- (void)showAnimating
+
+#pragma mark 首次进入的动画
+- (void)startGame
 {
     NSArray *twoParts = [UIImage splitImageIntoTwoParts:self.homeScreenShot orientations:0];
     
@@ -227,16 +175,10 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
     } completion:^(BOOL finished){
         
-        [self setupContainerView];
+//        [self setupCandidateContainerView];
         
     }];
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -251,7 +193,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 
-#pragma mark privates
+#pragma mark 答案区的view布局
 -(void)setupAnswerViews:(CGRect)frame
 {
     _firstBtn.hidden = YES;
@@ -288,15 +230,13 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 
-// 建立文字面板，把答案混淆在里面 CP_Words_Container_Columns*CP_Words_Container_Rows
-- (void)setupContainerView
+#pragma mark 建立文字面板，把答案混淆在里面 CP_Words_Container_Columns*CP_Words_Container_Rows
+- (void)setupCandidateContainerView
 {
     [_wordsContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // 设置混淆文字self.words
     [self setupWordsString];
-    
-    int rows = CP_Words_Container_Rows;
     
     int count = CP_Words_Container_Columns*CP_Words_Container_Rows;
     
@@ -324,13 +264,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.tag = i+CP_Word_Button_Tag_Offset;
         [btn addTarget:self action:@selector(wordButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
-//        [btn addTarget:self action:@selector(wordButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
-//        [btn addTarget:self action:@selector(wordButtonTouchCancel:) forControlEvents:UIControlEventTouchCancel];
-//        [btn addTarget:self action:@selector(wordButtonTouchUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
-        
-        // set btn text 4 + 3*8-4  随机选一个，然后去掉
-        //        SLog(@"%@",str);
-        
+
         NSRange selectedRange = NSMakeRange(rand()%[str length], 1);
         NSString *aWord = [str substringWithRange:selectedRange];
         [btn setTitle:aWord forState:UIControlStateNormal];
@@ -379,7 +313,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 
-///
+//初始化可用的字母
 - (void)setupWordsString{
     NSMutableString *words = [NSMutableString stringWithString:_globalWordsString];
     [words replaceOccurrencesOfString:@" " withString:@"" options:1 range:NSMakeRange(0, [words length]-1)];//过滤空格
@@ -388,24 +322,8 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 
-- (void)setPromptCostLabel
-{
-    _promptCostLabel.text = [NSString stringWithFormat:@"%d",_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost];
-}
 
-
-- (void)showPrompView{
-    [self.view bringSubviewToFront:_prompView];
-    _prompContentLabel.text = [[USER_DEFAULT objectForKey:@"CurrentGolden"] intValue]>=[_promptCostLabel.text intValue]? [NSString stringWithFormat:@"确认花掉%d金币获取一个文字提示?",_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost] : @"没有足够的道具，前往小卖部购买？";
-    
-}
-
-- (void)hidePrompView{
-    [self.view sendSubviewToBack:_prompView];
-    _prompView.hidden = YES;
-}
-
-
+//检查答案是否正确
 - (BOOL)checkAnswer
 {
     NSMutableString *yourAnswer = [NSMutableString string];
@@ -481,24 +399,10 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     _currentWordIndex = 0;
     
     // 奖励玩家
-//    int currentGold = [_myGoldLable.text intValue] + CP_Gift_Per_Idioms;
-//    _myGoldLable.text = [NSString stringWithFormat:@"%d",currentGold];
-//    [USER_DEFAULT setInteger:currentGold forKey:@"CurrentGolden"];
     _currentGolden += CP_Gift_Per_Idioms;
     [USER_DEFAULT setInteger:_currentGolden forKey:@"CurrentGolden"];
     
-    [UIView animateWithDuration:0.75 animations:^{
-        
-        [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y-APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
-        _answerCorrectView.hidden = NO;
-        _answerCorrectView.alpha = 1;
-        
-        [self.view bringSubviewToFront:_answerCorrectView];
-        
-    } completion:^(BOOL finished){
-        
-        
-    }];
+    [self showPassedView];
 }
 
 - (UIImage *)getSharedImage{
@@ -647,7 +551,17 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 
-
+#pragma mark 分享view
+-(void)initShareView:(UIEdgeInsets) edge
+{
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShareView)];
+    [_shareMaskView addGestureRecognizer:tap2];
+    _shareBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
+    _shareTitleLabel.text = @"去微信求助";
+    _shareContentLabel.text = [NSString stringWithFormat:@"今天首次分享到朋友圈赠送%d金币",CP_Gift_For_Share_To_FriendZone];
+    _shareView.hidden = YES;
+    [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
+}
 //动画
 - (void)hideShareView{
     
@@ -788,7 +702,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
 }
 
-
+//答案区view事件的处理
 - (IBAction)answerButtonSelected:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
@@ -822,6 +736,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
 }
 
+//候选区view事件的处理
 - (void)wordButtonSelected:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
@@ -896,41 +811,11 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             }
         }
     }
-    
-    
 }
 
 
 
-- (void)wordButtonTouchDown:(id)sender
-{
-    //    UIButton *btn = (UIButton *)sender;
-    //
-    //    [UIView animateWithDuration:0.2 animations:^{
-    //
-    //        btn.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.5, 1.5);
-    //
-    //
-    //    } completion:^(BOOL finished){
-    //
-    //        btn.transform = CGAffineTransformScale(CGAffineTransformIdentity, 2/3, 2/3);
-    //    }];
-    
-}
-
-
-- (void)wordButtonTouchCancel:(id)sender{
-    
-    
-}
-
-
-- (void)wordButtonTouchUpOutside:(id)sender{
-    
-}
-
-
-#pragma mark load question images
+#pragma mark 提示图片区的view布局
 -(void)setupQuestionImageViews:(CGRect)rc
 {
     //position view
@@ -972,6 +857,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         }
     }
 }
+
 #pragma mark get image lists
 - (void)grabImagesInBackground:(NSString*)imageKeyword
 {
@@ -1038,4 +924,111 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self grabImagesInBackground:_currentAnswer];
 }
 
+#pragma mark 答题成功后弹出或消失提示框
+-(void)initPassedView:(UIEdgeInsets) edge
+{
+    _answerCorrectBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
+    _yourGiftLabel.text = [NSString stringWithFormat:@"+ %d",CP_Gift_Per_Idioms];
+    _yourRankingLabel.text = [NSString stringWithFormat:@"您击败了%d%%的玩家",CP_Lose_To_You];
+    _answerCorrectView.hidden = YES;
+    [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
+}
+/**
+ 答题成功时，弹出提示
+ */
+-(void)showPassedView
+{
+    [UIView animateWithDuration:0.75 animations:^{
+        
+        [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y-APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
+        _answerCorrectView.hidden = NO;
+        _answerCorrectView.alpha = 1;
+        
+        [self.view bringSubviewToFront:_answerCorrectView];
+        
+    } completion:^(BOOL finished){
+        
+        
+    }];
+}
+-(void)hidePassedView
+{
+    [UIView animateWithDuration:0.75 animations:^{
+        
+        [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
+        
+        
+    } completion:^(BOOL finished){
+        _answerCorrectView.hidden = YES;
+        [self.view sendSubviewToBack:_answerCorrectView];
+        
+    }];
+}
+
+#pragma mark 积分换提示
+-(void)initPromptView:(UIEdgeInsets)edge
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidePrompView)];
+    [_prompMaskView addGestureRecognizer:tap];
+
+    _prompBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
+    _prompTitleLabel.text = @"提示";
+    //_prompContentLabel.text = [USER_DEFAULT objectForKey:@"MyGoldenScore" ]>= ? :@"没有足够的道具，前往小卖部购买？";
+    _prompView.hidden = YES;
+}
+- (void)setPromptCostLabel
+{
+    _promptCostLabel.text = [NSString stringWithFormat:@"%d",_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost];
+}
+
+
+- (void)showPrompView{
+    [self.view bringSubviewToFront:_prompView];
+    _prompContentLabel.text = [[USER_DEFAULT objectForKey:@"CurrentGolden"] intValue]>=[_promptCostLabel.text intValue]? [NSString stringWithFormat:@"确认花掉%d金币获取一个文字提示?",_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost] : @"没有足够的道具，前往小卖部购买？";
+    
+}
+
+- (void)hidePrompView{
+    [self.view sendSubviewToBack:_prompView];
+    _prompView.hidden = YES;
+}
+#pragma mark  加载本地数据，比如关数，金币等
+-(void)loadLocalSettings
+{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"]){
+        _currentLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"] intValue];
+        
+    }else{
+        _currentLevel = CP_Initial_Level;
+        [USER_DEFAULT setInteger:CP_Initial_Level forKey:@"CurrentLevel"];
+    }
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"]){
+        _currentGolden = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"] intValue];
+        
+    }else{
+        _currentGolden = CP_Initial_Golden;
+        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:@"CurrentGolden"];
+    }
+}
+#pragma mark 请求网络数据返回后的处理
+-(void)responseReceived:(NSNotification*)notification
+{
+    //从服务器端请求数据
+    NSMutableArray * array = [[NSMutableArray alloc]init];
+#if 0
+    NSString *file = [MAIN_BUDDLE pathForResource:@"question" ofType:@"plist"];
+    [array addObjectsFromArray:[NSArray arrayWithContentsOfFile:file]];
+#else
+    if([notification.object isKindOfClass:[NSArray class]])
+    {
+        [array addObjectsFromArray:(NSArray*)notification.object];
+    }
+#endif
+    self.dataSource = array;
+    
+    [self startNewLevel];
+    
+    // 动画打开
+    [self startGame];
+}
 @end
