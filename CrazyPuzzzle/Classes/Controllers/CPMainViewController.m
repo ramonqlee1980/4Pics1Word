@@ -269,7 +269,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     //将answer居中显示
     CGFloat offset = (frame.size.width-(_currentAnswer.length-1)*(CP_Word_Cell_Size+CP_Words_Container_Margin)-CP_Word_Cell_Size)/2;
     
-    for(int i=0; i< _currentAnswer.length ; i++) {
+    for(int  i=0; i< _currentAnswer.length ; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:kAnswerTextFontSize];
         
@@ -481,9 +481,11 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     _currentWordIndex = 0;
     
     // 奖励玩家
-    int currentGold = [_myGoldLable.text intValue] + CP_Gift_Per_Idioms;
-    _myGoldLable.text = [NSString stringWithFormat:@"%d",currentGold];
-    [USER_DEFAULT setInteger:currentGold forKey:@"CurrentGolden"];
+//    int currentGold = [_myGoldLable.text intValue] + CP_Gift_Per_Idioms;
+//    _myGoldLable.text = [NSString stringWithFormat:@"%d",currentGold];
+//    [USER_DEFAULT setInteger:currentGold forKey:@"CurrentGolden"];
+    _currentGolden += CP_Gift_Per_Idioms;
+    [USER_DEFAULT setInteger:_currentGolden forKey:@"CurrentGolden"];
     
     [UIView animateWithDuration:0.75 animations:^{
         
@@ -581,7 +583,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         }
         //把还没有填词的btn 的tag装入array（)
         NSMutableArray *array = [NSMutableArray array];
-        for (int i=0; i<4; i++) {
+        for (int i=0; i<_currentAnswer.length; i++) {
             UIButton *btn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
             if ([btn.titleLabel.text length] == 0) {
                 [array addObject:[NSNumber numberWithInt:btn.tag]];
@@ -591,8 +593,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         assert([array count] != 0);
         NSUInteger i = rand()%[array count];
         //通过i确定需要提示的单词
-        NSString *prompt = [_currentAnswer substringWithRange:NSMakeRange([array[i] intValue]-CP_Answer_Button_Tag_Offset, 1)];
-        UIView *unknown = [self.view viewWithTag:([array[i] intValue]) ];
+        int r = [array[i] intValue];
+        NSString *prompt = [_currentAnswer substringWithRange:NSMakeRange(r-CP_Answer_Button_Tag_Offset, 1)];
+        UIView *unknown = [_answerContainerView viewWithTag:(r) ];
         if ([unknown isKindOfClass:[UIButton class]]) {
             UIButton *btn = (UIButton *)unknown;
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

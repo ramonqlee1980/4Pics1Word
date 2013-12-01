@@ -54,9 +54,8 @@
 
 
 /**************** 应用相关  ********************/
-
-#define CP_Weixin_App_Id @"wx4fbd3483237ffaeb" // demo: wxd930ea5d5a258f4f
-#define CP_UMeng_App_Key @"520afa2156240bd1d004e206"
+#define CP_Weixin_App_Id @"wxd32d6d3e8108ffcb" // demo: wxd930ea5d5a258f4f
+#define CP_UMeng_App_Key @"529b291156240b5737148f50"
 
 #define CP_Price_Key @"price"
 #define CP_Value_Key @"value"
@@ -64,8 +63,8 @@
 
 
 #define CP_Gift_Per_Idioms 3
-#define CP_First_Prompt_Cost 30
-#define CP_NoFirst_Prompt_Cost 90
+#define CP_First_Prompt_Cost 10
+#define CP_NoFirst_Prompt_Cost 20
 #define CP_Gift_For_Share_To_FriendZone 20
 
 #define CP_Lose_To_You 11
