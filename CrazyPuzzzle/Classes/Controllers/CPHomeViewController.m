@@ -46,29 +46,29 @@ static AVAudioPlayer *_audioPlayer = nil;
 	// Do any additional setup after loading the view.
     
     
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"]){
-        [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"] intValue];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey]){
+        [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey] intValue];
         
     }else{
         
-        [USER_DEFAULT setInteger:CP_Initial_Level forKey:@"CurrentLevel"];
+        [USER_DEFAULT setInteger:CP_Initial_Level forKey:CurrentLevelStringKey];
     }
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"]){
-       [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"] intValue];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey]){
+       [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey] intValue];
         
     }else{
         
-        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:@"CurrentGolden"];
+        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:CurrentGoldenStringKey];
     }
     
     
-    if(![[NSUserDefaults standardUserDefaults] objectForKey:@"AudioStatus"]){
+    if(![[NSUserDefaults standardUserDefaults] objectForKey:CurrentAudioStatusKey]){
         
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"AudioStatus"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CurrentAudioStatusKey];
     }
     
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"AudioStatus"] boolValue]) {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:CurrentAudioStatusKey] boolValue]) {
         [self musicPlay];
     }
     
@@ -102,10 +102,10 @@ static AVAudioPlayer *_audioPlayer = nil;
     _musicOnBtn.hidden = YES;
     _musicOffBtn.hidden = NO;
     
-    
+
     if (!_audioPlayer) {
         
-        NSString *mfp = [[NSBundle mainBundle] pathForResource:@"bg0" ofType:@"mp3"];
+        NSString *mfp = [[NSBundle mainBundle] pathForResource:kBackgroundMusic ofType:kMp3Suffix];
         NSURL *url = [[NSURL alloc] initFileURLWithPath:mfp];
         _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
             
@@ -135,7 +135,7 @@ static AVAudioPlayer *_audioPlayer = nil;
 
 - (IBAction)startGame:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     //NSArray *twoPart = [UIImage splitImageIntoTwoParts:self.homeScreenShot orientation:0];
       
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
@@ -149,23 +149,23 @@ static AVAudioPlayer *_audioPlayer = nil;
 
 - (IBAction)openMusic:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     [self musicPlay];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"AudioStatus"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CurrentAudioStatusKey];
 }
 
 - (IBAction)closeMusic:(id)sender;
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     [self musicStop];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"AudioStatus"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:CurrentAudioStatusKey];
 }
 
 - (IBAction)feedBack:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     [UMFeedback showFeedback:self withAppkey:CP_UMeng_App_Key];
 

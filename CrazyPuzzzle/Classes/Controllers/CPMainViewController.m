@@ -46,8 +46,26 @@
 
 #define CP_ShareView_Animation_Duration 0.6
 
+//string key
+#define ThumbnailStringKey @"tbUrl"
 
-//TODO::需要随机加入26个字母中的几个字母
+#define ResponseStatusStringKey @"responseStatus"
+#define ResponseDataStringKey @"responseData"
+#define ResultsStringKey @"results"
+
+
+
+//答案区的背景图
+#define kAnswerViewBackgroundNormalImage @"answer.png"
+#define kAnswerViewBackgroundHighlightedImage @"answer_press.png"
+
+//待选字符区的背景
+#define kCandidateViewBackgroundNormalImage @"word.png"
+#define kCandidateViewBackgroundHighlightedImage @"word_press.png"
+
+#define kGuess_MsgBox_Bg @"guess_msgbox_bg"
+
+//需要随机加入26个字母中的几个字母
 static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 @interface CPMainViewController ()
@@ -97,7 +115,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //进入下一关
 - (IBAction)next:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     [self hidePassedView];
     
     
@@ -109,7 +127,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         SLog(@"这已经是最后一关！");
         return;
     }
-    [USER_DEFAULT setInteger:_currentLevel forKey:@"CurrentLevel"];
+    [USER_DEFAULT setInteger:_currentLevel forKey:CurrentLevelStringKey];
     
     [self startNewLevel];
 }
@@ -175,8 +193,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
     } completion:^(BOOL finished){
         
-//        [self setupCandidateContainerView];
-        
     }];
     
 }
@@ -187,7 +203,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (void)handlePaidForGoldNotification:(NSNotification *)notification
 {
-    _myGoldLable.text = [NSString stringWithFormat:@"%@",[USER_DEFAULT objectForKey:@"CurrentGolden"]];
+    _myGoldLable.text = [NSString stringWithFormat:@"%@",[USER_DEFAULT objectForKey:CurrentGoldenStringKey]];
 }
 
 
@@ -208,6 +224,8 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
     [Utils removeSubviews:_answerContainerView];
     
+    
+    
     //将answer居中显示
     CGFloat offset = (frame.size.width-(_currentAnswer.length-1)*(CP_Word_Cell_Size+CP_Words_Container_Margin)-CP_Word_Cell_Size)/2;
     
@@ -215,8 +233,8 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:kAnswerTextFontSize];
         
-        [btn setBackgroundImage:[UIImage imageNamed:@"answer.png"] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"answer_press.png"] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage imageNamed:kAnswerViewBackgroundNormalImage] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:kAnswerViewBackgroundHighlightedImage] forState:UIControlStateHighlighted];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         btn.tag = i+CP_Answer_Button_Tag_Offset;
         [btn addTarget:self action:@selector(answerButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
@@ -253,18 +271,19 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
     [prepareWords appendString:_currentAnswer]; // 这样一共24个汉字
     
+    
     NSMutableString *str = [NSMutableString stringWithString:prepareWords];
     NSMutableString *s = [NSMutableString string];
     for(int i=0; i< count ; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [btn setBackgroundImage:[UIImage imageNamed:@"word.png"] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"word_press.png"] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage imageNamed:kCandidateViewBackgroundNormalImage] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:kCandidateViewBackgroundHighlightedImage] forState:UIControlStateHighlighted];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.tag = i+CP_Word_Button_Tag_Offset;
         [btn addTarget:self action:@selector(wordButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
-
+        
         NSRange selectedRange = NSMakeRange(rand()%[str length], 1);
         NSString *aWord = [str substringWithRange:selectedRange];
         [btn setTitle:aWord forState:UIControlStateNormal];
@@ -273,7 +292,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         [s appendString:aWord];
         
         // set btn frame
-        
         CGFloat x = i%CP_Words_Container_Columns*(CP_Word_Cell_Size+CP_Word_Cell_Margin) +CP_Words_Container_Margin;
         CGFloat y = (i/CP_Words_Container_Columns)*(CP_Word_Cell_Size+CP_Word_Cell_Margin) + CP_Words_Container_Margin;
         
@@ -282,9 +300,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         [_wordsContainerView setFrame:CGRectMake(_wordsContainerView.frame.origin.x, _wordsContainerView.frame.origin.y, _wordsContainerView.frame.size.width, CP_Words_Container_Height)];
         
         [UIView animateWithDuration:1.0 animations:^{
-            
             [btn setFrame:CGRectMake(x, y, CP_Word_Cell_Size*CP_Scale_Factor, CP_Word_Cell_Size*CP_Scale_Factor)];
-            
         } completion:^(BOOL finished){
             
             if (finished) {
@@ -293,23 +309,15 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                     
                     [btn setFrame:CGRectMake(x, y, CP_Word_Cell_Size, CP_Word_Cell_Size)];
                     
-                    
                 } completion:^(BOOL finished){
                     
-                    
-                    
                 }];
-                
             }
-            
         }];
-        
-        
     }
     
     // record this round of wordsStirng
     self.currentPreparedString = s;
-    
 }
 
 
@@ -337,25 +345,19 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if([self checkAnswerWithYourAnswer:yourAnswer]){
         [self youAreRight];
     }else{
-        
         [self youAreWrong];
     }
     
     return YES;
-    
-    
 }
 
 - (BOOL)checkAnswerWithYourAnswer:(NSString *)yourAnswer{
-    
     return [_currentAnswer isEqualToString:yourAnswer];
-    
 }
 
 - (void)youAreWrong
 {
     //    SLog(@"you are wrong");
-    
     _isWrong = YES;
     
     for (int i=0; i<_currentAnswer.length; i++) {
@@ -384,12 +386,8 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             
         } completion:^(BOOL finished){
             
-            
         }];
-        
     }
-    
-    
 }
 
 - (void)youAreRight
@@ -400,7 +398,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     // 奖励玩家
     _currentGolden += CP_Gift_Per_Idioms;
-    [USER_DEFAULT setInteger:_currentGolden forKey:@"CurrentGolden"];
+    [USER_DEFAULT setInteger:_currentGolden forKey:CurrentGoldenStringKey];
     
     [self showPassedView];
 }
@@ -409,7 +407,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     NSString *oldStr = _levelLable.text;
     
-    _levelLable.text = @"帮我猜猜这张图代表什么成语？";
+    _levelLable.text = NSLocalizedString(@"Share_Image_Title", "");
     
     _myGoldLable.hidden = YES;
     _backBtn.hidden = YES;
@@ -436,7 +434,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (IBAction)back:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     /// 先完成动画，再back to home
     
@@ -468,16 +466,16 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // golden 够就提示，不够就去商店
 - (IBAction)needPrompt:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
-    if([[USER_DEFAULT objectForKey:@"CurrentGolden"] intValue]>=[_promptCostLabel.text intValue]){
+    if([[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue]>=[_promptCostLabel.text intValue]){
         /// 随便挑成语中的一个字提示，并扣积分(xxxx 还不是这样，要提示没有的单词)
         
         // 找到提示的单词，且 第二次提示90分（第一次30）
         //如果是在isWrong=YES的情况下，那就先清空answer button
         //如果用户在输入若干单词后寻要提示，我这边的处理是提示用户还没有出入位置的单词( 这个规则可能会改 )
         if (_isWrong) {
-            for (int i=0; i<4; i++) {
+            for (int i=0; i<_currentAnswer.length; i++) {
                 UIButton *btn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
                 [btn setTitle:nil forState:UIControlStateNormal];
                 btn.titleLabel.text = nil;
@@ -514,10 +512,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
         
         if ([array count] == 1) { // 本轮提示后，成语完成，需要进入check模式
-            
             [self checkAnswer];
-            
-            
         }
         
         
@@ -530,14 +525,12 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             
             
         }else{// 这是第二次提示了
-            
             _currentGolden-=CP_NoFirst_Prompt_Cost;
-            
         }
         
         
         _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentGolden];;
-        [USER_DEFAULT setInteger:_currentGolden forKey:@"CurrentGolden"];
+        [USER_DEFAULT setInteger:_currentGolden forKey:CurrentGoldenStringKey];
         [self hidePrompView];
         
         
@@ -556,9 +549,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShareView)];
     [_shareMaskView addGestureRecognizer:tap2];
-    _shareBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
-    _shareTitleLabel.text = @"去微信求助";
-    _shareContentLabel.text = [NSString stringWithFormat:@"今天首次分享到朋友圈赠送%d金币",CP_Gift_For_Share_To_FriendZone];
+    _shareBgIV.image = [[UIImage imageNamed:kGuess_MsgBox_Bg] resizableImageWithCapInsets:edge];
+    _shareTitleLabel.text = NSLocalizedString(@"SNS_Help_Title_Weixin", "");
+    _shareContentLabel.text = [NSString stringWithFormat:NSLocalizedString(@"SNS_Share_Award_Text", ""),CP_Gift_For_Share_To_FriendZone];
     _shareView.hidden = YES;
     [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
 }
@@ -568,19 +561,13 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
         
         [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
-        
-        
     } completion:^(BOOL finished){
         _shareView.hidden = YES;
         [self.view sendSubviewToBack:_shareView];
     }];
-    
-    
 }
 
 - (void)showShareView{
-    
-    
     [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
         
         [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y-APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
@@ -589,42 +576,37 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
     } completion:^(BOOL finished){
         
-        
     }];
-    
 }
 
 
 
 - (IBAction)promptClicked:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     _prompView.hidden = NO;
     [self showPrompView];
-    
 }
 
 - (IBAction)promptCancle:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     [self hidePrompView];
-    
 }
 
 
 - (IBAction)shareClicked:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     [self showShareView];
-    
 }
 
 - (IBAction)shareCancle:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     [self hideShareView];
     
@@ -705,7 +687,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //答案区view事件的处理
 - (IBAction)answerButtonSelected:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     UIButton *btn = (UIButton *)sender;
     
@@ -739,7 +721,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //候选区view事件的处理
 - (void)wordButtonSelected:(id)sender
 {
-    [AudioSoundHelper playSoundWithFileName:@"mainclick" ofType:@"mp3"];
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     //
     if (_isWrong) {
@@ -848,7 +830,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         {
             if ([imageView respondsToSelector:@selector(setImageWithURL:)]) {
                 NSDictionary* dict = [questionImageResultArray objectAtIndex:i];
-                NSMutableString* url = [NSMutableString stringWithString:[dict objectForKey:@"tbUrl"]];
+                NSMutableString* url = [NSMutableString stringWithString:[dict objectForKey:ThumbnailStringKey]];
                 
                 //有时需要对google返回的字符串做进一步的处理
                 [url replaceOccurrencesOfString:@"qu003dtbn" withString:@"q=tbn" options:NSCaseInsensitiveSearch range:NSMakeRange(0, url.length-1)];
@@ -871,9 +853,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 #define HTTP_OK 200
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    // Use when fetching text data
-    //    NSString *responseString = [request responseString];
-    
     // Use when fetching binary data
     NSData *responseData = [request responseData];
     
@@ -883,18 +862,18 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         id res = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         if (res && [res isKindOfClass:[NSDictionary class]]) {
             id rootDict = (NSDictionary*)res;
-            NSNumber* responseStatus = (NSNumber*)[rootDict objectForKey:@"responseStatus"];
+            NSNumber* responseStatus = (NSNumber*)[rootDict objectForKey:ResponseStatusStringKey];
             if (responseStatus.intValue!=HTTP_OK) {//200 for http ok
                 return;
             }
             
             //get image list
-            rootDict = [rootDict objectForKey:@"responseData"];
+            rootDict = [rootDict objectForKey:ResponseDataStringKey];
             if (!rootDict || ![rootDict isKindOfClass:[NSDictionary class]]) {
                 return;
             }
             
-            rootDict = [rootDict objectForKey:@"results"];
+            rootDict = [rootDict objectForKey:ResultsStringKey];
             if (!rootDict || ![rootDict isKindOfClass:[NSArray class]]) {
                 return;
             }
@@ -927,9 +906,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 #pragma mark 答题成功后弹出或消失提示框
 -(void)initPassedView:(UIEdgeInsets) edge
 {
-    _answerCorrectBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
+    _answerCorrectBgIV.image = [[UIImage imageNamed:kGuess_MsgBox_Bg] resizableImageWithCapInsets:edge];
     _yourGiftLabel.text = [NSString stringWithFormat:@"+ %d",CP_Gift_Per_Idioms];
-    _yourRankingLabel.text = [NSString stringWithFormat:@"您击败了%d%%的玩家",CP_Lose_To_You];
+    _yourRankingLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Beat_Text_Tip", ""),CP_Lose_To_You];
     _answerCorrectView.hidden = YES;
     [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
 }
@@ -970,9 +949,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidePrompView)];
     [_prompMaskView addGestureRecognizer:tap];
-
-    _prompBgIV.image = [[UIImage imageNamed:@"guess_msgbox_bg"] resizableImageWithCapInsets:edge];
-    _prompTitleLabel.text = @"提示";
+    
+    _prompBgIV.image = [[UIImage imageNamed:kGuess_MsgBox_Bg] resizableImageWithCapInsets:edge];
+    _prompTitleLabel.text = NSLocalizedString(@"Dlg_Tip_Title", "");//@"提示";
     //_prompContentLabel.text = [USER_DEFAULT objectForKey:@"MyGoldenScore" ]>= ? :@"没有足够的道具，前往小卖部购买？";
     _prompView.hidden = YES;
 }
@@ -984,7 +963,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (void)showPrompView{
     [self.view bringSubviewToFront:_prompView];
-    _prompContentLabel.text = [[USER_DEFAULT objectForKey:@"CurrentGolden"] intValue]>=[_promptCostLabel.text intValue]? [NSString stringWithFormat:@"确认花掉%d金币获取一个文字提示?",_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost] : @"没有足够的道具，前往小卖部购买？";
+    _prompContentLabel.text = [[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue]>=[_promptCostLabel.text intValue]? [NSString stringWithFormat:NSLocalizedString(@"Dlg_Body_Exchange_Text", ""),_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost] : NSLocalizedString(@"Dlg_Body_No_Enough_Coins_Text", "");
     
 }
 
@@ -995,19 +974,19 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 #pragma mark  加载本地数据，比如关数，金币等
 -(void)loadLocalSettings
 {
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"]){
-        _currentLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentLevel"] intValue];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey]){
+        _currentLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey] intValue];
         
     }else{
         _currentLevel = CP_Initial_Level;
-        [USER_DEFAULT setInteger:CP_Initial_Level forKey:@"CurrentLevel"];
+        [USER_DEFAULT setInteger:CP_Initial_Level forKey:CurrentLevelStringKey];
     }
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"]){
-        _currentGolden = [[[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentGolden"] intValue];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey]){
+        _currentGolden = [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey] intValue];
         
     }else{
         _currentGolden = CP_Initial_Golden;
-        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:@"CurrentGolden"];
+        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:CurrentGoldenStringKey];
     }
 }
 #pragma mark 请求网络数据返回后的处理

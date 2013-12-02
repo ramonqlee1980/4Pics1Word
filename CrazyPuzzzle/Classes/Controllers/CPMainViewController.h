@@ -81,9 +81,4 @@
 
 - (IBAction)next:(id)sender;
 - (IBAction)answerButtonSelected:(id)sender;
-
-// 建立文字面板，把答案混淆在里面
-- (void)setupCandidateContainerView;
-
-
 @end

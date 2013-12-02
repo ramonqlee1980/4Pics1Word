@@ -19,6 +19,8 @@
 #define CP_Value_Key @"value"
 
 
+#define Shop_Button_Open_PNG @"shop_button_open.png"
+#define Shop_Button_Close_PNG @"shop_button_close.png"
 
 @interface CPPropStoreViewController ()
 
@@ -180,13 +182,15 @@
 
 - (void)setupBtn{
 
+
+    
     if (_currentSelected == 1) {
-        [_goldenBtn setBackgroundImage:[UIImage imageNamed:@"shop_button_open.png"] forState:UIControlStateNormal];
-        [_tasksBtn setBackgroundImage:[UIImage imageNamed:@"shop_button_close.png"] forState:UIControlStateNormal];
+        [_goldenBtn setBackgroundImage:[UIImage imageNamed:Shop_Button_Open_PNG] forState:UIControlStateNormal];
+        [_tasksBtn setBackgroundImage:[UIImage imageNamed:Shop_Button_Close_PNG] forState:UIControlStateNormal];
     }else if(_currentSelected == 2){
     
-        [_goldenBtn setBackgroundImage:[UIImage imageNamed:@"shop_button_close.png"] forState:UIControlStateNormal];
-        [_tasksBtn setBackgroundImage:[UIImage imageNamed:@"shop_button_open.png"] forState:UIControlStateNormal];
+        [_goldenBtn setBackgroundImage:[UIImage imageNamed:Shop_Button_Close_PNG] forState:UIControlStateNormal];
+        [_tasksBtn setBackgroundImage:[UIImage imageNamed:Shop_Button_Open_PNG] forState:UIControlStateNormal];
     
     }
     
