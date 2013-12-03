@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
-               BuildableName = "CrazyPuzzzle.app"
+               BuildableName = "4Imgs1Word.app"
                BlueprintName = "4Imgs1Word"
                ReferencedContainer = "container:4Imgs1Word.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
-            BuildableName = "CrazyPuzzzle.app"
+            BuildableName = "4Imgs1Word.app"
             BlueprintName = "4Imgs1Word"
             ReferencedContainer = "container:4Imgs1Word.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
-            BuildableName = "CrazyPuzzzle.app"
+            BuildableName = "4Imgs1Word.app"
             BlueprintName = "4Imgs1Word"
             ReferencedContainer = "container:4Imgs1Word.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
-            BuildableName = "CrazyPuzzzle.app"
+            BuildableName = "4Imgs1Word.app"
             BlueprintName = "4Imgs1Word"
             ReferencedContainer = "container:4Imgs1Word.xcodeproj">
          </BuildableReference>

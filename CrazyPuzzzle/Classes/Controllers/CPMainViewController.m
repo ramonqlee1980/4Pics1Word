@@ -19,7 +19,7 @@
 #define kQuestionImageViewCount 4
 #define kRetryMaxCount 3
 
-#define kAnswerTextFontSize 17
+#define kAnswerTextFontSize 20
 
 #define CP_Question_Key @"question"
 #define CP_Explain_Key @"explain"
@@ -286,6 +286,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
         NSRange selectedRange = NSMakeRange(rand()%[str length], 1);
         NSString *aWord = [str substringWithRange:selectedRange];
+        btn.titleLabel.font = [UIFont boldSystemFontOfSize:kAnswerTextFontSize];
         [btn setTitle:aWord forState:UIControlStateNormal];
         [str replaceCharactersInRange:selectedRange withString:@""];
         
@@ -801,8 +802,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 -(void)setupQuestionImageViews:(CGRect)rc
 {
     //position view
-    NSInteger width = 2*rc.size.width/kQuestionImageViewCount;
-    NSInteger height = 2*rc.size.height/kQuestionImageViewCount;
+    CGFloat margin = 4;
+    CGFloat width = 2*rc.size.width/kQuestionImageViewCount;
+    CGFloat height = 2*rc.size.height/kQuestionImageViewCount;
     CGRect frame = rc;
     frame.origin = CGPointZero;
     frame.size = CGSizeMake(width, height);
@@ -815,11 +817,11 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         //increment x by width
         if (i!=0 && i%kQuestionImageColumnCount==0) {
             frame.origin.x = 0;//rc.origin.x;
-            frame.origin.y += height;
+            frame.origin.y += height + margin;
         }
         else if(i!=0)
         {
-            frame.origin.x += width;
+            frame.origin.x += width + margin;
         }
         
         UIImageView* imageView = [[UIImageView alloc]initWithFrame:frame];
