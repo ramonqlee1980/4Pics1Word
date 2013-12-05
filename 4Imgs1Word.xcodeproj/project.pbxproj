@@ -96,6 +96,7 @@
 		0432D9A517BCAE30002E65CC /* CPIAPStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0432D9A417BCAE30002E65CC /* CPIAPStoreManager.m */; };
 		0432D9A717BCAEAC002E65CC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0432D9A617BCAEAB002E65CC /* StoreKit.framework */; };
 		0432D9AA17BCC4E1002E65CC /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0432D9A917BCC4E0002E65CC /* MyTableViewCell.m */; };
+		30471ED4185133DE009575CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30471ED3185133DE009575CA /* Images.xcassets */; };
 		30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F7184A91140043B0D3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43D184A91140043B0D3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F9184A91140043B0D3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -241,6 +242,7 @@
 		0432D9A617BCAEAB002E65CC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0432D9A817BCC4DF002E65CC /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		0432D9A917BCC4E0002E65CC /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		30471ED3185133DE009575CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 4Imgs1Word/Images.xcassets; sourceTree = "<group>"; };
 		30CBF3F3184A91140043B0D3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		30CBF3F5184A91140043B0D3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -318,8 +320,8 @@
 		30CBF466184AA1000043B0D3 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		30CBF469184B37050043B0D3 /* RMQuestionsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMQuestionsRequest.h; sourceTree = "<group>"; };
 		30CBF46A184B37050043B0D3 /* RMQuestionsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMQuestionsRequest.m; sourceTree = "<group>"; };
-		30CBF470184C26D80043B0D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		30CBF472184C26ED0043B0D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		30CBF470184C26D80043B0D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30CBF472184C26ED0043B0D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		30CBF473184C2AAB0043B0D3 /* AudioSoundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSoundHelper.h; sourceTree = "<group>"; };
 		30CBF474184C2AAB0043B0D3 /* AudioSoundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSoundHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -354,6 +356,7 @@
 		041E33EC17B7D99C0067EF7C = {
 			isa = PBXGroup;
 			children = (
+				30471ED3185133DE009575CA /* Images.xcassets */,
 				041E33F717B7D99C0067EF7C /* CrazyPuzzzle */,
 				30CBF3F1184A90BA0043B0D3 /* Frameworks */,
 				041E33F617B7D99C0067EF7C /* Products */,
@@ -797,6 +800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				041E33FA17B7D99D0067EF7C /* 4Imgs1Word-Info.plist in Resources */,
+				30471ED4185133DE009575CA /* Images.xcassets in Resources */,
 				041E340117B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch in Resources */,
 				041E340F17B7D99D0067EF7C /* Icon.png in Resources */,
 				041E341117B7D99D0067EF7C /* Icon@2x.png in Resources */,
@@ -997,6 +1001,8 @@
 		041E342F17B7D99D0067EF7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ming Li (6ZAM6HQ2F7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrazyPuzzzle/4Imgs1Word-Prefix.pch";
@@ -1026,6 +1032,8 @@
 		041E343017B7D99D0067EF7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ming Li (6ZAM6HQ2F7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrazyPuzzzle/4Imgs1Word-Prefix.pch";
