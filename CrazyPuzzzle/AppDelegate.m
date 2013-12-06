@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CPIAPStoreManager.h"
 #import "RMQuestionsRequest.h"
+#import "UMSocial.h"
 
 @implementation AppDelegate
 
@@ -25,6 +26,7 @@
     
     [[CPIAPStoreManager shareManager] registerStoreObserver];
     
+    [UMSocialData setAppKey:CP_UMeng_App_Key];
     if([WXApi registerApp:CP_Weixin_App_Id]){
         SLog(@"register success");
     }else{

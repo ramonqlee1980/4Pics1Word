@@ -9,9 +9,8 @@ Release 1.0.0
 5.最后一关的提示界面调整；（delayed，right now it will be reset to level 1）
 6.金币购买界面的调整；
 7.数据没下来之前，进入游戏按钮无法点击(done)
-8.金币换提示界面调整；
-9.分享界面调整：
-
+8.金币换提示界面调整(done)
+9.分享界面调整：（umeng sns插件，done)
 
 
 积分累计和计算时有误(done)

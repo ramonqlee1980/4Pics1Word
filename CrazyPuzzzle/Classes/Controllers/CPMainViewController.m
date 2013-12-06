@@ -13,6 +13,7 @@
 #include "UIImageView+WebCache.h"
 #import "Utils.h"
 #import "RMQuestionsRequest.h"
+#import "UMSocial.h"
 
 #define kQuestionImageUrlFormatter @"http://checknewversion.duapp.com/image/image-search.php?q=%@"
 #define kQuestionImageColumnCount 2
@@ -144,7 +145,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     assert(_currentAnswer != nil);
     _currentAnswer = [_currentAnswer uppercaseString];
     
-    _levelLable.text = [NSString stringWithFormat:@"Level:%d",_currentLevel];
+    NSArray* questionsArray = [RMQuestionsRequest sharedInstance].questionsArray;
+    int totalLevel = questionsArray?questionsArray.count:0;
+    _levelLable.text = [NSString stringWithFormat:@"%d/%d",_currentLevel,totalLevel];
     _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentGolden];
     
     //replace with four images
@@ -551,26 +554,33 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 //动画
 - (void)hideShareView{
-    
-    [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
-        
-        [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
-    } completion:^(BOOL finished){
-        _shareView.hidden = YES;
-        [self.view sendSubviewToBack:_shareView];
-    }];
+//    [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
+//        
+//        [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
+//    } completion:^(BOOL finished){
+//        _shareView.hidden = YES;
+//        [self.view sendSubviewToBack:_shareView];
+//    }];
 }
 
 - (void)showShareView{
-    [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
-        
-        [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y-APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
-        _shareView.hidden = NO;
-        [self.view bringSubviewToFront:_shareView];
-        
-    } completion:^(BOOL finished){
-        
-    }];
+//    [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
+//        
+//        [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y-APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
+//        _shareView.hidden = NO;
+//        [self.view bringSubviewToFront:_shareView];
+//        
+//    } completion:^(BOOL finished){
+//        
+//    }];
+    
+    //如果需要分享回调，请将delegate对象设置self，并实现下面的回调方法
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:CP_UMeng_App_Key
+                                      shareText:NSLocalizedString(@"SNS_Help", "")
+                                     shareImage:[self getSharedImage]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToFacebook,UMShareToTwitter,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToEmail,UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
+                                       delegate:nil];
 }
 
 
