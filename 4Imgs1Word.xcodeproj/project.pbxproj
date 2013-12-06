@@ -19,12 +19,10 @@
 		041E341C17B7D99D0067EF7C /* images in Resources */ = {isa = PBXBuildFile; fileRef = 041E341B17B7D99D0067EF7C /* images */; };
 		041E342117B7D99D0067EF7C /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 041E342017B7D99D0067EF7C /* Controllers */; };
 		041E342B17B7D99D0067EF7C /* Tools in Resources */ = {isa = PBXBuildFile; fileRef = 041E342A17B7D99D0067EF7C /* Tools */; };
-		041E343217B7DA0B0067EF7C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041E343117B7DA0B0067EF7C /* MainStoryboard_iPhone.storyboard */; };
 		041E343517B7DC000067EF7C /* CPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343417B7DC000067EF7C /* CPHomeViewController.m */; };
 		041E343817B7DCA60067EF7C /* CPLevelsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343717B7DCA60067EF7C /* CPLevelsListViewController.m */; };
 		041E343B17B7DCE40067EF7C /* CPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343A17B7DCE40067EF7C /* CPMainViewController.m */; };
 		041E343E17B7DD7A0067EF7C /* CPPropStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343D17B7DD7A0067EF7C /* CPPropStoreViewController.m */; };
-		041E347717B7F30E0067EF7C /* bigicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E345F17B7F30E0067EF7C /* bigicon.png */; };
 		041E347817B7F30E0067EF7C /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346017B7F30E0067EF7C /* board.png */; };
 		041E347917B7F30E0067EF7C /* btn_feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346117B7F30E0067EF7C /* btn_feedback.png */; };
 		041E347A17B7F30E0067EF7C /* btn_music_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346217B7F30E0067EF7C /* btn_music_off.png */; };
@@ -41,12 +39,8 @@
 		041E348517B7F30E0067EF7C /* mill.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346D17B7F30E0067EF7C /* mill.png */; };
 		041E348617B7F30E0067EF7C /* mole.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346E17B7F30E0067EF7C /* mole.png */; };
 		041E348717B7F30E0067EF7C /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346F17B7F30E0067EF7C /* sky.png */; };
-		041E348817B7F30E0067EF7C /* start_cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E347017B7F30E0067EF7C /* start_cn.png */; };
 		041E348917B7F30E0067EF7C /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E347117B7F30E0067EF7C /* sun.png */; };
 		041E348A17B7F30E0067EF7C /* sunshine.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E347217B7F30E0067EF7C /* sunshine.png */; };
-		041E348B17B7F30E0067EF7C /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E347317B7F30E0067EF7C /* title.png */; };
-		041E348C17B7F30E0067EF7C /* title_cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E347417B7F30E0067EF7C /* title_cn.png */; };
-		041E348D17B7F30E0067EF7C /* title_tw.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E347517B7F30E0067EF7C /* title_tw.png */; };
 		041E348E17B7F30E0067EF7C /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E347617B7F30E0067EF7C /* tree.png */; };
 		041E34A217B7F3150067EF7C /* answer.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E349017B7F3150067EF7C /* answer.png */; };
 		041E34A317B7F3150067EF7C /* answer_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E349117B7F3150067EF7C /* answer_press.png */; };
@@ -96,6 +90,19 @@
 		0432D9A517BCAE30002E65CC /* CPIAPStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0432D9A417BCAE30002E65CC /* CPIAPStoreManager.m */; };
 		0432D9A717BCAEAC002E65CC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0432D9A617BCAEAB002E65CC /* StoreKit.framework */; };
 		0432D9AA17BCC4E1002E65CC /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0432D9A917BCC4E0002E65CC /* MyTableViewCell.m */; };
+		303285B9185139BD00EC2C56 /* buttonCtaCps.png in Resources */ = {isa = PBXBuildFile; fileRef = 303285B5185139BD00EC2C56 /* buttonCtaCps.png */; };
+		303285BA185139BD00EC2C56 /* buttonCtaCps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 303285B6185139BD00EC2C56 /* buttonCtaCps@2x.png */; };
+		303285BB185139BD00EC2C56 /* buttonCtaSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 303285B7185139BD00EC2C56 /* buttonCtaSmall.png */; };
+		303285BC185139BD00EC2C56 /* buttonCtaSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 303285B8185139BD00EC2C56 /* buttonCtaSmall@2x.png */; };
+		303285CB1851417100EC2C56 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303285CA1851417100EC2C56 /* MainStoryboard_iPhone.storyboard */; };
+		303285DD185184D900EC2C56 /* coinImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 303285CF185184D900EC2C56 /* coinImageView.m */; };
+		303285DE185184D900EC2C56 /* coinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 303285D1185184D900EC2C56 /* coinView.m */; };
+		303285DF185184D900EC2C56 /* OpenGLTexture3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 303285D6185184D900EC2C56 /* OpenGLTexture3D.m */; };
+		303285E0185184D900EC2C56 /* ParticleEmitter3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 303285D8185184D900EC2C56 /* ParticleEmitter3D.m */; };
+		303285E1185184D900EC2C56 /* bgm_coin_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 303285DA185184D900EC2C56 /* bgm_coin_01.mp3 */; };
+		303285E2185184D900EC2C56 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 303285DB185184D900EC2C56 /* coin.png */; };
+		303285E3185184D900EC2C56 /* stars2.png in Resources */ = {isa = PBXBuildFile; fileRef = 303285DC185184D900EC2C56 /* stars2.png */; };
+		303285E5185186BB00EC2C56 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303285E4185186BB00EC2C56 /* OpenGLES.framework */; };
 		30471ED4185133DE009575CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30471ED3185133DE009575CA /* Images.xcassets */; };
 		30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F7184A91140043B0D3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -153,7 +160,6 @@
 		041E341617B7D99D0067EF7C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Configuration/Default@2x.png"; sourceTree = "<group>"; };
 		041E341D17B7D99D0067EF7C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		041E341E17B7D99D0067EF7C /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
-		041E343117B7DA0B0067EF7C /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		041E343317B7DC000067EF7C /* CPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPHomeViewController.h; sourceTree = "<group>"; };
 		041E343417B7DC000067EF7C /* CPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPHomeViewController.m; sourceTree = "<group>"; };
 		041E343617B7DCA60067EF7C /* CPLevelsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPLevelsListViewController.h; sourceTree = "<group>"; };
@@ -162,7 +168,6 @@
 		041E343A17B7DCE40067EF7C /* CPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMainViewController.m; sourceTree = "<group>"; };
 		041E343C17B7DD7A0067EF7C /* CPPropStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPropStoreViewController.h; sourceTree = "<group>"; };
 		041E343D17B7DD7A0067EF7C /* CPPropStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPropStoreViewController.m; sourceTree = "<group>"; };
-		041E345F17B7F30E0067EF7C /* bigicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigicon.png; sourceTree = "<group>"; };
 		041E346017B7F30E0067EF7C /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
 		041E346117B7F30E0067EF7C /* btn_feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_feedback.png; sourceTree = "<group>"; };
 		041E346217B7F30E0067EF7C /* btn_music_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_music_off.png; sourceTree = "<group>"; };
@@ -179,12 +184,8 @@
 		041E346D17B7F30E0067EF7C /* mill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mill.png; sourceTree = "<group>"; };
 		041E346E17B7F30E0067EF7C /* mole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mole.png; sourceTree = "<group>"; };
 		041E346F17B7F30E0067EF7C /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
-		041E347017B7F30E0067EF7C /* start_cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_cn.png; sourceTree = "<group>"; };
 		041E347117B7F30E0067EF7C /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
 		041E347217B7F30E0067EF7C /* sunshine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunshine.png; sourceTree = "<group>"; };
-		041E347317B7F30E0067EF7C /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
-		041E347417B7F30E0067EF7C /* title_cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_cn.png; sourceTree = "<group>"; };
-		041E347517B7F30E0067EF7C /* title_tw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_tw.png; sourceTree = "<group>"; };
 		041E347617B7F30E0067EF7C /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
 		041E349017B7F3150067EF7C /* answer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = answer.png; sourceTree = "<group>"; };
 		041E349117B7F3150067EF7C /* answer_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = answer_press.png; sourceTree = "<group>"; };
@@ -242,6 +243,25 @@
 		0432D9A617BCAEAB002E65CC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0432D9A817BCC4DF002E65CC /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		0432D9A917BCC4E0002E65CC /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		303285B5185139BD00EC2C56 /* buttonCtaCps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCtaCps.png; sourceTree = "<group>"; };
+		303285B6185139BD00EC2C56 /* buttonCtaCps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonCtaCps@2x.png"; sourceTree = "<group>"; };
+		303285B7185139BD00EC2C56 /* buttonCtaSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonCtaSmall.png; sourceTree = "<group>"; };
+		303285B8185139BD00EC2C56 /* buttonCtaSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonCtaSmall@2x.png"; sourceTree = "<group>"; };
+		303285CA1851417100EC2C56 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		303285CE185184D900EC2C56 /* coinImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coinImageView.h; sourceTree = "<group>"; };
+		303285CF185184D900EC2C56 /* coinImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = coinImageView.m; sourceTree = "<group>"; };
+		303285D0185184D900EC2C56 /* coinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coinView.h; sourceTree = "<group>"; };
+		303285D1185184D900EC2C56 /* coinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = coinView.m; sourceTree = "<group>"; };
+		303285D3185184D900EC2C56 /* ConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantsAndMacros.h; sourceTree = "<group>"; };
+		303285D4185184D900EC2C56 /* OpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLCommon.h; sourceTree = "<group>"; };
+		303285D5185184D900EC2C56 /* OpenGLTexture3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLTexture3D.h; sourceTree = "<group>"; };
+		303285D6185184D900EC2C56 /* OpenGLTexture3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLTexture3D.m; sourceTree = "<group>"; };
+		303285D7185184D900EC2C56 /* ParticleEmitter3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEmitter3D.h; sourceTree = "<group>"; };
+		303285D8185184D900EC2C56 /* ParticleEmitter3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleEmitter3D.m; sourceTree = "<group>"; };
+		303285DA185184D900EC2C56 /* bgm_coin_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm_coin_01.mp3; sourceTree = "<group>"; };
+		303285DB185184D900EC2C56 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
+		303285DC185184D900EC2C56 /* stars2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars2.png; sourceTree = "<group>"; };
+		303285E4185186BB00EC2C56 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		30471ED3185133DE009575CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 4Imgs1Word/Images.xcassets; sourceTree = "<group>"; };
 		30CBF3F3184A91140043B0D3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -331,6 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303285E5185186BB00EC2C56 /* OpenGLES.framework in Frameworks */,
 				30CBF464184A92B40043B0D3 /* ImageIO.framework in Frameworks */,
 				30CBF462184A92720043B0D3 /* libz.dylib in Frameworks */,
 				0432D98617BA5AED002E65CC /* CoreGraphics.framework in Frameworks */,
@@ -399,6 +420,7 @@
 		041E340517B7D99D0067EF7C /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				303285CA1851417100EC2C56 /* MainStoryboard_iPhone.storyboard */,
 				041E340E17B7D99D0067EF7C /* Icon.png */,
 				041E341017B7D99D0067EF7C /* Icon@2x.png */,
 				041E341217B7D99D0067EF7C /* Default-568h@2x.png */,
@@ -406,7 +428,6 @@
 				041E341617B7D99D0067EF7C /* Default@2x.png */,
 				041E389617B8DA8B0067EF7C /* audio */,
 				041E341817B7D99D0067EF7C /* Skins */,
-				041E343117B7DA0B0067EF7C /* MainStoryboard_iPhone.storyboard */,
 				30CBF471184C26D80043B0D3 /* Localizable.strings */,
 			);
 			name = Configuration;
@@ -464,6 +485,7 @@
 		041E342A17B7D99D0067EF7C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				303285CC185184D900EC2C56 /* CoinsEffect */,
 				30CBF468184B36CF0043B0D3 /* AnswersRequest */,
 				30CBF3F2184A91140043B0D3 /* ASIHTTPRequest */,
 				30CBF429184A91140043B0D3 /* Gifview */,
@@ -481,7 +503,10 @@
 		041E345E17B7F30E0067EF7C /* home */ = {
 			isa = PBXGroup;
 			children = (
-				041E345F17B7F30E0067EF7C /* bigicon.png */,
+				303285B5185139BD00EC2C56 /* buttonCtaCps.png */,
+				303285B6185139BD00EC2C56 /* buttonCtaCps@2x.png */,
+				303285B7185139BD00EC2C56 /* buttonCtaSmall.png */,
+				303285B8185139BD00EC2C56 /* buttonCtaSmall@2x.png */,
 				041E346017B7F30E0067EF7C /* board.png */,
 				041E346117B7F30E0067EF7C /* btn_feedback.png */,
 				041E346217B7F30E0067EF7C /* btn_music_off.png */,
@@ -498,12 +523,8 @@
 				041E346D17B7F30E0067EF7C /* mill.png */,
 				041E346E17B7F30E0067EF7C /* mole.png */,
 				041E346F17B7F30E0067EF7C /* sky.png */,
-				041E347017B7F30E0067EF7C /* start_cn.png */,
 				041E347117B7F30E0067EF7C /* sun.png */,
 				041E347217B7F30E0067EF7C /* sunshine.png */,
-				041E347317B7F30E0067EF7C /* title.png */,
-				041E347417B7F30E0067EF7C /* title_cn.png */,
-				041E347517B7F30E0067EF7C /* title_tw.png */,
 				041E347617B7F30E0067EF7C /* tree.png */,
 			);
 			path = home;
@@ -603,9 +624,55 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		303285CC185184D900EC2C56 /* CoinsEffect */ = {
+			isa = PBXGroup;
+			children = (
+				303285CD185184D900EC2C56 /* coinView */,
+				303285D2185184D900EC2C56 /* particle */,
+				303285D9185184D900EC2C56 /* Resource */,
+			);
+			name = CoinsEffect;
+			path = ../../../iOS_Lib/CoinsEffect;
+			sourceTree = "<group>";
+		};
+		303285CD185184D900EC2C56 /* coinView */ = {
+			isa = PBXGroup;
+			children = (
+				303285CE185184D900EC2C56 /* coinImageView.h */,
+				303285CF185184D900EC2C56 /* coinImageView.m */,
+				303285D0185184D900EC2C56 /* coinView.h */,
+				303285D1185184D900EC2C56 /* coinView.m */,
+			);
+			path = coinView;
+			sourceTree = "<group>";
+		};
+		303285D2185184D900EC2C56 /* particle */ = {
+			isa = PBXGroup;
+			children = (
+				303285D3185184D900EC2C56 /* ConstantsAndMacros.h */,
+				303285D4185184D900EC2C56 /* OpenGLCommon.h */,
+				303285D5185184D900EC2C56 /* OpenGLTexture3D.h */,
+				303285D6185184D900EC2C56 /* OpenGLTexture3D.m */,
+				303285D7185184D900EC2C56 /* ParticleEmitter3D.h */,
+				303285D8185184D900EC2C56 /* ParticleEmitter3D.m */,
+			);
+			path = particle;
+			sourceTree = "<group>";
+		};
+		303285D9185184D900EC2C56 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				303285DA185184D900EC2C56 /* bgm_coin_01.mp3 */,
+				303285DB185184D900EC2C56 /* coin.png */,
+				303285DC185184D900EC2C56 /* stars2.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		30CBF3F1184A90BA0043B0D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				303285E4185186BB00EC2C56 /* OpenGLES.framework */,
 				30CBF463184A92B40043B0D3 /* ImageIO.framework */,
 				30CBF461184A92720043B0D3 /* libz.dylib */,
 				30CBF45F184A925E0043B0D3 /* MobileCoreServices.framework */,
@@ -804,14 +871,15 @@
 				041E340117B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch in Resources */,
 				041E340F17B7D99D0067EF7C /* Icon.png in Resources */,
 				041E341117B7D99D0067EF7C /* Icon@2x.png in Resources */,
+				303285BA185139BD00EC2C56 /* buttonCtaCps@2x.png in Resources */,
+				303285CB1851417100EC2C56 /* MainStoryboard_iPhone.storyboard in Resources */,
 				041E341317B7D99D0067EF7C /* Default-568h@2x.png in Resources */,
 				041E341517B7D99D0067EF7C /* Default.png in Resources */,
 				041E341717B7D99D0067EF7C /* Default@2x.png in Resources */,
+				303285E2185184D900EC2C56 /* coin.png in Resources */,
 				041E341C17B7D99D0067EF7C /* images in Resources */,
 				041E342117B7D99D0067EF7C /* Controllers in Resources */,
 				041E342B17B7D99D0067EF7C /* Tools in Resources */,
-				041E343217B7DA0B0067EF7C /* MainStoryboard_iPhone.storyboard in Resources */,
-				041E347717B7F30E0067EF7C /* bigicon.png in Resources */,
 				041E347817B7F30E0067EF7C /* board.png in Resources */,
 				041E347917B7F30E0067EF7C /* btn_feedback.png in Resources */,
 				041E347A17B7F30E0067EF7C /* btn_music_off.png in Resources */,
@@ -828,14 +896,11 @@
 				041E348517B7F30E0067EF7C /* mill.png in Resources */,
 				041E348617B7F30E0067EF7C /* mole.png in Resources */,
 				041E348717B7F30E0067EF7C /* sky.png in Resources */,
-				041E348817B7F30E0067EF7C /* start_cn.png in Resources */,
 				041E348917B7F30E0067EF7C /* sun.png in Resources */,
 				041E348A17B7F30E0067EF7C /* sunshine.png in Resources */,
-				041E348B17B7F30E0067EF7C /* title.png in Resources */,
-				041E348C17B7F30E0067EF7C /* title_cn.png in Resources */,
-				041E348D17B7F30E0067EF7C /* title_tw.png in Resources */,
 				041E348E17B7F30E0067EF7C /* tree.png in Resources */,
 				041E34A217B7F3150067EF7C /* answer.png in Resources */,
+				303285B9185139BD00EC2C56 /* buttonCtaCps.png in Resources */,
 				041E34A317B7F3150067EF7C /* answer_press.png in Resources */,
 				041E34A417B7F3150067EF7C /* background.png in Resources */,
 				041E34A517B7F3150067EF7C /* bt_no.png in Resources */,
@@ -845,12 +910,15 @@
 				041E34A917B7F3150067EF7C /* btn_back.png in Resources */,
 				041E34AA17B7F3150067EF7C /* btn_back_press.png in Resources */,
 				041E34AB17B7F3150067EF7C /* btn_gold.png in Resources */,
+				303285E3185184D900EC2C56 /* stars2.png in Resources */,
 				041E34AC17B7F3150067EF7C /* btn_gold_press.png in Resources */,
 				041E34AD17B7F3150067EF7C /* btn_share.png in Resources */,
 				041E34AE17B7F3150067EF7C /* btn_share_press.png in Resources */,
+				303285BC185139BD00EC2C56 /* buttonCtaSmall@2x.png in Resources */,
 				041E34AF17B7F3150067EF7C /* btn_showword.png in Resources */,
 				041E34B017B7F3150067EF7C /* btn_showword_press.png in Resources */,
 				041E34B117B7F3150067EF7C /* guess_msgbox_bg.png in Resources */,
+				303285BB185139BD00EC2C56 /* buttonCtaSmall.png in Resources */,
 				041E34B217B7F3150067EF7C /* word.png in Resources */,
 				041E34B317B7F3150067EF7C /* word_press.png in Resources */,
 				041E34C017B7F31C0067EF7C /* guestcoin.png in Resources */,
@@ -861,6 +929,7 @@
 				041E34C517B7F31C0067EF7C /* shop_buttons_bg.png in Resources */,
 				041E34C617B7F31C0067EF7C /* shop_buy_bg.png in Resources */,
 				041E34C717B7F31C0067EF7C /* shop_close.png in Resources */,
+				303285E1185184D900EC2C56 /* bgm_coin_01.mp3 in Resources */,
 				041E34C817B7F31C0067EF7C /* shop_sell_cn.png in Resources */,
 				041E34C917B7F31C0067EF7C /* shop_sell_en.png in Resources */,
 				041E34CA17B7F31C0067EF7C /* shop_sell_tw.png in Resources */,
@@ -898,11 +967,13 @@
 				041E343517B7DC000067EF7C /* CPHomeViewController.m in Sources */,
 				30CBF456184A91140043B0D3 /* SDWebImageDownloader.m in Sources */,
 				30CBF448184A91140043B0D3 /* ASICloudFilesObject.m in Sources */,
+				303285E0185184D900EC2C56 /* ParticleEmitter3D.m in Sources */,
 				30CBF458184A91140043B0D3 /* UIImageView+WebCache.m in Sources */,
 				30CBF452184A91140043B0D3 /* GifView.m in Sources */,
 				30CBF475184C2AAB0043B0D3 /* AudioSoundHelper.m in Sources */,
 				30CBF457184A91140043B0D3 /* SDWebImageManager.m in Sources */,
 				30CBF44A184A91140043B0D3 /* ASICloudFilesRequest.m in Sources */,
+				303285DD185184D900EC2C56 /* coinImageView.m in Sources */,
 				041E343817B7DCA60067EF7C /* CPLevelsListViewController.m in Sources */,
 				30CBF451184A91140043B0D3 /* ASIS3ServiceRequest.m in Sources */,
 				30CBF440184A91140043B0D3 /* ASIHTTPRequest.m in Sources */,
@@ -911,6 +982,7 @@
 				041E343E17B7DD7A0067EF7C /* CPPropStoreViewController.m in Sources */,
 				30CBF443184A91140043B0D3 /* ASIWebPageRequest.m in Sources */,
 				30CBF44F184A91140043B0D3 /* ASIS3ObjectRequest.m in Sources */,
+				303285DE185184D900EC2C56 /* coinView.m in Sources */,
 				0432D99E17BBB628002E65CC /* MyTableViewController.m in Sources */,
 				30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */,
 				0432D9A217BC7535002E65CC /* UIImageAdditions.m in Sources */,
@@ -921,6 +993,7 @@
 				30CBF446184A91140043B0D3 /* ASICloudFilesContainerRequest.m in Sources */,
 				30CBF445184A91140043B0D3 /* ASICloudFilesContainer.m in Sources */,
 				30CBF44C184A91140043B0D3 /* ASIS3Bucket.m in Sources */,
+				303285DF185184D900EC2C56 /* OpenGLTexture3D.m in Sources */,
 				0432D9AA17BCC4E1002E65CC /* MyTableViewCell.m in Sources */,
 				30CBF447184A91140043B0D3 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 			);

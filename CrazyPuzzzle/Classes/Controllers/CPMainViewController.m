@@ -54,7 +54,6 @@
 #define ResultsStringKey @"results"
 
 
-
 //答案区的背景图
 #define kAnswerViewBackgroundNormalImage @"answer.png"
 #define kAnswerViewBackgroundHighlightedImage @"answer_press.png"
@@ -99,7 +98,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     UIEdgeInsets edge = UIEdgeInsetsMake(48, 20, 30, 20);
     [self initPromptView:edge];
     [self initShareView:edge];
-    [self initPassedView:edge];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification) name:kCPPaidForGoldsNotificatioin object:nil];
 }
@@ -110,20 +108,15 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     // Dispose of any resources that can be recreated.
 }
 
-
-
 //进入下一关
 - (IBAction)next:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
-    [self hidePassedView];
-    
     
     // 配置好下一题的环境(下面的内容可以放在一个单独的函数中，与viewdidload中的复用)
     _currentLevel ++;
     
-    if (_currentLevel > [self.dataSource count]) {//
-        
+    if (_currentLevel > [self.dataSource count]) {
         SLog(@"这已经是最后一关！");
         return;
     }
@@ -906,44 +899,22 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 #pragma mark 答题成功后弹出或消失提示框
--(void)initPassedView:(UIEdgeInsets) edge
-{
-    _answerCorrectBgIV.image = [[UIImage imageNamed:kGuess_MsgBox_Bg] resizableImageWithCapInsets:edge];
-    _yourGiftLabel.text = [NSString stringWithFormat:@"+ %d",CP_Gift_Per_Idioms];
-    _yourRankingLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Beat_Text_Tip", ""),CP_Lose_To_You];
-    _answerCorrectView.hidden = YES;
-    [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
-}
 /**
  答题成功时，弹出提示
  */
 -(void)showPassedView
 {
-    [UIView animateWithDuration:0.75 animations:^{
-        
-        [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y-APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
-        _answerCorrectView.hidden = NO;
-        _answerCorrectView.alpha = 1;
-        
-        [self.view bringSubviewToFront:_answerCorrectView];
-        
-    } completion:^(BOOL finished){
-        
-        
-    }];
+    _coinEffectView = [[coinView alloc]initWithFrame:[self.view bounds] withNum:CP_Gift_Per_Idioms];
+    _coinEffectView.coindelegate = self;
+    [self.view addSubview:_coinEffectView];
 }
--(void)hidePassedView
+-(void)coinAnimationFinished
 {
-    [UIView animateWithDuration:0.75 animations:^{
-        
-        [_answerCorrectView setFrame:CGRectMake(0, _answerCorrectView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _answerCorrectView.frame.size.width, _answerCorrectView.frame.size.height)];
-        
-        
-    } completion:^(BOOL finished){
-        _answerCorrectView.hidden = YES;
-        [self.view sendSubviewToBack:_answerCorrectView];
-        
-    }];
+    [_coinEffectView removeFromSuperview];
+    _coinEffectView = nil;
+    
+    //进入下一关
+    [self next:nil];
 }
 
 #pragma mark 积分换提示

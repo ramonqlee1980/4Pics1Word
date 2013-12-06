@@ -17,7 +17,9 @@
     
     __weak IBOutlet UIButton *_shopCarBtn;
     __weak IBOutlet UIImageView *_fengChe;
-
+    
+    __weak IBOutlet UIButton *_startGameBtn;
+    __weak IBOutlet UIButton *_dailyChallengeBtn;
     
     BOOL _audioStatus; // 1 播放 0 停止
 }

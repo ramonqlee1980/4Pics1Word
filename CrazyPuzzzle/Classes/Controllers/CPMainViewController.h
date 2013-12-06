@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
+#import "coinView.h"
 
-@interface CPMainViewController : UIViewController<WXApiDelegate>{
+
+@interface CPMainViewController : UIViewController<WXApiDelegate,coinViewDelegate>{
 
     __weak IBOutlet UILabel *_myGoldLable;
     __weak IBOutlet UILabel *_levelLable;
@@ -41,15 +43,6 @@
     __weak IBOutlet UILabel *_shareContentLabel;
     
     
-    __weak IBOutlet UIView *_answerCorrectView;
-    __weak IBOutlet UIView *_answerCorrectMaskView;
-    __weak IBOutlet UIImageView *_answerCorrectBgIV;
-    __weak IBOutlet UILabel *_answerCorrectTitleLabel;
-    __weak IBOutlet UILabel *_yourRankingLabel;
-    __weak IBOutlet UILabel *_yourGiftLabel;
-    
-    
-    
     NSInteger _currentLevel;  // 当前level
     NSInteger _currentGolden; // 当前金币数量
     NSString *_currentAnswer; // 答案
@@ -64,7 +57,7 @@
 @property (strong,nonatomic) NSMutableString *wordsString; //所有备选字母
 @property (strong,nonatomic) NSString *currentPreparedString;// 随机后，顺序显示的串
 @property (strong,nonatomic) NSMutableDictionary *maps;
-
+@property (strong, nonatomic) coinView *coinEffectView;
 @property (nonatomic,strong) UIImage *homeScreenShot;
 
 - (IBAction)promptClicked:(id)sender;

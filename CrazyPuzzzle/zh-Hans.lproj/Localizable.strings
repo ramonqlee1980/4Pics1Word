@@ -13,3 +13,7 @@
 "SNS_Help_Title_Weixin"="去微信求助";
 "SNS_Share_Award_Text"="今天首次分享到朋友圈赠送%d金币";
 "Beat_Text_Tip"="您击败了%d%%的玩家";
+"Answer_Correct_Title"="正确";
+
+//进入界面
+"Start_Game"="开始";

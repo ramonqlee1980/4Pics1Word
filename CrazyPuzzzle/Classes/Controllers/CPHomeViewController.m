@@ -72,6 +72,7 @@ static AVAudioPlayer *_audioPlayer = nil;
         [self musicPlay];
     }
     
+    [self internationalize];
     [self startAnimation];
     
 }
@@ -216,5 +217,11 @@ static AVAudioPlayer *_audioPlayer = nil;
 
 }
 
-
+#pragma mark internationalize
+-(void)internationalize
+{
+    if (_startGameBtn) {
+        _startGameBtn.titleLabel.text = NSLocalizedString(@"Start_Game", "");
+    }
+}
 @end
