@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageAdditions.h"
 #import "CPMainViewController.h"
+#import "RMQuestionsRequest.h"
 
 @interface CPHomeViewController ()
 
@@ -74,7 +75,7 @@ static AVAudioPlayer *_audioPlayer = nil;
     
     [self internationalize];
     [self startAnimation];
-    
+    [self monitorDataLoading];
 }
 
 
@@ -137,14 +138,12 @@ static AVAudioPlayer *_audioPlayer = nil;
 - (IBAction)startGame:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
-    //NSArray *twoPart = [UIImage splitImageIntoTwoParts:self.homeScreenShot orientation:0];
       
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     CPMainViewController *mainVC = [sb instantiateViewControllerWithIdentifier:@"CPMainViewController"];
     mainVC.homeScreenShot = self.homeScreenShot;
     
     [self presentModalViewController:mainVC animated:NO];
-    
 }
 
 
@@ -221,7 +220,40 @@ static AVAudioPlayer *_audioPlayer = nil;
 -(void)internationalize
 {
     if (_startGameBtn) {
-        _startGameBtn.titleLabel.text = NSLocalizedString(@"Start_Game", "");
+        [_startGameBtn setTitle:NSLocalizedString(@"Start_Game", "") forState:UIControlStateNormal];
+    }
+}
+
+#pragma mark dataloading
+-(void) monitorDataLoading
+{
+    if(![RMQuestionsRequest sharedInstance].questionsArray)
+    {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(responseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
+        
+        if (_startGameBtn) {
+            _startGameBtn.userInteractionEnabled = NO;
+            [_startGameBtn setTitle:NSLocalizedString(@"Load_Game", "") forState:UIControlStateNormal];
+        }
+    }
+}
+#pragma mark 请求网络数据返回后的处理
+-(void)responseReceived:(NSNotification*)notification
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:QUESTION_RESPONSE_NOTIFICATION object:nil];
+    
+    if([notification.object isKindOfClass:[NSArray class]])
+    {
+        if (_startGameBtn) {
+            _startGameBtn.userInteractionEnabled = YES;
+            [_startGameBtn setTitle:NSLocalizedString(@"Start_Game", "") forState:UIControlStateNormal];
+        }
+    }
+    else
+    {
+        if (_startGameBtn) {
+            [_startGameBtn setTitle:NSLocalizedString(@"Load_Fail", "") forState:UIControlStateNormal];
+        }
     }
 }
 @end

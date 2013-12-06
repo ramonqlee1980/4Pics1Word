@@ -14,19 +14,14 @@
 #define kQuestionListUrl @"http://checknewversion.duapp.com/image/questionlist.php"//请求问题列表url
 
 
-@interface RMQuestionsRequest()
-{
-    NSMutableArray* questionsArray;
-}
-@end
 @implementation RMQuestionsRequest
 #pragma mark get image lists
 Impl_Singleton(RMQuestionsRequest)
 
 - (void)startAsynchronous
 {
-    if (questionsArray && questionsArray.count>0) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:questionsArray];
+    if (self.questionsArray && self.questionsArray.count>0) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:self.questionsArray];
         return;
     }
     NSURL *url = [NSURL URLWithString:kQuestionListUrl];
@@ -51,16 +46,16 @@ Impl_Singleton(RMQuestionsRequest)
         NSError* error;
         id res = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         if (res && [res isKindOfClass:[NSArray class]]) {
-            if(!questionsArray)
+            if(!self.questionsArray)
             {
-                questionsArray = [[NSMutableArray alloc]init];
+                _questionsArray = [[NSMutableArray alloc]init];
             }
-            [questionsArray removeAllObjects];
+            [self.questionsArray removeAllObjects];
             
-            [questionsArray addObjectsFromArray:(NSArray*)res];
+            [self.questionsArray addObjectsFromArray:(NSArray*)res];
             
             //bingo,now read image list
-            [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:questionsArray];
+            [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:self.questionsArray];
         }
     }
 }

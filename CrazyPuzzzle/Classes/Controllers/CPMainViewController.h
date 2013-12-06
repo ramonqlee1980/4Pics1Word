@@ -34,7 +34,8 @@
     __weak IBOutlet UIImageView *_prompBgIV;
     __weak IBOutlet UILabel *_prompTitleLabel;
     __weak IBOutlet UILabel *_prompContentLabel;
-    
+    __weak IBOutlet UIButton *_confirmLabel;
+    __weak IBOutlet UIButton *_cancelLabel;
     
     __weak IBOutlet UIView *_shareView;
     __weak IBOutlet UIView *_shareMaskView;

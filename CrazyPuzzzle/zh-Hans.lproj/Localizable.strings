@@ -14,6 +14,10 @@
 "SNS_Share_Award_Text"="今天首次分享到朋友圈赠送%d金币";
 "Beat_Text_Tip"="您击败了%d%%的玩家";
 "Answer_Correct_Title"="正确";
+"OK"="确定";
+"Cacel"="取消";
 
 //进入界面
-"Start_Game"="开始";
+"Load_Game"="加载...";
+"Start_Game"="开始猜词";
+"Load_Fail"="网络故障";

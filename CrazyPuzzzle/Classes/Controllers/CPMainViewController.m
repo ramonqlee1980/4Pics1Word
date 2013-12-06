@@ -925,7 +925,11 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     _prompBgIV.image = [[UIImage imageNamed:kGuess_MsgBox_Bg] resizableImageWithCapInsets:edge];
     _prompTitleLabel.text = NSLocalizedString(@"Dlg_Tip_Title", "");//@"提示";
-    //_prompContentLabel.text = [USER_DEFAULT objectForKey:@"MyGoldenScore" ]>= ? :@"没有足够的道具，前往小卖部购买？";
+
+    [_confirmLabel setTitle:NSLocalizedString(@"OK", "") forState:UIControlStateNormal];
+    [_cancelLabel setTitle:NSLocalizedString(@"Cancel", "") forState:UIControlStateNormal];
+    
+    
     _prompView.hidden = YES;
 }
 - (void)setPromptCostLabel
