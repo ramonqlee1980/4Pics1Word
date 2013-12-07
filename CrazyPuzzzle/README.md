@@ -7,12 +7,12 @@ Release 1.0.0
 3.猜词界面 提示按钮和分享按钮大小和效果调整；(done)
 4.猜中后的提示界面调整;(done)
 5.最后一关的提示界面调整；（delayed，right now it will be reset to level 1）
-6.金币购买界面的调整；
+6.金币购买界面的调整；(done)
 7.数据没下来之前，进入游戏按钮无法点击(done)
 8.金币换提示界面调整(done)
 9.分享界面调整：（umeng sns插件，done)
 10.flurry事件添加(done)
-11.iOS7 适配状态栏
+11.iOS7 适配状态栏（隐藏状态栏）
 
 积分累计和计算时有误(done)
 User : weixin分享改为facebook等多种方式，参见之前的版本

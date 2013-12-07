@@ -403,6 +403,8 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     _currentGolden += CP_Gift_Per_Idioms;
     [USER_DEFAULT setInteger:_currentGolden forKey:CurrentGoldenStringKey];
     
+    _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentGolden];
+    
     [self showPassedView];
 }
 

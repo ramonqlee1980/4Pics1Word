@@ -84,7 +84,9 @@
         int value = [[values objectAtIndex:index] intValue];
         
         int currentGold = [[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue];
-        [USER_DEFAULT setInteger:(currentGold+value) forKey:@"CurrentGolden"];
+        currentGold+= value;
+        
+        [USER_DEFAULT setInteger:currentGold forKey:CurrentGoldenStringKey];
         [USER_DEFAULT synchronize];
         
         //更新UI
