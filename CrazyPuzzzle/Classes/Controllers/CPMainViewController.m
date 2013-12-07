@@ -101,7 +101,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self initPromptView:edge];
     [self initShareView:edge];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification) name:kCPPaidForGoldsNotificatioin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification:) name:kCPPaidForGoldsNotificatioin object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -923,4 +923,5 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     // 动画打开
     [self startGame];
 }
+
 @end

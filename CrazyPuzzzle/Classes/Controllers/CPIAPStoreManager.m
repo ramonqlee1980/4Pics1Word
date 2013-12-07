@@ -7,11 +7,13 @@
 //
 
 #import "CPIAPStoreManager.h"
+#import "Define.h"
+#import "Flurry.h"
 
 @implementation CPIAPStoreManager
 
 + (id)shareManager{
-
+    
     static CPIAPStoreManager *instance;
     static dispatch_once_t token;
     dispatch_once(&token,^{
@@ -26,7 +28,7 @@
 - (void)registerStoreObserver
 {
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-
+    
 }
 
 // 出现退出时，自然要清除监听
@@ -40,7 +42,7 @@
 - (void)buyProduct:(NSString *)productId
 {
     [self requestProductData:productId];
-
+    
 }
 
 - (void)requestProductData:(NSString *)productId
@@ -50,7 +52,8 @@
     request.delegate = self;
     [request start];
     
-    
+    [Flurry logEvent:kRequestIAPProductData];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kInAppPurchaseEvent object:kRequestIAPProductData];
 }
 
 
@@ -70,28 +73,35 @@
     
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
     
-    NSString *productID = transaction.payment.productIdentifier;
-    NSArray *IDs = CP_Golden_ProductIDs;
-   int index = [IDs indexOfObject:productID];
+//    NSString *productID = transaction.payment.productIdentifier;
+//    NSArray *IDs = CP_Golden_ProductIDs;
+//    int index = [IDs indexOfObject:productID];
+//    
+//    NSArray *values = CP_Golden_values;
+//    int value = [[values objectAtIndex:index] intValue];
+//    
+//    int currentGold = [[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue];
+//    [USER_DEFAULT setInteger:(currentGold+value) forKey:@"CurrentGolden"];
+//    [USER_DEFAULT synchronize];
     
-    NSArray *values = CP_Golden_values;
-    int value = [[values objectAtIndex:index] intValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCPPaidForGoldsNotificatioin object:transaction];
+    [Flurry logEvent:kCompleteIAPTransaction];
     
-    int currentGold = [[USER_DEFAULT objectForKey:@"CurrentGolden"] intValue];
-    [USER_DEFAULT setInteger:(currentGold+value) forKey:@"CurrentGolden"];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kCPPaidForGoldsNotificatioin object:self];
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:kInAppPurchaseEvent object:kCompleteIAPTransaction];
 }
 
 - (void)failedTransaction:(SKPaymentTransaction *)transaction{
     
     SLog(@"购买失败。。。%@",transaction.error);
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+    
+    [Flurry logEvent:kFailedIAPTransaction];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kInAppPurchaseEvent object:kFailedIAPTransaction];
 }
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction{
-     SLog(@"transaction.originalTransaction=%@",transaction.originalTransaction);
+    SLog(@"transaction.originalTransaction=%@",transaction.originalTransaction);
+    [Flurry logEvent:kRestoreIAPTransaction];
 }
 
 
@@ -100,7 +110,7 @@
 
 -(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
-
+    
     NSArray *products = response.products;
     
     SLog(@"products:%@",products);
@@ -124,21 +134,25 @@
             [[SKPaymentQueue defaultQueue] addPayment:payment];
         }
     }
- 
-
+    
+    [Flurry logEvent:kReceiveIAPProducts];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:kInAppPurchaseEvent object:kReceiveIAPProducts];
 }
 
 -(void)request:(SKRequest *)request didFailWithError:(NSError *)error
 {
     SLog(@"skrequest failed...");
-
+    [Flurry logEvent:kFailtoReceiveIAPProducts];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:kInAppPurchaseEvent object:kFailedIAPTransaction];
 }
 
 - (void)requestDidFinish:(SKRequest *)request
 {
     SLog(@"skrequest finished...");
-
-
+    
+    
 }
 
 
@@ -147,7 +161,7 @@
 
 // @required   Sent when the transaction array has changed (additions or state changes).  Client should check state of transactions and finish as appropriate.
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions{
-
+    
     SLog(@"transactions=%@",transactions);
     for (SKPaymentTransaction *transaction in transactions)
     {
@@ -161,7 +175,7 @@
                 [self completeTransaction:transaction];
                 break;
             case SKPaymentTransactionStateFailed:
-               
+                
                 [self failedTransaction:transaction];
                 break;
             case SKPaymentTransactionStateRestored:
@@ -178,27 +192,27 @@
 
 // Sent when transactions are removed from the queue (via finishTransaction:).
 - (void)paymentQueue:(SKPaymentQueue *)queue removedTransactions:(NSArray *)transactions{
-
+    SLog(@"paymentQueue removedTransactions=%@",transactions);
     
-} 
+}
 
 // Sent when an error is encountered while adding transactions from the user's purchase history back to the queue.
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error{
-
-
-
+    SLog(@"paymentQueue restoreCompletedTransactionsFailedWithError=%@",error);
+    
+    
 }
 
 // Sent when all transactions from the user's purchase history have successfully been added back to the queue.
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue{
-
-
+    
+    NSLog(@"paymentQueueRestoreCompletedTransactionsFinished");
 }
 
 // Sent when the download state has changed.
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads{
-
-
+    
+    NSLog(@"paymentQueue updatedDownloads");
 }
 
 

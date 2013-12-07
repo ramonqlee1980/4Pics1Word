@@ -8,6 +8,9 @@
 
 #import "CPPropStoreViewController.h"
 #import "MyTableViewController.h"
+#import "MBProgressHUD.h"
+#import "Flurry.h"
+#import <StoreKit/StoreKit.h>
 
 #define CP_Number_Of_Rows 5
 #define CP_Height_Of_Row  88
@@ -53,7 +56,9 @@
     [self setupTable];
     [self setupBtn];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification) name:kCPPaidForGoldsNotificatioin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification:) name:kCPPaidForGoldsNotificatioin object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleHudView:) name:kInAppPurchaseEvent object:nil];
     
 }
 
@@ -67,8 +72,43 @@
 
 - (void)handlePaidForGoldNotification:(NSNotification *)notification
 {
-    _myCoinLbl.text = [NSString stringWithFormat:@"%@",[USER_DEFAULT objectForKey:@"CurrentGolden"]];
-    _promptLabel.text = [NSString stringWithFormat:@"您已升级为VIP无广告版用户"];
+    if (notification && [notification.object isKindOfClass:[SKPaymentTransaction class]]) {
+        SKPaymentTransaction* transaction = (SKPaymentTransaction*)notification.object;
+        
+        //处理订购完毕的信息
+        NSString *productID = transaction.payment.productIdentifier;
+        NSArray *IDs = CP_Golden_ProductIDs;
+        int index = [IDs indexOfObject:productID];
+        
+        NSArray *values = CP_Golden_values;
+        int value = [[values objectAtIndex:index] intValue];
+        
+        int currentGold = [[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue];
+        [USER_DEFAULT setInteger:(currentGold+value) forKey:@"CurrentGolden"];
+        [USER_DEFAULT synchronize];
+        
+        //更新UI
+        _myCoinLbl.text = [NSString stringWithFormat:@"%d",currentGold];
+        
+        //flurry
+        NSString* price = CP_Golden_price(index);
+        [Flurry logEvent:kCompleteIAPTransaction withParameters:[NSDictionary dictionaryWithObjectsAndKeys:price,productID, nil]];
+    }
+}
+
+- (void)handleHudView:(NSNotification *)notification
+{
+    if (notification.object && [notification.object isKindOfClass:[NSString class]]) {
+        NSString* event = (NSString*)notification.object;
+        if([event isEqualToString:kCompleteIAPTransaction] || [event isEqualToString:kFailedIAPTransaction])//hide
+        {
+            [CPPropStoreViewController hideHudView:self.view];
+        }
+        else
+        {
+            [CPPropStoreViewController showHudView:self.view];
+        }
+    }
 }
 
 #pragma mark actions
@@ -199,8 +239,15 @@
 
 
 
-#pragma mark storyboard 
-
+#pragma hud view
++(void)showHudView:(UIView*)containerView
+{
+    [MBProgressHUD showHUDAddedTo:containerView animated:YES];
+}
++(void)hideHudView:(UIView*)containerView
+{
+    [MBProgressHUD hideHUDForView:containerView animated:YES];
+}
 
 
 @end

@@ -65,6 +65,17 @@
 #define kFlurryShareBySNS @"ShareBySNS"
 #define kFlurryLevel @"Level"
 
+
+//iap
+#define kInAppPurchaseEvent @"InAppPurchaseEvent"
+#define kRequestIAPProductData @"RequestIAPProductData"
+#define kCompleteIAPTransaction @"CompleteIAPTransaction"
+#define kFailedIAPTransaction @"FailedIAPTransaction"
+#define kRestoreIAPTransaction @"RestoreIAPTransaction"
+#define kReceiveIAPProducts @"ReceiveIAPProducts"
+#define kFailtoReceiveIAPProducts @"FailtoReceiveIAPProducts"
+
+
 #define CP_Gift_Per_Idioms 3
 #define CP_First_Prompt_Cost 10
 #define CP_NoFirst_Prompt_Cost 20
@@ -91,6 +102,7 @@
 #define CP_Golden_price(index) [@[@"0.99",@"1.99",@"2.99",@"3.99",@"4.99"] objectAtIndex:index]
 
 #define CP_Golden_values @[@"288",@"666",@"1888",@"3999",@"11888"] 
+
 
 
 

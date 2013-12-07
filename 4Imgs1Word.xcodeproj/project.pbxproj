@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041E33FA17B7D99D0067EF7C /* 4Imgs1Word-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 041E33F917B7D99D0067EF7C /* 4Imgs1Word-Info.plist */; };
 		041E33FF17B7D99D0067EF7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E33FE17B7D99D0067EF7C /* main.m */; };
 		041E340117B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 041E340017B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch */; };
 		041E340417B7D99D0067EF7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E340317B7D99D0067EF7C /* AppDelegate.m */; };
@@ -117,6 +116,9 @@
 		303286ED18528E6B00EC2C56 /* 开发指南.html in Resources */ = {isa = PBXBuildFile; fileRef = 303286E918528E6B00EC2C56 /* 开发指南.html */; };
 		303286F11853025E00EC2C56 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 303286F01853025E00EC2C56 /* libFlurry_4.3.0.a */; };
 		303286F31853053600EC2C56 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303286F21853053600EC2C56 /* Security.framework */; };
+		303286F71853D94F00EC2C56 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 303286F61853D94F00EC2C56 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		303286FE1853DE1000EC2C56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303287001853DE1000EC2C56 /* InfoPlist.strings */; };
+		303287061853DF4300EC2C56 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 303287051853DF4300EC2C56 /* Info.plist */; };
 		30471ED4185133DE009575CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30471ED3185133DE009575CA /* Images.xcassets */; };
 		30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F7184A91140043B0D3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -162,7 +164,6 @@
 
 /* Begin PBXFileReference section */
 		041E33F517B7D99C0067EF7C /* 4Imgs1Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4Imgs1Word.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		041E33F917B7D99D0067EF7C /* 4Imgs1Word-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "4Imgs1Word-Info.plist"; sourceTree = "<group>"; };
 		041E33FE17B7D99D0067EF7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		041E340017B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "4Imgs1Word-Prefix.pch"; sourceTree = "<group>"; };
 		041E340217B7D99D0067EF7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -303,6 +304,10 @@
 		303286EF1853025E00EC2C56 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		303286F01853025E00EC2C56 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		303286F21853053600EC2C56 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		303286F51853D94F00EC2C56 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		303286F61853D94F00EC2C56 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		303286FF1853DE1000EC2C56 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		303287051853DF4300EC2C56 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30471ED3185133DE009575CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 4Imgs1Word/Images.xcassets; sourceTree = "<group>"; };
 		30CBF3F3184A91140043B0D3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -457,7 +462,6 @@
 		041E33F817B7D99D0067EF7C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				041E33F917B7D99D0067EF7C /* 4Imgs1Word-Info.plist */,
 				041E33FE17B7D99D0067EF7C /* main.m */,
 				041E340017B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch */,
 				041E340217B7D99D0067EF7C /* AppDelegate.h */,
@@ -469,15 +473,17 @@
 		041E340517B7D99D0067EF7C /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				303285CA1851417100EC2C56 /* MainStoryboard_iPhone.storyboard */,
-				041E340E17B7D99D0067EF7C /* Icon.png */,
-				041E341017B7D99D0067EF7C /* Icon@2x.png */,
+				041E389617B8DA8B0067EF7C /* audio */,
 				041E341217B7D99D0067EF7C /* Default-568h@2x.png */,
 				041E341417B7D99D0067EF7C /* Default.png */,
 				041E341617B7D99D0067EF7C /* Default@2x.png */,
-				041E389617B8DA8B0067EF7C /* audio */,
-				041E341817B7D99D0067EF7C /* Skins */,
+				041E340E17B7D99D0067EF7C /* Icon.png */,
+				041E341017B7D99D0067EF7C /* Icon@2x.png */,
+				303287051853DF4300EC2C56 /* Info.plist */,
+				303287001853DE1000EC2C56 /* InfoPlist.strings */,
 				30CBF471184C26D80043B0D3 /* Localizable.strings */,
+				303285CA1851417100EC2C56 /* MainStoryboard_iPhone.storyboard */,
+				041E341817B7D99D0067EF7C /* Skins */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -534,6 +540,7 @@
 		041E342A17B7D99D0067EF7C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				303286F41853D94F00EC2C56 /* HUD */,
 				303286EE1853025E00EC2C56 /* Flurry */,
 				30CBF468184B36CF0043B0D3 /* AnswersRequest */,
 				30CBF3F2184A91140043B0D3 /* ASIHTTPRequest */,
@@ -790,6 +797,16 @@
 			path = "../../../iOS_Lib/Flurry-iOS-4.3.0/Flurry";
 			sourceTree = "<group>";
 		};
+		303286F41853D94F00EC2C56 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				303286F51853D94F00EC2C56 /* MBProgressHUD.h */,
+				303286F61853D94F00EC2C56 /* MBProgressHUD.m */,
+			);
+			name = HUD;
+			path = ../../../iOS_Lib/HUD;
+			sourceTree = "<group>";
+		};
 		30CBF3F1184A90BA0043B0D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -992,7 +1009,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				041E33FA17B7D99D0067EF7C /* 4Imgs1Word-Info.plist in Resources */,
 				30471ED4185133DE009575CA /* Images.xcassets in Resources */,
 				041E340117B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch in Resources */,
 				041E340F17B7D99D0067EF7C /* Icon.png in Resources */,
@@ -1021,6 +1037,7 @@
 				041E348017B7F30E0067EF7C /* cloud5.png in Resources */,
 				041E348117B7F30E0067EF7C /* earch_hole.png in Resources */,
 				041E348217B7F30E0067EF7C /* earch_holel.png in Resources */,
+				303286FE1853DE1000EC2C56 /* InfoPlist.strings in Resources */,
 				041E348317B7F30E0067EF7C /* fan.png in Resources */,
 				041E348417B7F30E0067EF7C /* meadow.png in Resources */,
 				041E348517B7F30E0067EF7C /* mill.png in Resources */,
@@ -1046,6 +1063,7 @@
 				041E34AD17B7F3150067EF7C /* btn_share.png in Resources */,
 				041E34AE17B7F3150067EF7C /* btn_share_press.png in Resources */,
 				303285BC185139BD00EC2C56 /* buttonCtaSmall@2x.png in Resources */,
+				303287061853DF4300EC2C56 /* Info.plist in Resources */,
 				303286ED18528E6B00EC2C56 /* 开发指南.html in Resources */,
 				041E34AF17B7F3150067EF7C /* btn_showword.png in Resources */,
 				041E34B017B7F3150067EF7C /* btn_showword_press.png in Resources */,
@@ -1108,6 +1126,7 @@
 				303285DD185184D900EC2C56 /* coinImageView.m in Sources */,
 				041E343817B7DCA60067EF7C /* CPLevelsListViewController.m in Sources */,
 				30CBF451184A91140043B0D3 /* ASIS3ServiceRequest.m in Sources */,
+				303286F71853D94F00EC2C56 /* MBProgressHUD.m in Sources */,
 				30CBF440184A91140043B0D3 /* ASIHTTPRequest.m in Sources */,
 				041E343B17B7DCE40067EF7C /* CPMainViewController.m in Sources */,
 				30CBF455184A91140043B0D3 /* SDImageCache.m in Sources */,
@@ -1141,6 +1160,14 @@
 				3032863B18528E1D00EC2C56 /* zh-Hans */,
 			);
 			name = UMSocialLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		303287001853DE1000EC2C56 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				303286FF1853DE1000EC2C56 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		30CBF471184C26D80043B0D3 /* Localizable.strings */ = {
@@ -1225,7 +1252,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				INFOPLIST_FILE = "CrazyPuzzzle/4Imgs1Word-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CrazyPuzzzle/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1260,7 +1287,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				INFOPLIST_FILE = "CrazyPuzzzle/4Imgs1Word-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CrazyPuzzzle/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

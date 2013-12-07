@@ -69,8 +69,6 @@
 
 - (IBAction)shareClicked:(id)sender;
 - (IBAction)shareCancle:(id)sender;
-- (IBAction)toFrinedZone:(id)sender;
-- (IBAction)toFrined:(id)sender;
 
 
 - (IBAction)next:(id)sender;
