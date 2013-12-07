@@ -10,6 +10,7 @@
 #import "CPIAPStoreManager.h"
 #import "RMQuestionsRequest.h"
 #import "UMSocial.h"
+#import "Flurry.h"
 
 @implementation AppDelegate
 
@@ -32,7 +33,7 @@
     }else{
         assert(0);
     }
-    
+    [Flurry startSession:kFlurryAppId withOptions:launchOptions];
     //请求数据
     [[RMQuestionsRequest sharedInstance]startAsynchronous];
     

@@ -116,6 +116,7 @@
 		303286EC18528E6B00EC2C56 /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 303286E718528E6B00EC2C56 /* umFeedback.bundle */; };
 		303286ED18528E6B00EC2C56 /* 开发指南.html in Resources */ = {isa = PBXBuildFile; fileRef = 303286E918528E6B00EC2C56 /* 开发指南.html */; };
 		303286F11853025E00EC2C56 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 303286F01853025E00EC2C56 /* libFlurry_4.3.0.a */; };
+		303286F31853053600EC2C56 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303286F21853053600EC2C56 /* Security.framework */; };
 		30471ED4185133DE009575CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30471ED3185133DE009575CA /* Images.xcassets */; };
 		30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F7184A91140043B0D3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -301,6 +302,7 @@
 		303286E918528E6B00EC2C56 /* 开发指南.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "开发指南.html"; sourceTree = "<group>"; };
 		303286EF1853025E00EC2C56 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		303286F01853025E00EC2C56 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
+		303286F21853053600EC2C56 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		30471ED3185133DE009575CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 4Imgs1Word/Images.xcassets; sourceTree = "<group>"; };
 		30CBF3F3184A91140043B0D3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303286F31853053600EC2C56 /* Security.framework in Frameworks */,
 				30CBF462184A92720043B0D3 /* libz.dylib in Frameworks */,
 				3032861A18528DC200EC2C56 /* libstdc++.dylib in Frameworks */,
 				3032861818528DB600EC2C56 /* CoreTelephony.framework in Frameworks */,
@@ -790,6 +793,7 @@
 		30CBF3F1184A90BA0043B0D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				303286F21853053600EC2C56 /* Security.framework */,
 				3032861918528DC100EC2C56 /* libstdc++.dylib */,
 				3032861718528DB600EC2C56 /* CoreTelephony.framework */,
 				3032861518528DAD00EC2C56 /* libsqlite3.dylib */,

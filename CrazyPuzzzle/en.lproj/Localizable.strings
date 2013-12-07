@@ -24,3 +24,12 @@
 "Load_Game"="LOADING";
 "Start_Game"="PLAY";
 "Load_Fail"="FAIL";
+
+
+//IAP
+"Gold_Left"="Coins:";
+"IAP_288"="+288";
+"IAP_666"="+666";
+"IAP_1888"="+1888";
+"IAP_3999"="+3999";
+"IAP_11888"="+11888";

@@ -26,7 +26,7 @@
     
     
     UIButton *btn = (UIButton *)[self.contentView viewWithTag:101];
-    [btn setTitle:[NSString stringWithFormat:@"￥%@",dict[CP_Price_Key]] forState:UIControlStateNormal];
+    [btn setTitle:[NSString stringWithFormat:@"$%@",dict[CP_Price_Key]] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(buyGoldClicked:) forControlEvents:UIControlEventTouchUpInside];
     
 }

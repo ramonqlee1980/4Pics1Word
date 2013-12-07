@@ -34,21 +34,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.dataSourceOfGold = @[@{CP_Price_Key:@"6",CP_Value_Key:@"+288金币"},
-                        @{CP_Price_Key:@"12",CP_Value_Key:@"+666金币 赠送10%"},
-                        @{CP_Price_Key:@"30",CP_Value_Key:@"+1888金币 赠送20%"},
-                        @{CP_Price_Key:@"68",CP_Value_Key:@"+3999金币 赠送40%"},
-                        @{CP_Price_Key:@"128",CP_Value_Key:@"+11888金币 赠送80%"}];
+    self.dataSourceOfGold = CP_Gold_Table_List;
     
     self.dataSourceOfTask = @[];
     
-    _promptLabel.text = [NSString stringWithFormat:@"购买金币将免费升级为VIP无广告版"];
-    _coinLeftLbl.text = [NSString stringWithFormat:@"剩余金币:"];
+//    _promptLabel.text = [NSString stringWithFormat:@""];
+//    _promptLabel.hidden = YES;
+    
+    _coinLeftLbl.text = [NSString stringWithFormat:NSLocalizedString(@"Gold_Left", "")];
     _myCoinLbl.text = [NSString stringWithFormat:@"%@",[USER_DEFAULT objectForKey:@"CurrentGolden"]];
     
     _currentSelected = 1;
-    [_tasksBtn setTitle:@"任务" forState:UIControlStateNormal];
-    [_goldenBtn setTitle:@"金币" forState:UIControlStateNormal];
+//    [_tasksBtn setTitle:@"任务" forState:UIControlStateNormal];
+//    _tasksBtn.hidden = YES;
+//    [_goldenBtn setTitle:@"金币" forState:UIControlStateNormal];
     
 
     [self setupTable];

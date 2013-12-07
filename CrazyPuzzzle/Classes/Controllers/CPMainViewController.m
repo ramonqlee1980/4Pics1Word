@@ -158,6 +158,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     CGRect rc = CGRectMake(0, _firstBtn.frame.origin.y, APP_SCREEN_WIDTH, _firstBtn.frame.size.height);
     [self setupAnswerViews:rc];
     [self setupCandidateContainerView];
+    
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:_currentLevel],[NSNumber numberWithInt:totalLevel], nil];
+    [Flurry logEvent:kFlurryLevel withParameters:dict];
 }
 
 
@@ -166,14 +169,14 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     NSArray *twoParts = [UIImage splitImageIntoTwoParts:self.homeScreenShot orientations:0];
     
-    UIImageView *upIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, APP_SCREEN_CONTENT_HEIGHT/2)];
+    UIImageView *upIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, APP_SCREEN_WIDTH, APP_SCREEN_CONTENT_HEIGHT/2)];
     //upIV.backgroundColor = [UIColor yellowColor];
     upIV.image = twoParts[0];
     upIV.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     upIV.tag = CP_Up_Imageview_Tag;
     [self.view addSubview:upIV];
     
-    UIImageView *downIV = [[UIImageView alloc] initWithFrame:CGRectMake(0,APP_SCREEN_CONTENT_HEIGHT/2 , 320, APP_SCREEN_CONTENT_HEIGHT/2)];
+    UIImageView *downIV = [[UIImageView alloc] initWithFrame:CGRectMake(0,APP_SCREEN_CONTENT_HEIGHT/2 , APP_SCREEN_WIDTH, APP_SCREEN_CONTENT_HEIGHT/2)];
     downIV.image = twoParts[1];
     //downIV.backgroundColor = [UIColor redColor];
     downIV.tag = CP_Down_Imageview_Tag;
@@ -182,9 +185,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     [UIView animateWithDuration:0.75 animations:^{
         
-        [upIV setFrame:CGRectMake(0,-(APP_SCREEN_CONTENT_HEIGHT/2) , 320, APP_SCREEN_CONTENT_HEIGHT/2)];
+        [upIV setFrame:CGRectMake(0,-(APP_SCREEN_CONTENT_HEIGHT/2) , APP_SCREEN_WIDTH, APP_SCREEN_CONTENT_HEIGHT/2)];
         upIV.alpha = 0.0;
-        [downIV setFrame:CGRectMake(0, (APP_SCREEN_CONTENT_HEIGHT/2)*2, 320, APP_SCREEN_CONTENT_HEIGHT/2)];
+        [downIV setFrame:CGRectMake(0, (APP_SCREEN_CONTENT_HEIGHT/2)*2, APP_SCREEN_WIDTH, APP_SCREEN_CONTENT_HEIGHT/2)];
         downIV.alpha = 0.0;
         
         
@@ -442,9 +445,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     [UIView animateWithDuration:0.75 animations:^{
         
-        [upIV setFrame:CGRectMake(0, 0, 320, APP_SCREEN_CONTENT_HEIGHT/2)];
+        [upIV setFrame:CGRectMake(0, 0, APP_SCREEN_WIDTH, APP_SCREEN_CONTENT_HEIGHT/2)];
         upIV.alpha = 1.0;
-        [downIV setFrame:CGRectMake(0,APP_SCREEN_CONTENT_HEIGHT/2 , 320, APP_SCREEN_CONTENT_HEIGHT/2)];
+        [downIV setFrame:CGRectMake(0,APP_SCREEN_CONTENT_HEIGHT/2 , APP_SCREEN_WIDTH, APP_SCREEN_CONTENT_HEIGHT/2)];
         downIV.alpha = 1.0;
         
         
@@ -608,78 +611,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
     [self hideShareView];
-    
-}
-
-// 去朋友圈
-- (IBAction)toFrinedZone:(id)sender
-{
-    // NSString *imgName = [NSString stringWithFormat:@"question%d",[[_dataSource[_currentLevel-1] objectForKey:CP_Question_Key] intValue]];
-    _shareView.hidden = YES;
-    
-    // 截屏 ， 拼图
-    UIImage *img = [self getSharedImage];
-    UIImage *thumbImg = [UIImage scaleAspect:img toSize:CGSizeMake(140, 240)];
-    
-    WXMediaMessage *msg = [WXMediaMessage message];
-    [msg setThumbImage:thumbImg];
-    
-    WXImageObject *ext = [WXImageObject object];
-    ext.imageData = UIImagePNGRepresentation(img);// 截屏图片要保存为png格式
-    
-    msg.mediaObject = ext;
-    
-    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-    req.bText=NO; //表示多媒体消息
-    req.scene = WXSceneTimeline; // 不填，或WXSceneSession 将发给朋友
-    req.message = msg;
-    
-    // 跳到微信页面
-    if([WXApi sendReq:req]){
-        SLog(@"jump to wx");
-    }else{
-        
-        assert(0);
-    }
-    
-}
-
-// 分享给某个好友
-- (IBAction)toFrined:(id)sender
-{
-    _shareView.hidden = YES;
-    
-    UIImage *img = [self getSharedImage];
-    UIImage *thumbImg = [UIImage scaleAspect:img toSize:CGSizeMake(120, 180)];
-    
-    
-    WXMediaMessage *msg = [WXMediaMessage message];
-    [msg setThumbImage:thumbImg];
-    
-    WXImageObject *ext = [WXImageObject object];
-    ext.imageData = UIImagePNGRepresentation(img);// 截屏图片要保存为png格式
-    
-    msg.mediaObject = ext;
-    
-    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-    req.bText=NO; //表示多媒体消息
-    req.message = msg;
-    //req.scene = WXSceneTimeline; // 不填，或WXSceneSession 将发给朋友
-    
-    
-    [WXApi sendReq:req];// 跳到微信页面
-    
-}
-
-// weixin delegate
-
-- (void)onReq:(BaseReq *)req
-{
-    
-}
-
-- (void)onResp:(BaseResp *)resp
-{
     
 }
 

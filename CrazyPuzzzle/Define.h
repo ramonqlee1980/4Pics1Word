@@ -56,13 +56,14 @@
 /**************** 应用相关  ********************/
 #define CP_Weixin_App_Id @"wxd32d6d3e8108ffcb" // demo: wxd930ea5d5a258f4f
 #define CP_UMeng_App_Key @"529b291156240b5737148f50"
+#define kFlurryAppId @"PQKG4KVJJNSMCMKTMFH9"
 
 #define CP_Price_Key @"price"
 #define CP_Value_Key @"value"
 
 //flurry event
 #define kFlurryShareBySNS @"ShareBySNS"
-
+#define kFlurryLevel @"Level"
 
 #define CP_Gift_Per_Idioms 3
 #define CP_First_Prompt_Cost 10
@@ -75,15 +76,19 @@
 #define CP_Initial_Golden 220
 
 
+#define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\
+    @{CP_Price_Key:@"1.99",CP_Value_Key:NSLocalizedString(@"IAP_666","")},\
+    @{CP_Price_Key:@"2.99",CP_Value_Key:NSLocalizedString(@"IAP_1888","")},\
+    @{CP_Price_Key:@"3.99",CP_Value_Key:NSLocalizedString(@"IAP_3999","")},\
+    @{CP_Price_Key:@"4.99",CP_Value_Key:NSLocalizedString(@"IAP_11888","")}];
 
-#define CP_Golden_ProductIDs @[@"com.xiaoran.gold1",\
-  @"com.xiaoran.gold2",\
-  @"com.xiaoran.gold3",\
-  @"com.xiaoran.gold4",\
-  @"com.xiaoran.gold5",\
-  @"com.xiaoran.gold6"]
+#define CP_Golden_ProductIDs @[@"com.idreems.288Coins",\
+  @"com.idreems.666Coins",\
+  @"com.idreems.1888Coins",\
+  @"com.idreems.3999Coins",\
+  @"com.idreems.11888Coins"]
 
-#define CP_Golden_price(index) [@[@"6",@"12",@"30",@"68",@"128"] objectAtIndex:index]
+#define CP_Golden_price(index) [@[@"0.99",@"1.99",@"2.99",@"3.99",@"4.99"] objectAtIndex:index]
 
 #define CP_Golden_values @[@"288",@"666",@"1888",@"3999",@"11888"] 
 
