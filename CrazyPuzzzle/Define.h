@@ -60,6 +60,8 @@
 #define CP_Price_Key @"price"
 #define CP_Value_Key @"value"
 
+//flurry event
+#define kFlurryShareBySNS @"ShareBySNS"
 
 
 #define CP_Gift_Per_Idioms 3

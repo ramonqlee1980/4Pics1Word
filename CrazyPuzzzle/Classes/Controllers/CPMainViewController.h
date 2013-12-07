@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
 #import "coinView.h"
+#import "UMSocialControllerService.h"
 
-
-@interface CPMainViewController : UIViewController<WXApiDelegate,coinViewDelegate>{
+@interface CPMainViewController : UIViewController<WXApiDelegate,coinViewDelegate,UMSocialUIDelegate>{
 
     __weak IBOutlet UILabel *_myGoldLable;
     __weak IBOutlet UILabel *_levelLable;

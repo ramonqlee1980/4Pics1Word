@@ -14,6 +14,7 @@
 #import "Utils.h"
 #import "RMQuestionsRequest.h"
 #import "UMSocial.h"
+#import "Flurry.h"
 
 #define kQuestionImageUrlFormatter @"http://checknewversion.duapp.com/image/image-search.php?q=%@"
 #define kQuestionImageColumnCount 2
@@ -554,35 +555,29 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 //动画
 - (void)hideShareView{
-//    [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
-//        
-//        [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
-//    } completion:^(BOOL finished){
-//        _shareView.hidden = YES;
-//        [self.view sendSubviewToBack:_shareView];
-//    }];
 }
 
 - (void)showShareView{
-//    [UIView animateWithDuration:CP_ShareView_Animation_Duration animations:^{
-//        
-//        [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y-APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
-//        _shareView.hidden = NO;
-//        [self.view bringSubviewToFront:_shareView];
-//        
-//    } completion:^(BOOL finished){
-//        
-//    }];
-    
     //如果需要分享回调，请将delegate对象设置self，并实现下面的回调方法
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:CP_UMeng_App_Key
                                       shareText:NSLocalizedString(@"SNS_Help", "")
                                      shareImage:[self getSharedImage]
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToFacebook,UMShareToTwitter,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToEmail,UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
-                                       delegate:nil];
+                                       delegate:self];
 }
-
+#pragma mark umeng sns delegate
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[[response.data allKeys] objectAtIndex:0],kFlurryShareBySNS, nil];
+        [Flurry logEvent:kFlurryShareBySNS withParameters:dict];
+    }
+}
 
 
 - (IBAction)promptClicked:(id)sender

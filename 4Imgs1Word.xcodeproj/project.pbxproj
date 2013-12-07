@@ -115,6 +115,7 @@
 		303286EB18528E6B00EC2C56 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 303286E618528E6B00EC2C56 /* libUMFeedback.a */; };
 		303286EC18528E6B00EC2C56 /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 303286E718528E6B00EC2C56 /* umFeedback.bundle */; };
 		303286ED18528E6B00EC2C56 /* 开发指南.html in Resources */ = {isa = PBXBuildFile; fileRef = 303286E918528E6B00EC2C56 /* 开发指南.html */; };
+		303286F11853025E00EC2C56 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 303286F01853025E00EC2C56 /* libFlurry_4.3.0.a */; };
 		30471ED4185133DE009575CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30471ED3185133DE009575CA /* Images.xcassets */; };
 		30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F7184A91140043B0D3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -298,6 +299,8 @@
 		303286E718528E6B00EC2C56 /* umFeedback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = umFeedback.bundle; sourceTree = "<group>"; };
 		303286E818528E6B00EC2C56 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
 		303286E918528E6B00EC2C56 /* 开发指南.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "开发指南.html"; sourceTree = "<group>"; };
+		303286EF1853025E00EC2C56 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		303286F01853025E00EC2C56 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		30471ED3185133DE009575CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 4Imgs1Word/Images.xcassets; sourceTree = "<group>"; };
 		30CBF3F3184A91140043B0D3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -392,6 +395,7 @@
 				3032861818528DB600EC2C56 /* CoreTelephony.framework in Frameworks */,
 				3032861618528DAD00EC2C56 /* libsqlite3.dylib in Frameworks */,
 				3032861418528D9A00EC2C56 /* libiconv.dylib in Frameworks */,
+				303286F11853025E00EC2C56 /* libFlurry_4.3.0.a in Frameworks */,
 				303285E5185186BB00EC2C56 /* OpenGLES.framework in Frameworks */,
 				30CBF464184A92B40043B0D3 /* ImageIO.framework in Frameworks */,
 				3032869818528E1D00EC2C56 /* libUMSocial_Sdk_2.2.1.1.a in Frameworks */,
@@ -527,6 +531,7 @@
 		041E342A17B7D99D0067EF7C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				303286EE1853025E00EC2C56 /* Flurry */,
 				30CBF468184B36CF0043B0D3 /* AnswersRequest */,
 				30CBF3F2184A91140043B0D3 /* ASIHTTPRequest */,
 				303285CC185184D900EC2C56 /* CoinsEffect */,
@@ -770,6 +775,16 @@
 			);
 			name = UMFeedback_iOS_1.4;
 			path = ../../../iOS_Lib/UMFeedback_iOS_1.4;
+			sourceTree = "<group>";
+		};
+		303286EE1853025E00EC2C56 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				303286EF1853025E00EC2C56 /* Flurry.h */,
+				303286F01853025E00EC2C56 /* libFlurry_4.3.0.a */,
+			);
+			name = Flurry;
+			path = "../../../iOS_Lib/Flurry-iOS-4.3.0/Flurry";
 			sourceTree = "<group>";
 		};
 		30CBF3F1184A90BA0043B0D3 /* Frameworks */ = {
@@ -1216,6 +1231,7 @@
 					/Volumes/Work/workspace/iOS_Lib/UMSocial_Sdk_All_2.2.1.1/UMSocial_Sdk_2.2.1.1/frameworks/Wechat,
 					/Volumes/Work/workspace/iOS_Lib/UMSocial_Sdk_All_2.2.1.1/UMSocial_Sdk_2.2.1.1,
 					/Volumes/Work/workspace/iOS_Lib/UMFeedback_iOS_1.4,
+					"/Volumes/Work/workspace/iOS_Lib/Flurry-iOS-4.3.0/Flurry",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -1250,6 +1266,7 @@
 					/Volumes/Work/workspace/iOS_Lib/UMSocial_Sdk_All_2.2.1.1/UMSocial_Sdk_2.2.1.1/frameworks/Wechat,
 					/Volumes/Work/workspace/iOS_Lib/UMSocial_Sdk_All_2.2.1.1/UMSocial_Sdk_2.2.1.1,
 					/Volumes/Work/workspace/iOS_Lib/UMFeedback_iOS_1.4,
+					"/Volumes/Work/workspace/iOS_Lib/Flurry-iOS-4.3.0/Flurry",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
