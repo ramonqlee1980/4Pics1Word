@@ -76,15 +76,15 @@
 #define kFailtoReceiveIAPProducts @"FailtoReceiveIAPProducts"
 
 
-#define CP_Gift_Per_Idioms 3
+#define CP_Gift_Per_Idioms 10
 #define CP_First_Prompt_Cost 10
-#define CP_NoFirst_Prompt_Cost 20
+#define CP_NoFirst_Prompt_Cost 15
 #define CP_Gift_For_Share_To_FriendZone 20
 
 #define CP_Lose_To_You 11
 
 #define CP_Initial_Level 1
-#define CP_Initial_Golden 220
+#define CP_Initial_Golden 288
 
 
 #define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\

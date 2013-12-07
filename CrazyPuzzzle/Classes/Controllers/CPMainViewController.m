@@ -102,7 +102,9 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self initShareView:edge];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification:) name:kCPPaidForGoldsNotificatioin object:nil];
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {

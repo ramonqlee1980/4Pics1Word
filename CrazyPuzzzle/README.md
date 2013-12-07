@@ -11,7 +11,7 @@ Release 1.0.0
 7.数据没下来之前，进入游戏按钮无法点击(done)
 8.金币换提示界面调整(done)
 9.分享界面调整：（umeng sns插件，done)
-10.flurry事件添加
+10.flurry事件添加(done)
 11.iOS7 适配状态栏
 
 积分累计和计算时有误(done)
