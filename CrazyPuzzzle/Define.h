@@ -86,7 +86,6 @@
 #define CP_Initial_Level 1
 #define CP_Initial_Golden 288
 
-
 #define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\
     @{CP_Price_Key:@"1.99",CP_Value_Key:NSLocalizedString(@"IAP_666","")},\
     @{CP_Price_Key:@"2.99",CP_Value_Key:NSLocalizedString(@"IAP_1888","")},\

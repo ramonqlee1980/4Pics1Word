@@ -89,6 +89,7 @@
         [USER_DEFAULT setInteger:currentGold forKey:CurrentGoldenStringKey];
         [USER_DEFAULT synchronize];
         
+        
         //更新UI
         _myCoinLbl.text = [NSString stringWithFormat:@"%d",currentGold];
         

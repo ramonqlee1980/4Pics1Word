@@ -45,7 +45,7 @@
     
     
     NSInteger _currentLevel;  // 当前level
-    NSInteger _currentGolden; // 当前金币数量
+//    NSInteger _currentGolden; // 当前金币数量
     NSString *_currentAnswer; // 答案
     
     BOOL _isWrong;

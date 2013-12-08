@@ -27,4 +27,5 @@ return s##className;\
 + (NSString *)decodeFromPercentEscapeString: (NSString *) input;
 
 +(void)removeSubviews:(UIView*)view;
++(NSUInteger)currentCoins;
 @end

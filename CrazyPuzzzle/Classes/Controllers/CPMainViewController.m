@@ -15,6 +15,7 @@
 #import "RMQuestionsRequest.h"
 #import "UMSocial.h"
 #import "Flurry.h"
+#import "Utils.h"
 
 #define kQuestionImageUrlFormatter @"http://checknewversion.duapp.com/image/image-search.php?q=%@"
 #define kQuestionImageColumnCount 2
@@ -86,7 +87,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 @implementation CPMainViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -100,9 +100,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     UIEdgeInsets edge = UIEdgeInsetsMake(48, 20, 30, 20);
     [self initPromptView:edge];
     [self initShareView:edge];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePaidForGoldNotification:) name:kCPPaidForGoldsNotificatioin object:nil];
-    
 }
 
 
@@ -150,7 +147,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     NSArray* questionsArray = [RMQuestionsRequest sharedInstance].questionsArray;
     int totalLevel = questionsArray?questionsArray.count:0;
     _levelLable.text = [NSString stringWithFormat:@"%d/%d",_currentLevel,totalLevel];
-    _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentGolden];
+    _myGoldLable.text = [NSString stringWithFormat:@"%d",[Utils currentCoins]];
     
     //replace with four images
     questionImageRect = _mainQustionPicIV.frame;
@@ -197,16 +194,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }];
     
 }
-
-
-
-#pragma mark handle notification
-
-- (void)handlePaidForGoldNotification:(NSNotification *)notification
-{
-    _myGoldLable.text = [NSString stringWithFormat:@"%@",[USER_DEFAULT objectForKey:CurrentGoldenStringKey]];
-}
-
 
 #pragma mark 答案区的view布局
 -(void)setupAnswerViews:(CGRect)frame
@@ -397,10 +384,10 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self.maps removeAllObjects];
     
     // 奖励玩家
-    _currentGolden += CP_Gift_Per_Idioms;
-    [USER_DEFAULT setInteger:_currentGolden forKey:CurrentGoldenStringKey];
+    NSUInteger coins = [Utils currentCoins]+CP_Gift_Per_Idioms;
+    [USER_DEFAULT setInteger:coins forKey:CurrentGoldenStringKey];
     
-    _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentGolden];
+    _myGoldLable.text = [NSString stringWithFormat:@"%d",coins];
     
     [self showPassedView];
 }
@@ -512,19 +499,18 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             [self checkAnswer];
         }
         
-        
+        NSInteger _currentCoins = [Utils currentCoins];
         if (_firstPrompt) {
-            _currentGolden-=CP_First_Prompt_Cost;
+            _currentCoins-=CP_First_Prompt_Cost;
             _firstPrompt = NO;
             
             [self setPromptCostLabel];
         }else{// 这是第二次提示了
-            _currentGolden-=CP_NoFirst_Prompt_Cost;
+            _currentCoins-=CP_NoFirst_Prompt_Cost;
         }
         
-        
-        _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentGolden];;
-        [USER_DEFAULT setInteger:_currentGolden forKey:CurrentGoldenStringKey];
+        _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentCoins];
+        [USER_DEFAULT setInteger:_currentCoins forKey:CurrentGoldenStringKey];
         [self hidePrompView];
     }else{// 跳到商店
         
@@ -864,13 +850,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }else{
         _currentLevel = CP_Initial_Level;
         [USER_DEFAULT setInteger:CP_Initial_Level forKey:CurrentLevelStringKey];
-    }
-    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey]){
-        _currentGolden = [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey] intValue];
-        
-    }else{
-        _currentGolden = CP_Initial_Golden;
-        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:CurrentGoldenStringKey];
     }
 }
 #pragma mark 请求网络数据返回后的处理

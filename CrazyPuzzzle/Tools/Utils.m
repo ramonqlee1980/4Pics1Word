@@ -47,10 +47,10 @@ static NSString* ipAddress;
     // (<http://www.ietf.org/rfc/rfc3986.txt>)
     NSString *outputStr = (NSString *)
     CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                            (CFStringRef)input,
-                                            NULL,
-                                            (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                            kCFStringEncodingUTF8));
+                                                              (CFStringRef)input,
+                                                              NULL,
+                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                              kCFStringEncodingUTF8));
     return outputStr;
 }
 
@@ -75,5 +75,13 @@ static NSString* ipAddress;
             }
         }
     }
+}
++(NSUInteger)currentCoins
+{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey]){
+        return [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey] intValue];
+    }
+    [USER_DEFAULT setInteger:CP_Initial_Golden forKey:CurrentGoldenStringKey];
+    return CP_Initial_Golden;
 }
 @end
