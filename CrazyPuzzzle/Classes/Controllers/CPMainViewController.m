@@ -132,7 +132,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //进行新一关的准备工作
 -(void)startNewLevel
 {
-    _currentWordIndex = 0;
+//    _currentWordIndex = 0;
     _isWrong = NO;
     _answerBtnSelectWhenWrong = NO;
     _firstPrompt = YES;
@@ -397,7 +397,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     //    SLog(@"you are right");
     
-    _currentWordIndex = 0;
+    [self.maps removeAllObjects];
     
     // 奖励玩家
     _currentGolden += CP_Gift_Per_Idioms;
@@ -488,32 +488,36 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             _isWrong = NO;
             
         }
+        
         //把还没有填词的btn 的tag装入array（)
+        //需要考虑已经填充过一些的情况
         NSMutableArray *array = [NSMutableArray array];
         for (int i=0; i<_currentAnswer.length; i++) {
-            UIButton *btn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
-            if ([btn.titleLabel.text length] == 0) {
-                [array addObject:[NSNumber numberWithInt:btn.tag]];
-                
+            UIButton *answerBtn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
+            if ([answerBtn.titleLabel.text length] == 0) {
+                [array addObject:[NSNumber numberWithInt:answerBtn.tag]];
             }
         }
+        
         assert([array count] != 0);
         NSUInteger i = rand()%[array count];
-        //通过i确定需要提示的单词
+        //通过i确定需要提示的单词(需要考虑已经的填充的可能为错误的字母)
         int r = [array[i] intValue];
         NSString *prompt = [_currentAnswer substringWithRange:NSMakeRange(r-CP_Answer_Button_Tag_Offset, 1)];
-        UIView *unknown = [_answerContainerView viewWithTag:(r) ];
+        UIView *unknown = [_answerContainerView viewWithTag:r];
         if ([unknown isKindOfClass:[UIButton class]]) {
-            UIButton *btn = (UIButton *)unknown;
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [btn setTitle:prompt forState:UIControlStateNormal];
+            UIButton *answerBtn = (UIButton *)unknown;
+            [answerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [answerBtn setTitle:prompt forState:UIControlStateNormal];
         }
         
         // 通过这个 prompt 单词 找到在container view 的位置，隐藏word btn， 设置maps
         NSRange range = [self.currentPreparedString rangeOfString:prompt];
-        UIButton *wordBtn = (UIButton *)[_wordsContainerView viewWithTag:(range.location + CP_Word_Button_Tag_Offset)];
+        NSUInteger candidateViewTag = range.location + CP_Word_Button_Tag_Offset;
+        UIButton *wordBtn = (UIButton *)[_wordsContainerView viewWithTag:candidateViewTag];
         wordBtn.hidden = YES;
-        self.maps[[NSString stringWithFormat:@"%d",([array[i] intValue]-CP_Answer_Button_Tag_Offset)]] = [NSString stringWithFormat:@"%d",(range.location + CP_Word_Button_Tag_Offset)];
+        
+        self.maps[[NSNumber numberWithInt:r]]=[NSNumber numberWithInt:candidateViewTag];
         
         
         if ([array count] == 1) { // 本轮提示后，成语完成，需要进入check模式
@@ -623,31 +627,28 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
-    UIButton *btn = (UIButton *)sender;
+    UIButton *answerBtn = (UIButton *)sender;
     
     if (_isWrong) {
         for (int i=0; i<_currentAnswer.length; i++) {
             UIButton *btn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }
-        //_currentWordIndex = btn.tag - CP_Answer_Button_Tag_Offset;
         _answerBtnSelectWhenWrong = YES;
     }
     
-    
-    if([btn.titleLabel.text length]>0){
-        [btn setTitle:nil forState:UIControlStateNormal];
-        btn.titleLabel.text = nil;
+    if([answerBtn.titleLabel.text length]>0){
+        [answerBtn setTitle:nil forState:UIControlStateNormal];
+        answerBtn.titleLabel.text = nil;
+
+        //清除map关系
+        NSNumber* key = [NSNumber numberWithInt:answerBtn.tag];
+        int targetTag = [[self.maps objectForKey:key] intValue];
+        [self.maps removeObjectForKey:key];
         
-        // tell word btn 显示出来
-        int targetTag = [[self.maps objectForKey:[NSString stringWithFormat:@"%d",(btn.tag-CP_Answer_Button_Tag_Offset)]] intValue];
+        // 原来的字母显示出来
         UIButton *wordBtn = (UIButton *)[_wordsContainerView viewWithTag:targetTag];
         wordBtn.hidden = NO;
-        
-        
-        // cal _currentWordIndex
-        if(_currentWordIndex > (btn.tag - CP_Answer_Button_Tag_Offset))
-            _currentWordIndex = btn.tag - CP_Answer_Button_Tag_Offset;
     }
     
 }
@@ -667,27 +668,27 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                 btn.titleLabel.text = nil; //加这一句
                 
                 //对应的 word button 显示出来
-                int targetWordTag = [self.maps[[NSString stringWithFormat:@"%d",(btn.tag - CP_Answer_Button_Tag_Offset)]] intValue];
-                [_wordsContainerView viewWithTag:targetWordTag].hidden = NO;
+                int targetTag = [[self.maps objectForKey:[NSNumber numberWithInt:btn.tag]] intValue];
+                [_wordsContainerView viewWithTag:targetTag].hidden = NO;
                 
             }
             
-            _currentWordIndex = 0;
         }
         _answerBtnSelectWhenWrong = NO;
         _isWrong = NO;
     }
     
-    UIButton *btn = (UIButton *)sender;
-    NSString *text = btn.titleLabel.text;
+    UIButton *candidateBtn = (UIButton *)sender;
+    NSString *text = candidateBtn.titleLabel.text;
     
     
     // set answer button
-    
-    UIView *unkonw = [_answerContainerView viewWithTag:(_currentWordIndex+CP_Answer_Button_Tag_Offset)];
+    int answerTag = CP_Answer_Button_Tag_Offset;
+    UIView *unkonw = [_answerContainerView viewWithTag:([self nextAnswerViewPosition]+CP_Answer_Button_Tag_Offset)];
     if ([unkonw isKindOfClass:[UIButton class]]) {
         UIButton *answerBtn = (UIButton *)unkonw;
         [answerBtn setTitle:text forState:UIControlStateNormal];
+        answerTag= answerBtn.tag;
     }
     
     
@@ -697,35 +698,13 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     // 要记录每个字从哪个word btn来,通过tag来标记：如{0:1,1:3,2:12,3:21}
     // 因此，使用字典来记录就行了(self.maps)
     //
-    btn.hidden = YES;
-    [self.maps setObject:[NSString stringWithFormat:@"%d",btn.tag] forKey:[NSString stringWithFormat:@"%d",_currentWordIndex]];
+    candidateBtn.hidden = YES;
+    [self.maps setObject:[NSNumber numberWithInt:candidateBtn.tag] forKey:[NSNumber numberWithInt:answerTag]];
     
     // 这是揭晓答案的时刻
-    if (_currentWordIndex == _currentAnswer.length-1) {
-        
+    if([self allAnswered]){
         [self checkAnswer];
         return;
-        
-    }
-    
-    // cal _currentWordInex:
-    
-    while (_currentWordIndex !=_currentAnswer.length-1) { // 当前填的字不是最后一个，看下后面的字是否已经填了
-        
-        _currentWordIndex++;
-        UIButton *ab = nil;
-        UIView *uk = [_answerContainerView viewWithTag:(_currentWordIndex+CP_Answer_Button_Tag_Offset)];
-        if([uk isKindOfClass:[UIButton class]]) {
-            ab = (UIButton *)uk;
-        }
-        if([ab.titleLabel.text length]==0) return;
-        else{
-            if (_currentWordIndex == _currentAnswer.length-1) {//check answer
-                
-                [self checkAnswer];
-                return;
-            }
-        }
     }
 }
 
@@ -928,4 +907,26 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self startGame];
 }
 
+#pragma mark next answer view pos
+//返回下一个待填充的answer view的索引,如果没有找到的话，则返回NSNotFound
+-(NSInteger)nextAnswerViewPosition
+{
+    //已经填充完毕
+    if ([self allAnswered]) {
+        return NSNotFound;
+    }
+    
+    for (int i = 0; i<_currentAnswer.length; ++i) {
+        if (nil==[self.maps objectForKey:[NSNumber numberWithInt:(i+CP_Answer_Button_Tag_Offset)]]) {
+            return i;
+        }
+    }
+    return NSNotFound;
+}
+
+//已经填充完毕
+-(BOOL)allAnswered
+{
+    return (self.maps.count==_currentAnswer.length);
+}
 @end

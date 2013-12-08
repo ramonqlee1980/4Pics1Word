@@ -47,7 +47,6 @@
     NSInteger _currentLevel;  // 当前level
     NSInteger _currentGolden; // 当前金币数量
     NSString *_currentAnswer; // 答案
-    NSInteger _currentWordIndex;  // 当前应该填字的位置：从1开始
     
     BOOL _isWrong;
     BOOL _answerBtnSelectWhenWrong;
@@ -57,7 +56,7 @@
 @property (strong,nonatomic) NSArray *dataSource;
 @property (strong,nonatomic) NSMutableString *wordsString; //所有备选字母
 @property (strong,nonatomic) NSString *currentPreparedString;// 随机后，顺序显示的串
-@property (strong,nonatomic) NSMutableDictionary *maps;
+@property (strong,nonatomic) NSMutableDictionary *maps;//记录答案view tag和备选view tag的对应关系（用于恢复备选view用）
 @property (strong, nonatomic) coinView *coinEffectView;
 @property (nonatomic,strong) UIImage *homeScreenShot;
 
