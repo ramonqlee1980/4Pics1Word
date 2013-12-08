@@ -12,6 +12,7 @@
 #import "UMSocial.h"
 #import "Flurry.h"
 
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -34,6 +35,7 @@
     }else{
         assert(0);
     }
+    
     [Flurry startSession:kFlurryAppId withOptions:launchOptions];
     //请求数据
     [[RMQuestionsRequest sharedInstance]startAsynchronous];

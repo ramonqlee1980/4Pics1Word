@@ -57,6 +57,7 @@
 #define CP_Weixin_App_Id @"wxd32d6d3e8108ffcb" // demo: wxd930ea5d5a258f4f
 #define CP_UMeng_App_Key @"529b291156240b5737148f50"
 #define kFlurryAppId @"PQKG4KVJJNSMCMKTMFH9"
+#define kAppleId @"776660126"
 
 #define CP_Price_Key @"price"
 #define CP_Value_Key @"value"

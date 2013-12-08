@@ -77,7 +77,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 - (void)showPrompView;
 - (void)hidePrompView;
-- (void)hideShareView;
+//- (void)hideShareView;
 - (void)showShareView;
 
 - (UIImage *)getSharedImage;
@@ -477,21 +477,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
     
     if([[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue]>=[_promptCostLabel.text intValue]){
-        /// 随便挑成语中的一个字提示，并扣积分(xxxx 还不是这样，要提示没有的单词)
-        
-        // 找到提示的单词，且 第二次提示90分（第一次30）
-        //如果是在isWrong=YES的情况下，那就先清空answer button
-        //如果用户在输入若干单词后寻要提示，我这边的处理是提示用户还没有出入位置的单词( 这个规则可能会改 )
-//        if (_isWrong) {
-//            for (int i=0; i<_currentAnswer.length; i++) {
-//                UIButton *btn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
-//                [btn setTitle:nil forState:UIControlStateNormal];
-//                btn.titleLabel.text = nil;
-//            }
-//            _isWrong = NO;
-//            
-//        }
-        
         //把还没有填词的btn 的tag装入array（)
         //需要考虑已经填充过一些的情况
         NSMutableArray *array = [NSMutableArray array];
@@ -532,10 +517,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             _currentGolden-=CP_First_Prompt_Cost;
             _firstPrompt = NO;
             
-            //
             [self setPromptCostLabel];
-            
-            
         }else{// 这是第二次提示了
             _currentGolden-=CP_NoFirst_Prompt_Cost;
         }
@@ -544,8 +526,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentGolden];;
         [USER_DEFAULT setInteger:_currentGolden forKey:CurrentGoldenStringKey];
         [self hidePrompView];
-        
-        
     }else{// 跳到商店
         
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
@@ -559,16 +539,14 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 #pragma mark 分享view
 -(void)initShareView:(UIEdgeInsets) edge
 {
-    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShareView)];
-    [_shareMaskView addGestureRecognizer:tap2];
+//    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideShareView)];
+//    [_shareMaskView addGestureRecognizer:tap2];
+//    
     _shareBgIV.image = [[UIImage imageNamed:kGuess_MsgBox_Bg] resizableImageWithCapInsets:edge];
     _shareTitleLabel.text = NSLocalizedString(@"SNS_Help_Title_Weixin", "");
     _shareContentLabel.text = [NSString stringWithFormat:NSLocalizedString(@"SNS_Share_Award_Text", ""),CP_Gift_For_Share_To_FriendZone];
     _shareView.hidden = YES;
     [_shareView setFrame:CGRectMake(0, _shareView.frame.origin.y+APP_SCREEN_CONTENT_HEIGHT, _shareView.frame.size.width, _shareView.frame.size.height)];
-}
-//动画
-- (void)hideShareView{
 }
 
 - (void)showShareView{
@@ -580,6 +558,17 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToFacebook,UMShareToTwitter,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToEmail,UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
                                        delegate:self];
 }
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
+{
+    //weixin
+    if ([platformName isEqualToString:UMShareToWechatSession] ||
+        [platformName isEqualToString:UMShareToWechatTimeline] ) {
+        socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+        socialData.extConfig.appUrl = [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8",kAppleId];
+    }
+}
+
+
 #pragma mark umeng sns delegate
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
@@ -621,7 +610,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
-    [self hideShareView];
+//    [self hideShareView];
     
 }
 
@@ -643,7 +632,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if([answerBtn.titleLabel.text length]>0){
         [answerBtn setTitle:nil forState:UIControlStateNormal];
         answerBtn.titleLabel.text = nil;
-
+        
         //清除map关系
         NSNumber* key = [NSNumber numberWithInt:answerBtn.tag];
         int targetTag = [[self.maps objectForKey:key] intValue];
@@ -843,7 +832,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     _prompBgIV.image = [[UIImage imageNamed:kGuess_MsgBox_Bg] resizableImageWithCapInsets:edge];
     _prompTitleLabel.text = NSLocalizedString(@"Dlg_Tip_Title", "");//@"提示";
-
+    
     [_confirmLabel setTitle:NSLocalizedString(@"OK", "") forState:UIControlStateNormal];
     [_cancelLabel setTitle:NSLocalizedString(@"Cancel", "") forState:UIControlStateNormal];
     
