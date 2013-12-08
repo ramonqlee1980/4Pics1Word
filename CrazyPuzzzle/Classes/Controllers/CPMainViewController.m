@@ -470,21 +470,27 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
+    //是否已经都填充了
+    if([self allAnswered])
+    {
+        return;
+    }
+    
     if([[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue]>=[_promptCostLabel.text intValue]){
         /// 随便挑成语中的一个字提示，并扣积分(xxxx 还不是这样，要提示没有的单词)
         
         // 找到提示的单词，且 第二次提示90分（第一次30）
         //如果是在isWrong=YES的情况下，那就先清空answer button
         //如果用户在输入若干单词后寻要提示，我这边的处理是提示用户还没有出入位置的单词( 这个规则可能会改 )
-        if (_isWrong) {
-            for (int i=0; i<_currentAnswer.length; i++) {
-                UIButton *btn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
-                [btn setTitle:nil forState:UIControlStateNormal];
-                btn.titleLabel.text = nil;
-            }
-            _isWrong = NO;
-            
-        }
+//        if (_isWrong) {
+//            for (int i=0; i<_currentAnswer.length; i++) {
+//                UIButton *btn = (UIButton *)[_answerContainerView viewWithTag:(i+CP_Answer_Button_Tag_Offset)];
+//                [btn setTitle:nil forState:UIControlStateNormal];
+//                btn.titleLabel.text = nil;
+//            }
+//            _isWrong = NO;
+//            
+//        }
         
         //把还没有填词的btn 的tag装入array（)
         //需要考虑已经填充过一些的情况
@@ -497,7 +503,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         }
         
         assert([array count] != 0);
-        NSUInteger i = rand()%[array count];
+        NSUInteger i = rand()%[array count];//([array count]==1)?0:rand()%[array count];
         //通过i确定需要提示的单词(需要考虑已经的填充的可能为错误的字母)
         int r = [array[i] intValue];
         NSString *prompt = [_currentAnswer substringWithRange:NSMakeRange(r-CP_Answer_Button_Tag_Offset, 1)];
@@ -773,10 +779,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         id res = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         if (res && [res isKindOfClass:[NSDictionary class]]) {
             id rootDict = (NSDictionary*)res;
-//            NSNumber* responseStatus = (NSNumber*)[rootDict objectForKey:ResponseStatusStringKey];
-//            if (responseStatus.intValue!=HTTP_OK) {//200 for http ok
-//                return;
-//            }
             
             //get image list
             rootDict = [rootDict objectForKey:ResponseDataStringKey];
