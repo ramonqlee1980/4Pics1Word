@@ -132,7 +132,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //进行新一关的准备工作
 -(void)startNewLevel
 {
-//    _currentWordIndex = 0;
     _isWrong = NO;
     _answerBtnSelectWhenWrong = NO;
     _firstPrompt = YES;

@@ -12,7 +12,8 @@ Release 1.0.0
 8.金币换提示界面调整(done)
 9.分享界面调整：（umeng sns插件，done)
 10.flurry事件添加(done)
-11.iOS7 适配状态栏（隐藏状态栏）
+11.iOS7 适配状态栏（隐藏状态栏done）
+12.界面调整，图标等
 
 积分累计和计算时有误(done)
 User : weixin分享改为facebook等多种方式，参见之前的版本
