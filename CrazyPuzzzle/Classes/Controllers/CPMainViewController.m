@@ -209,8 +209,6 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 
-
-
 #pragma mark 答案区的view布局
 -(void)setupAnswerViews:(CGRect)frame
 {

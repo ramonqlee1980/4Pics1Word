@@ -10,6 +10,7 @@
 #import "Utils.h"
 
 #define QUESTION_RESPONSE_NOTIFICATION @"QUESTION_RESPONSE_NOTIFICATION"
+#define CP_Words_Max_Length 8//允许的最大单词长度
 
 @interface RMQuestionsRequest : NSObject
 

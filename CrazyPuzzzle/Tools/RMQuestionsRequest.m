@@ -50,16 +50,25 @@ Impl_Singleton(RMQuestionsRequest)
             {
                 _questionsArray = [[NSMutableArray alloc]init];
             }
-            [self.questionsArray removeAllObjects];
             
+            [self.questionsArray removeAllObjects];
             [self.questionsArray addObjectsFromArray:(NSArray*)res];
+            [self postProcess];
             
             //bingo,now read image list
             [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:self.questionsArray];
         }
     }
 }
-
+    //过滤超长的单词
+-(void)postProcess
+{
+    for (int i= self.questionsArray.count-1; i>=0; i--) {
+        if ([[self.questionsArray objectAtIndex:i]length]>CP_Words_Max_Length) {
+            [self.questionsArray removeObjectAtIndex:i];
+        }
+    }
+}
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     NSError *error = [request error];

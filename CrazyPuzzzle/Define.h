@@ -75,7 +75,6 @@
 #define kReceiveIAPProducts @"ReceiveIAPProducts"
 #define kFailtoReceiveIAPProducts @"FailtoReceiveIAPProducts"
 
-
 #define CP_Gift_Per_Idioms 10
 #define CP_First_Prompt_Cost 10
 #define CP_NoFirst_Prompt_Cost 15
