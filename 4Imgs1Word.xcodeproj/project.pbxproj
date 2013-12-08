@@ -159,6 +159,14 @@
 		30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF46A184B37050043B0D3 /* RMQuestionsRequest.m */; };
 		30CBF46F184C26D80043B0D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30CBF471184C26D80043B0D3 /* Localizable.strings */; };
 		30CBF475184C2AAB0043B0D3 /* AudioSoundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF474184C2AAB0043B0D3 /* AudioSoundHelper.m */; };
+		30D51F3A185493D300F0584B /* Icon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F33185493D300F0584B /* Icon~iphone.png */; };
+		30D51F3B185493D300F0584B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F34185493D300F0584B /* Icon-72.png */; };
+		30D51F3C185493D300F0584B /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F35185493D300F0584B /* Icon-72@2x.png */; };
+		30D51F3D185493D300F0584B /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F36185493D300F0584B /* Icon-Small-50.png */; };
+		30D51F3E185493D300F0584B /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F37185493D300F0584B /* Icon-Small-50@2x.png */; };
+		30D51F3F185493D300F0584B /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F38185493D300F0584B /* Icon-Small.png */; };
+		30D51F40185493D300F0584B /* Icon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F39185493D300F0584B /* Icon@2x~iphone.png */; };
+		30D51F421854943000F0584B /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F411854943000F0584B /* Icon-80.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -387,6 +395,14 @@
 		30CBF472184C26ED0043B0D3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		30CBF473184C2AAB0043B0D3 /* AudioSoundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSoundHelper.h; sourceTree = "<group>"; };
 		30CBF474184C2AAB0043B0D3 /* AudioSoundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSoundHelper.m; sourceTree = "<group>"; };
+		30D51F33185493D300F0584B /* Icon~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon~iphone.png"; path = "Configuration/Icon~iphone.png"; sourceTree = "<group>"; };
+		30D51F34185493D300F0584B /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Configuration/Icon-72.png"; sourceTree = "<group>"; };
+		30D51F35185493D300F0584B /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Configuration/Icon-72@2x.png"; sourceTree = "<group>"; };
+		30D51F36185493D300F0584B /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Configuration/Icon-Small-50.png"; sourceTree = "<group>"; };
+		30D51F37185493D300F0584B /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "Configuration/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		30D51F38185493D300F0584B /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Configuration/Icon-Small.png"; sourceTree = "<group>"; };
+		30D51F39185493D300F0584B /* Icon@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x~iphone.png"; path = "Configuration/Icon@2x~iphone.png"; sourceTree = "<group>"; };
+		30D51F411854943000F0584B /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-80.png"; path = "Configuration/Icon-80.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +485,14 @@
 		041E340517B7D99D0067EF7C /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				30D51F411854943000F0584B /* Icon-80.png */,
+				30D51F33185493D300F0584B /* Icon~iphone.png */,
+				30D51F34185493D300F0584B /* Icon-72.png */,
+				30D51F35185493D300F0584B /* Icon-72@2x.png */,
+				30D51F36185493D300F0584B /* Icon-Small-50.png */,
+				30D51F37185493D300F0584B /* Icon-Small-50@2x.png */,
+				30D51F38185493D300F0584B /* Icon-Small.png */,
+				30D51F39185493D300F0584B /* Icon@2x~iphone.png */,
 				30471ED3185133DE009575CA /* Images.xcassets */,
 				041E389617B8DA8B0067EF7C /* audio */,
 				041E341217B7D99D0067EF7C /* Default-568h@2x.png */,
@@ -1017,9 +1041,11 @@
 				041E340F17B7D99D0067EF7C /* Icon.png in Resources */,
 				041E341117B7D99D0067EF7C /* Icon@2x.png in Resources */,
 				303285BA185139BD00EC2C56 /* buttonCtaCps@2x.png in Resources */,
+				30D51F3B185493D300F0584B /* Icon-72.png in Resources */,
 				303285CB1851417100EC2C56 /* MainStoryboard_iPhone.storyboard in Resources */,
 				041E341317B7D99D0067EF7C /* Default-568h@2x.png in Resources */,
 				041E341517B7D99D0067EF7C /* Default.png in Resources */,
+				30D51F3E185493D300F0584B /* Icon-Small-50@2x.png in Resources */,
 				041E341717B7D99D0067EF7C /* Default@2x.png in Resources */,
 				303285E2185184D900EC2C56 /* coin.png in Resources */,
 				303286EA18528E6B00EC2C56 /* changes_log.html in Resources */,
@@ -1033,6 +1059,7 @@
 				041E347917B7F30E0067EF7C /* btn_feedback.png in Resources */,
 				041E347A17B7F30E0067EF7C /* btn_music_off.png in Resources */,
 				041E347B17B7F30E0067EF7C /* btn_music_on.png in Resources */,
+				30D51F3C185493D300F0584B /* Icon-72@2x.png in Resources */,
 				041E347C17B7F30E0067EF7C /* cloud1.png in Resources */,
 				041E347D17B7F30E0067EF7C /* cloud2.png in Resources */,
 				041E347E17B7F30E0067EF7C /* cloud3.png in Resources */,
@@ -1045,6 +1072,7 @@
 				041E348417B7F30E0067EF7C /* meadow.png in Resources */,
 				041E348517B7F30E0067EF7C /* mill.png in Resources */,
 				041E348617B7F30E0067EF7C /* mole.png in Resources */,
+				30D51F3D185493D300F0584B /* Icon-Small-50.png in Resources */,
 				041E348717B7F30E0067EF7C /* sky.png in Resources */,
 				041E348917B7F30E0067EF7C /* sun.png in Resources */,
 				041E348A17B7F30E0067EF7C /* sunshine.png in Resources */,
@@ -1064,6 +1092,8 @@
 				3032869D18528E1D00EC2C56 /* UMShareEditViewController.xib in Resources */,
 				303286A118528E1D00EC2C56 /* UMSShareListController.xib in Resources */,
 				041E34AD17B7F3150067EF7C /* btn_share.png in Resources */,
+				30D51F421854943000F0584B /* Icon-80.png in Resources */,
+				30D51F3F185493D300F0584B /* Icon-Small.png in Resources */,
 				041E34AE17B7F3150067EF7C /* btn_share_press.png in Resources */,
 				303285BC185139BD00EC2C56 /* buttonCtaSmall@2x.png in Resources */,
 				303287061853DF4300EC2C56 /* Info.plist in Resources */,
@@ -1076,6 +1106,7 @@
 				041E34B317B7F3150067EF7C /* word_press.png in Resources */,
 				041E34C017B7F31C0067EF7C /* guestcoin.png in Resources */,
 				041E34C117B7F31C0067EF7C /* shop_bg.jpg in Resources */,
+				30D51F3A185493D300F0584B /* Icon~iphone.png in Resources */,
 				041E34C217B7F31C0067EF7C /* shop_board_down.png in Resources */,
 				041E34C317B7F31C0067EF7C /* shop_button_close.png in Resources */,
 				041E34C417B7F31C0067EF7C /* shop_button_open.png in Resources */,
@@ -1094,6 +1125,7 @@
 				30CBF46F184C26D80043B0D3 /* Localizable.strings in Resources */,
 				30CBF454184A91140043B0D3 /* README.md in Resources */,
 				303286A018528E1D00EC2C56 /* UMSnsAccountViewController.xib in Resources */,
+				30D51F40185493D300F0584B /* Icon@2x~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1244,7 +1276,6 @@
 		041E342F17B7D99D0067EF7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ming Li (6ZAM6HQ2F7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1279,7 +1310,6 @@
 		041E343017B7D99D0067EF7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ming Li (6ZAM6HQ2F7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

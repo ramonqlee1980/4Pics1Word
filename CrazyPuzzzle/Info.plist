@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>Icon.png</string>
+	<string>Icon</string>
 	<key>CFBundleIdentifier</key>
 	<string>4Images1Word</string>
 	<key>CFBundleInfoDictionaryVersion</key>
