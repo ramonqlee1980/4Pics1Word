@@ -6,11 +6,11 @@
   Copyright (c) 2013 xiaoran. All rights reserved.
 */
 "Dlg_Tip_Title"="提示";
-"Dlg_Body_Exchange_Text"="确认花掉%d金币获取一个文字提示?";
-"Dlg_Body_No_Enough_Coins_Text"="没有足够的道具，前往小卖部购买？";
+"Dlg_Body_Exchange_Text"="确认消费%d金币获取一个文字提示?";
+"Dlg_Body_No_Enough_Coins_Text"="没有足够的金币，现在购买？";
 
-"SNS_Help"="发现一款猜词学英语的应用 4Imgs1Word，我被难倒了，帮我猜猜看";
-"Share_Image_Title"="帮我猜猜这些图代表什么单词？";
+"SNS_Help"="发现一款有趣的应用 4 Imgs 1 Word，看图猜单词。你也来猜猜看吧！";
+"Share_Image_Title"="猜猜这些图代表什么单词？";
 "SNS_Help_Title_Weixin"="去微信求助";
 "SNS_Share_Award_Text"="今天首次分享到朋友圈赠送%d金币";
 "Beat_Text_Tip"="您击败了%d%%的玩家";
