@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -75,8 +76,8 @@ public class UrlImageViewHelperSample extends Activity {
 				try {
 					URL url = new URL(URLString);
 					StringBuilder dataBuilder = new StringBuilder();
-					dataBuilder.append("q=" + word);
-					dataBuilder.append("&body=" + jsonString);
+					dataBuilder.append("q=" + URLEncoder.encode(word,"UTF-8"));
+					dataBuilder.append("&body=" + URLEncoder.encode(jsonString,"UTF-8"));
 					byte[] data = dataBuilder.toString().getBytes();
 
 					httpURLConnection = (HttpURLConnection) url

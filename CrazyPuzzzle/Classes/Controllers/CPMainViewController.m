@@ -773,10 +773,10 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         id res = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         if (res && [res isKindOfClass:[NSDictionary class]]) {
             id rootDict = (NSDictionary*)res;
-            NSNumber* responseStatus = (NSNumber*)[rootDict objectForKey:ResponseStatusStringKey];
-            if (responseStatus.intValue!=HTTP_OK) {//200 for http ok
-                return;
-            }
+//            NSNumber* responseStatus = (NSNumber*)[rootDict objectForKey:ResponseStatusStringKey];
+//            if (responseStatus.intValue!=HTTP_OK) {//200 for http ok
+//                return;
+//            }
             
             //get image list
             rootDict = [rootDict objectForKey:ResponseDataStringKey];
