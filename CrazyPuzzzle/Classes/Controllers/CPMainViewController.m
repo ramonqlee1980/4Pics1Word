@@ -520,7 +520,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         self.maps[[NSNumber numberWithInt:r]]=[NSNumber numberWithInt:candidateViewTag];
         
         
-        if ([array count] == 1) { // 本轮提示后，成语完成，需要进入check模式
+        if ([self allAnswered]) { // 本轮提示后，成语完成，需要进入check模式
             [self checkAnswer];
         }
         
