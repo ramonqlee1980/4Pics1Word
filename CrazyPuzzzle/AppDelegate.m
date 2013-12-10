@@ -37,8 +37,7 @@
     }
     
     [Flurry startSession:kFlurryAppId withOptions:launchOptions];
-    //请求数据
-    [[RMQuestionsRequest sharedInstance]startAsynchronous];
+    
     
     return YES;
 }

@@ -236,6 +236,9 @@ static AVAudioPlayer *_audioPlayer = nil;
             [_startGameBtn setTitle:NSLocalizedString(@"Load_Game", "") forState:UIControlStateNormal];
         }
     }
+    
+    //请求数据
+    [[RMQuestionsRequest sharedInstance]startAsynchronous];
 }
 #pragma mark 请求网络数据返回后的处理
 -(void)responseReceived:(NSNotification*)notification

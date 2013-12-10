@@ -1,5 +1,8 @@
 Release 1.1.0
-1.增加daily challenge功能
+1.增加daily challenge功能:gif & images
+2.融合gif：https://github.com/giphy/GiphyAPI（daily challenge和日常的猜单词中？）
+3.互动环节：我出你猜,加录音功能？
+
 
 Release 1.0.0
 1.传输数据采用DES加密；

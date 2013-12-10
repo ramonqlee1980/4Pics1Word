@@ -857,15 +857,11 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     //从服务器端请求数据
     NSMutableArray * array = [[NSMutableArray alloc]init];
-#if 0
-    NSString *file = [MAIN_BUDDLE pathForResource:@"question" ofType:@"plist"];
-    [array addObjectsFromArray:[NSArray arrayWithContentsOfFile:file]];
-#else
     if([notification.object isKindOfClass:[NSArray class]])
     {
         [array addObjectsFromArray:(NSArray*)notification.object];
     }
-#endif
+    
     self.dataSource = array;
     
     [self startNewLevel];
