@@ -1,16 +1,12 @@
 //
-//  CPHomeViewController.h
-//  CrazyPuzzzle
-//
-//  Created by mac on 13-8-11.
-//  Copyright (c) 2013年 xiaoran. All rights reserved.
-//
+//  HomeViewController.h
+//  Modified:初始进入的界面，用于选择进入猜词的那个环节
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "UMFeedback.h"
 
-@interface CPHomeViewController : UIViewController<UMFeedbackDataDelegate>{
+@interface HomeViewController : UIViewController<UMFeedbackDataDelegate>{
 
     __weak IBOutlet UIButton *_musicOnBtn;
     __weak IBOutlet UIButton *_musicOffBtn;

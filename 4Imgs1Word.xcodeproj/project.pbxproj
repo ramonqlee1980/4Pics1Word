@@ -18,8 +18,8 @@
 		041E341C17B7D99D0067EF7C /* images in Resources */ = {isa = PBXBuildFile; fileRef = 041E341B17B7D99D0067EF7C /* images */; };
 		041E342117B7D99D0067EF7C /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 041E342017B7D99D0067EF7C /* Controllers */; };
 		041E342B17B7D99D0067EF7C /* Tools in Resources */ = {isa = PBXBuildFile; fileRef = 041E342A17B7D99D0067EF7C /* Tools */; };
-		041E343517B7DC000067EF7C /* CPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343417B7DC000067EF7C /* CPHomeViewController.m */; };
-		041E343B17B7DCE40067EF7C /* CPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343A17B7DCE40067EF7C /* CPMainViewController.m */; };
+		041E343517B7DC000067EF7C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343417B7DC000067EF7C /* HomeViewController.m */; };
+		041E343B17B7DCE40067EF7C /* MainGuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343A17B7DCE40067EF7C /* MainGuessViewController.m */; };
 		041E343E17B7DD7A0067EF7C /* CPPropStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343D17B7DD7A0067EF7C /* CPPropStoreViewController.m */; };
 		041E347817B7F30E0067EF7C /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346017B7F30E0067EF7C /* board.png */; };
 		041E347917B7F30E0067EF7C /* btn_feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346117B7F30E0067EF7C /* btn_feedback.png */; };
@@ -182,10 +182,10 @@
 		041E341617B7D99D0067EF7C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Configuration/Default@2x.png"; sourceTree = "<group>"; };
 		041E341D17B7D99D0067EF7C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		041E341E17B7D99D0067EF7C /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
-		041E343317B7DC000067EF7C /* CPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPHomeViewController.h; sourceTree = "<group>"; };
-		041E343417B7DC000067EF7C /* CPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPHomeViewController.m; sourceTree = "<group>"; };
-		041E343917B7DCE40067EF7C /* CPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMainViewController.h; sourceTree = "<group>"; };
-		041E343A17B7DCE40067EF7C /* CPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMainViewController.m; sourceTree = "<group>"; };
+		041E343317B7DC000067EF7C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		041E343417B7DC000067EF7C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		041E343917B7DCE40067EF7C /* MainGuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainGuessViewController.h; sourceTree = "<group>"; };
+		041E343A17B7DCE40067EF7C /* MainGuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainGuessViewController.m; sourceTree = "<group>"; };
 		041E343C17B7DD7A0067EF7C /* CPPropStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPPropStoreViewController.h; path = Classes/Controllers/CPPropStoreViewController.h; sourceTree = "<group>"; };
 		041E343D17B7DD7A0067EF7C /* CPPropStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPPropStoreViewController.m; path = Classes/Controllers/CPPropStoreViewController.m; sourceTree = "<group>"; };
 		041E346017B7F30E0067EF7C /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
@@ -540,10 +540,10 @@
 		041E342017B7D99D0067EF7C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				041E343317B7DC000067EF7C /* CPHomeViewController.h */,
-				041E343417B7DC000067EF7C /* CPHomeViewController.m */,
-				041E343917B7DCE40067EF7C /* CPMainViewController.h */,
-				041E343A17B7DCE40067EF7C /* CPMainViewController.m */,
+				041E343317B7DC000067EF7C /* HomeViewController.h */,
+				041E343417B7DC000067EF7C /* HomeViewController.m */,
+				041E343917B7DCE40067EF7C /* MainGuessViewController.h */,
+				041E343A17B7DCE40067EF7C /* MainGuessViewController.m */,
 			);
 			name = Controllers;
 			path = Classes/Controllers;
@@ -1149,7 +1149,7 @@
 				30CBF450184A91140043B0D3 /* ASIS3Request.m in Sources */,
 				041E340417B7D99D0067EF7C /* AppDelegate.m in Sources */,
 				30CBF44E184A91140043B0D3 /* ASIS3BucketRequest.m in Sources */,
-				041E343517B7DC000067EF7C /* CPHomeViewController.m in Sources */,
+				041E343517B7DC000067EF7C /* HomeViewController.m in Sources */,
 				30CBF456184A91140043B0D3 /* SDWebImageDownloader.m in Sources */,
 				30CBF448184A91140043B0D3 /* ASICloudFilesObject.m in Sources */,
 				303285E0185184D900EC2C56 /* ParticleEmitter3D.m in Sources */,
@@ -1162,7 +1162,7 @@
 				30CBF451184A91140043B0D3 /* ASIS3ServiceRequest.m in Sources */,
 				303286F71853D94F00EC2C56 /* MBProgressHUD.m in Sources */,
 				30CBF440184A91140043B0D3 /* ASIHTTPRequest.m in Sources */,
-				041E343B17B7DCE40067EF7C /* CPMainViewController.m in Sources */,
+				041E343B17B7DCE40067EF7C /* MainGuessViewController.m in Sources */,
 				30CBF455184A91140043B0D3 /* SDImageCache.m in Sources */,
 				041E343E17B7DD7A0067EF7C /* CPPropStoreViewController.m in Sources */,
 				30CBF443184A91140043B0D3 /* ASIWebPageRequest.m in Sources */,

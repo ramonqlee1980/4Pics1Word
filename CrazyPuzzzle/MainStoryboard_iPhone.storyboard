@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Main Guess View Controller-->
         <scene sceneID="bdc-hu-xpL">
             <objects>
-                <viewController storyboardIdentifier="CPMainViewController" id="1SZ-hA-cpa" customClass="CPMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CPMainViewController" id="1SZ-hA-cpa" customClass="MainGuessViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pnQ-EE-8Hn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -399,7 +399,7 @@
         <!--Home View Controller-->
         <scene sceneID="SRX-qC-rWV">
             <objects>
-                <viewController storyboardIdentifier="CPHomeViewController" id="2io-xE-UgP" customClass="CPHomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CPHomeViewController" id="2io-xE-UgP" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mX2-CP-GDj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>

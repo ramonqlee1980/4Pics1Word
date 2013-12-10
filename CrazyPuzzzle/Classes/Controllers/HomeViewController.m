@@ -6,13 +6,13 @@
 //  Copyright (c) 2013年 xiaoran. All rights reserved.
 //
 
-#import "CPHomeViewController.h"
+#import "HomeViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageAdditions.h"
-#import "CPMainViewController.h"
+#import "MainGuessViewController.h"
 #import "RMQuestionsRequest.h"
 
-@interface CPHomeViewController ()
+@interface HomeViewController ()
 
 - (void)musicPlay;
 - (void)musicStop;
@@ -24,7 +24,7 @@
 
 static AVAudioPlayer *_audioPlayer = nil;
 
-@implementation CPHomeViewController
+@implementation HomeViewController
 
 
 
@@ -140,7 +140,7 @@ static AVAudioPlayer *_audioPlayer = nil;
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
       
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    CPMainViewController *mainVC = [sb instantiateViewControllerWithIdentifier:@"CPMainViewController"];
+    MainGuessViewController *mainVC = [sb instantiateViewControllerWithIdentifier:@"CPMainViewController"];
     mainVC.homeScreenShot = self.homeScreenShot;
     
     [self presentModalViewController:mainVC animated:NO];

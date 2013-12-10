@@ -1,8 +1,12 @@
 Release 1.1.0
 1.增加daily challenge功能:gif & images
+a.界面同猜词界面，仅仅有有限个可以猜
+b.完毕后，返回初始界面，并锁定daily chanllenge直至明天
+
 2.融合gif：https://github.com/giphy/GiphyAPI（daily challenge和日常的猜单词中？）
 3.互动环节：我出你猜,加录音功能？
-
+4.bug fix
+1.解决同步网络数据时，可能无法收到回应的bug
 
 Release 1.0.0
 1.传输数据采用DES加密；

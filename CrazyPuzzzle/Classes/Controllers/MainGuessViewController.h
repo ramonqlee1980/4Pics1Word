@@ -1,17 +1,13 @@
 //
-//  CPMainViewController.h
-//  CrazyPuzzzle
-//
-//  Created by mac on 13-8-11.
-//  Copyright (c) 2013年 xiaoran. All rights reserved.
-//
+//  MainGuessViewController
+//  猜词主界面
 
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
 #import "coinView.h"
 #import "UMSocialControllerService.h"
 
-@interface CPMainViewController : UIViewController<WXApiDelegate,coinViewDelegate,UMSocialUIDelegate>{
+@interface MainGuessViewController : UIViewController<WXApiDelegate,coinViewDelegate,UMSocialUIDelegate>{
 
     __weak IBOutlet UILabel *_myGoldLable;
     __weak IBOutlet UILabel *_levelLable;

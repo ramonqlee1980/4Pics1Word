@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 xiaoran. All rights reserved.
 //
 
-#import "CPMainViewController.h"
+#import "MainGuessViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageAdditions.h"
 #import "ASIHTTPRequest.h"
@@ -70,7 +70,7 @@
 //需要随机加入26个字母中的几个字母
 static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-@interface CPMainViewController ()
+@interface MainGuessViewController ()
 {
     NSMutableArray* questionImageResultArray;//图片描述信息数组
     CGRect questionImageRect;
@@ -85,7 +85,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 @end
 
-@implementation CPMainViewController
+@implementation MainGuessViewController
 
 - (void)viewDidLoad
 {
@@ -119,6 +119,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     if (_currentLevel > [self.dataSource count]) {
         SLog(@"这已经是最后一关！");
+        [self back:nil];//返回主界面了
         return;
     }
     [USER_DEFAULT setInteger:_currentLevel forKey:CurrentLevelStringKey];
@@ -442,7 +443,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     } completion:^(BOOL finished){
         
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-        CPMainViewController *homeVC = [sb instantiateViewControllerWithIdentifier:@"CPHomeViewController"];
+        MainGuessViewController *homeVC = [sb instantiateViewControllerWithIdentifier:@"CPHomeViewController"];
         
         [self presentModalViewController:homeVC animated:NO];
         
