@@ -76,8 +76,9 @@ public class UrlImageViewHelperSample extends Activity {
 				try {
 					URL url = new URL(URLString);
 					StringBuilder dataBuilder = new StringBuilder();
-					dataBuilder.append("q=" + URLEncoder.encode(word,"UTF-8"));
-					dataBuilder.append("&body=" + URLEncoder.encode(jsonString,"UTF-8"));
+					dataBuilder.append("q=" + URLEncoder.encode(word, "UTF-8"));
+					dataBuilder.append("&body="
+							+ URLEncoder.encode(jsonString, "UTF-8"));
 					byte[] data = dataBuilder.toString().getBytes();
 
 					httpURLConnection = (HttpURLConnection) url
@@ -104,11 +105,12 @@ public class UrlImageViewHelperSample extends Activity {
 								.getInputStream();
 						String responseString = dealResponseResult(inptStream); // 处理服务器的响应结果
 						Log.d("out", responseString);
-						
+
 						new Handler(getMainLooper()).post(new Runnable() {
 							@Override
 							public void run() {
-								Toast.makeText(UrlImageViewHelperSample.this, "uploaded", Toast.LENGTH_SHORT).show();
+								Toast.makeText(UrlImageViewHelperSample.this,
+										"uploaded", Toast.LENGTH_SHORT).show();
 							}
 						});
 					}
@@ -314,6 +316,7 @@ public class UrlImageViewHelperSample extends Activity {
 
 		final Button search = (Button) findViewById(R.id.search);
 		final Button uploadButton = (Button) findViewById(R.id.upload);
+
 		final EditText searchText = (EditText) findViewById(R.id.search_text);
 
 		mListView = (ListView) findViewById(R.id.results);

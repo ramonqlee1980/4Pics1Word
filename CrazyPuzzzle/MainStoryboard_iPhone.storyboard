@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xPc-6O-Xyn">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
@@ -169,7 +169,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" id="I5G-Kc-meb">
-                                <rect key="frame" x="10" y="354.999998763929" width="300" height="167"/>
+                                <rect key="frame" x="10" y="354.99999813889877" width="300" height="167"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -451,7 +451,7 @@
                                     <action selector="startGame:" destination="2io-xE-UgP" eventType="touchUpInside" id="5xf-mh-fSM"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jV8-7R-0Kr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jV8-7R-0Kr">
                                 <rect key="frame" x="174" y="312" width="110" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
@@ -463,7 +463,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startGame:" destination="2io-xE-UgP" eventType="touchUpInside" id="FsH-GH-qj1"/>
+                                    <action selector="startDailyChallenge:" destination="2io-xE-UgP" eventType="touchUpInside" id="UPs-bA-2TV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RK2-j1-d07">
@@ -526,7 +526,7 @@
                                     <segue destination="SkP-bB-zkY" kind="modal" id="VGj-0v-7bK"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Challenge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Yb-7P-C1H">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Challenge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Yb-7P-C1H">
                                 <rect key="frame" x="50" y="319" width="134" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -636,7 +636,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon.png" width="57" height="57"/>
+        <image name="Icon.png" width="120" height="120"/>
         <image name="answer.png" width="32" height="32"/>
         <image name="answer_press.png" width="32" height="32"/>
         <image name="background.png" width="384" height="512"/>

@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageAdditions.h"
 #import "MainGuessViewController.h"
+#import "DailyChallengeController.h"
 #import "RMQuestionsRequest.h"
 
 @interface HomeViewController ()
@@ -146,6 +147,15 @@ static AVAudioPlayer *_audioPlayer = nil;
     [self presentModalViewController:mainVC animated:NO];
 }
 
+-(IBAction)startDailyChallenge:(id)sender
+{
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
+
+    //TODO::缺少首次进入的动画
+    DailyChallengeController *vc = [[DailyChallengeController alloc]initWithNibName:@"DailyChallengeController" bundle:nil];
+    
+    [self presentModalViewController:vc animated:YES];
+}
 
 - (IBAction)openMusic:(id)sender
 {

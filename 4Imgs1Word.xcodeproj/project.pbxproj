@@ -167,6 +167,9 @@
 		30D51F3F185493D300F0584B /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F38185493D300F0584B /* Icon-Small.png */; };
 		30D51F40185493D300F0584B /* Icon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F39185493D300F0584B /* Icon@2x~iphone.png */; };
 		30D51F421854943000F0584B /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F411854943000F0584B /* Icon-80.png */; };
+		30D51F4A1857C7E800F0584B /* RMGuessWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F491857C7E800F0584B /* RMGuessWordView.m */; };
+		30D51F501857CC9B00F0584B /* DailyChallengeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */; };
+		30D51F511857CC9B00F0584B /* DailyChallengeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -403,6 +406,11 @@
 		30D51F38185493D300F0584B /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Configuration/Icon-Small.png"; sourceTree = "<group>"; };
 		30D51F39185493D300F0584B /* Icon@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x~iphone.png"; path = "Configuration/Icon@2x~iphone.png"; sourceTree = "<group>"; };
 		30D51F411854943000F0584B /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-80.png"; path = "Configuration/Icon-80.png"; sourceTree = "<group>"; };
+		30D51F481857C7E800F0584B /* RMGuessWordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGuessWordView.h; sourceTree = "<group>"; };
+		30D51F491857C7E800F0584B /* RMGuessWordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMGuessWordView.m; sourceTree = "<group>"; };
+		30D51F4D1857CC9B00F0584B /* DailyChallengeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyChallengeController.h; sourceTree = "<group>"; };
+		30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyChallengeController.m; sourceTree = "<group>"; };
+		30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyChallengeController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,6 +539,8 @@
 		041E341F17B7D99D0067EF7C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				30D51F4C1857CA5500F0584B /* Models */,
+				30D51F471857C7E800F0584B /* RMCustomViews */,
 				303287071853E00A00EC2C56 /* IAP */,
 				041E342017B7D99D0067EF7C /* Controllers */,
 			);
@@ -544,6 +554,9 @@
 				041E343417B7DC000067EF7C /* HomeViewController.m */,
 				041E343917B7DCE40067EF7C /* MainGuessViewController.h */,
 				041E343A17B7DCE40067EF7C /* MainGuessViewController.m */,
+				30D51F4D1857CC9B00F0584B /* DailyChallengeController.h */,
+				30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */,
+				30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */,
 			);
 			name = Controllers;
 			path = Classes/Controllers;
@@ -984,6 +997,23 @@
 			name = AnswersRequest;
 			sourceTree = "<group>";
 		};
+		30D51F471857C7E800F0584B /* RMCustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				30D51F481857C7E800F0584B /* RMGuessWordView.h */,
+				30D51F491857C7E800F0584B /* RMGuessWordView.m */,
+			);
+			name = RMCustomViews;
+			path = ../../iOS_Lib/RMCustomViews;
+			sourceTree = "<group>";
+		};
+		30D51F4C1857CA5500F0584B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1095,6 +1125,7 @@
 				30D51F421854943000F0584B /* Icon-80.png in Resources */,
 				30D51F3F185493D300F0584B /* Icon-Small.png in Resources */,
 				041E34AE17B7F3150067EF7C /* btn_share_press.png in Resources */,
+				30D51F511857CC9B00F0584B /* DailyChallengeController.xib in Resources */,
 				303285BC185139BD00EC2C56 /* buttonCtaSmall@2x.png in Resources */,
 				303287061853DF4300EC2C56 /* Info.plist in Resources */,
 				303286ED18528E6B00EC2C56 /* 开发指南.html in Resources */,
@@ -1143,10 +1174,12 @@
 				30CBF43E184A91140043B0D3 /* ASIDownloadCache.m in Sources */,
 				30CBF44D184A91140043B0D3 /* ASIS3BucketObject.m in Sources */,
 				30CBF43F184A91140043B0D3 /* ASIFormDataRequest.m in Sources */,
+				30D51F501857CC9B00F0584B /* DailyChallengeController.m in Sources */,
 				30CBF449184A91140043B0D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */,
 				30CBF442184A91140043B0D3 /* ASINetworkQueue.m in Sources */,
 				30CBF450184A91140043B0D3 /* ASIS3Request.m in Sources */,
+				30D51F4A1857C7E800F0584B /* RMGuessWordView.m in Sources */,
 				041E340417B7D99D0067EF7C /* AppDelegate.m in Sources */,
 				30CBF44E184A91140043B0D3 /* ASIS3BucketRequest.m in Sources */,
 				041E343517B7DC000067EF7C /* HomeViewController.m in Sources */,
@@ -1286,7 +1319,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/CrazyPuzzzle/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/CrazyPuzzzle/Tools/WeChatSDK\\\"",
@@ -1303,6 +1336,7 @@
 				);
 				PRODUCT_NAME = 4Imgs1Word;
 				PROVISIONING_PROFILE = "234DEDEB-C299-4682-961E-82C48E489BEB";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1320,7 +1354,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/CrazyPuzzzle/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/CrazyPuzzzle/Tools/WeChatSDK\\\"",
@@ -1337,6 +1371,7 @@
 				);
 				PRODUCT_NAME = 4Imgs1Word;
 				PROVISIONING_PROFILE = "B7F0BDCE-B568-45D8-8FF2-788EB02981A1";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

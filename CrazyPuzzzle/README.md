@@ -1,4 +1,5 @@
 Release 1.1.0
+0.代码重构
 1.增加daily challenge功能:gif & images
 a.界面同猜词界面，仅仅有有限个可以猜
 b.完毕后，返回初始界面，并锁定daily chanllenge直至明天
