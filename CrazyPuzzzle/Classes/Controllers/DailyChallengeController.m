@@ -79,6 +79,7 @@
         guessView.delegate = self;
         guessView.dataset = array;
         guessView.controller = self;
+        guessView.coins = [Utils currentCoins];
     }
 }
 

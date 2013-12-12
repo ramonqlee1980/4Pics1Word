@@ -87,6 +87,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 @implementation MainGuessViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
