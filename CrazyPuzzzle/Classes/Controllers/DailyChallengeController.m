@@ -78,6 +78,7 @@
         RMGuessWordView* guessView = ((RMGuessWordView*)view);
         guessView.delegate = self;
         guessView.dataset = array;
+        guessView.controller = self;
     }
 }
 
