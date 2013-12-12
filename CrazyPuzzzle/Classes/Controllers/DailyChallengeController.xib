@@ -26,7 +26,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDO-zH-ikN">
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iDO-zH-ikN">
                     <rect key="frame" x="228" y="5" width="87" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -55,12 +55,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="left" text="200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dtu-d0-j7v">
-                    <rect key="frame" x="270" y="12" width="45" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8dq-ge-KBR">
+                    <rect key="frame" x="275" y="15" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

@@ -10,6 +10,7 @@
 #import "RMGuessWordView.h"
 
 @interface DailyChallengeController : UIViewController<GuessWordViewDelegate>
-
+{
+}
 - (IBAction)backHome:(id)sender; // back to home
 @end

@@ -452,7 +452,7 @@
 		041E33EC17B7D99C0067EF7C = {
 			isa = PBXGroup;
 			children = (
-				041E33F717B7D99C0067EF7C /* CrazyPuzzzle */,
+				041E33F717B7D99C0067EF7C /* 4Imgs1Word */,
 				30CBF3F1184A90BA0043B0D3 /* Frameworks */,
 				041E33F617B7D99C0067EF7C /* Products */,
 			);
@@ -466,7 +466,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		041E33F717B7D99C0067EF7C /* CrazyPuzzzle */ = {
+		041E33F717B7D99C0067EF7C /* 4Imgs1Word */ = {
 			isa = PBXGroup;
 			children = (
 				041E341D17B7D99D0067EF7C /* README.md */,
@@ -476,6 +476,7 @@
 				041E341F17B7D99D0067EF7C /* Classes */,
 				041E33F817B7D99D0067EF7C /* Supporting Files */,
 			);
+			name = 4Imgs1Word;
 			path = CrazyPuzzzle;
 			sourceTree = "<group>";
 		};

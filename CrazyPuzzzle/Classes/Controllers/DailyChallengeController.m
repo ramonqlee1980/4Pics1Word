@@ -11,12 +11,15 @@
 #import "RMGuessWordView.h"
 #import "RMQuestionsRequest.h"
 
-#define kBackButtonTag 1000
-#define kCoinsLabelTag 1001
+#define kBackButtonTag  1000
+#define kCoinsButtonTag 1001
+#define kCoinsLabelTag  1003
 #define kGuesswordContainerTag 1002
 
 @interface DailyChallengeController ()
-
+{
+    UILabel* coinsLabel;
+}
 @end
 
 @implementation DailyChallengeController
@@ -39,6 +42,9 @@
     if (backButton && [backButton isKindOfClass:[UIButton class]]) {
         [((UIButton*)backButton)addTarget:self action:@selector(backHome:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    coinsLabel = (UILabel*)[self.view viewWithTag:kCoinsLabelTag];
+    [self setCoinsLabelText:[NSString stringWithFormat:@"%d",[Utils currentCoins]]];
     
     //load views
     if (![self guesswordView]) {
@@ -106,23 +112,31 @@
 }
 
 #pragma mark GuessWordViewDelegate
+
 -(void)willEnterNextGuess:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
 {
-    UIView* coinsLabel = [self.view viewWithTag:kCoinsLabelTag];
-    if (coinsLabel && [coinsLabel isKindOfClass:[UILabel class]]) {
-        [((UILabel*)coinsLabel) setText:[NSString stringWithFormat:@"%d",currentCoins]];
-    }
+    //更新本地数据和ui显示数据
+    [USER_DEFAULT setInteger:currentCoins forKey:CurrentGoldenStringKey];
+    [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
 }
+
 -(void)coinsChanged:(NSUInteger)currentCoins
 {
-    UIView* coinsLabel = [self.view viewWithTag:kCoinsLabelTag];
-    if (coinsLabel && [coinsLabel isKindOfClass:[UILabel class]]) {
-        [((UILabel*)coinsLabel) setText:[NSString stringWithFormat:@"%d",currentCoins]];
-    }
+    //更新本地数据和ui显示数据
+    [USER_DEFAULT setInteger:currentCoins forKey:CurrentGoldenStringKey];
+    [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
 }
+
 -(void)gameover
 {
     [self backHome:nil];
 }
 
+#pragma set methods
+-(void)setCoinsLabelText:(NSString*)value
+{
+    if (coinsLabel) {
+        [((UILabel*)coinsLabel) setText:value];
+    }
+}
 @end
