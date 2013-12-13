@@ -184,7 +184,7 @@
 		041E341417B7D99D0067EF7C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Configuration/Default.png; sourceTree = "<group>"; };
 		041E341617B7D99D0067EF7C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Configuration/Default@2x.png"; sourceTree = "<group>"; };
 		041E341D17B7D99D0067EF7C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		041E341E17B7D99D0067EF7C /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		041E341E17B7D99D0067EF7C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		041E343317B7DC000067EF7C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		041E343417B7DC000067EF7C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		041E343917B7DCE40067EF7C /* MainGuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainGuessViewController.h; sourceTree = "<group>"; };
@@ -470,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				041E341D17B7D99D0067EF7C /* README.md */,
-				041E341E17B7D99D0067EF7C /* Define.h */,
+				041E341E17B7D99D0067EF7C /* Constants.h */,
 				041E342A17B7D99D0067EF7C /* Tools */,
 				041E340517B7D99D0067EF7C /* Configuration */,
 				041E341F17B7D99D0067EF7C /* Classes */,

@@ -7,7 +7,6 @@
 //
 
 #import "CPIAPStoreManager.h"
-#import "Define.h"
 #import "Flurry.h"
 
 @implementation CPIAPStoreManager

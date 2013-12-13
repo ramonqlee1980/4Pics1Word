@@ -1,13 +1,5 @@
-//
-//  Header.h
-//  Social
-//
-//  Created by mobcent on 13-5-31.
-//  Copyright (c) 2013年 __MyCompanyName__. All rights reserved.
-//
-
-#ifndef Define_h
-#define Define_h
+#ifndef __CONSTANTS__
+#define __CONSTANTS__
 
 
 /***********  系统通用设置  *********************/
@@ -99,4 +91,4 @@
 #define CP_Price_Key @"price"
 #define CP_Value_Key @"value"
 
-#endif
+#endif//__CONSTANTS__

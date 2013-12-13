@@ -5,7 +5,7 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
-    #import "Define.h"
+    #import "Constants.h"
     #import "AudioSoundHelper.h"
     #import "UIImageAdditions.h"
 #endif
