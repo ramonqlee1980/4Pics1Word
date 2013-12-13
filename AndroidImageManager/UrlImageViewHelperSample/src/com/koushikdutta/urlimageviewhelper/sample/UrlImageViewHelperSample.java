@@ -75,10 +75,18 @@ public class UrlImageViewHelperSample extends Activity {
 				HttpURLConnection httpURLConnection = null;
 				try {
 					URL url = new URL(URLString);
+					String body = URLEncoder.encode(jsonString, "UTF-8");
+					String q = URLEncoder.encode(word, "UTF-8");
 					StringBuilder dataBuilder = new StringBuilder();
-					dataBuilder.append("q=" + URLEncoder.encode(word, "UTF-8"));
-					dataBuilder.append("&body="
-							+ URLEncoder.encode(jsonString, "UTF-8"));
+					dataBuilder.append("q=" + q);
+					dataBuilder.append("&body=" + body);
+
+					// md5
+					Log.d("debugout","q+body:"+word+jsonString);
+					
+					dataBuilder.append("&random="
+							+ EncoderHandler.encodeByMD5(word+jsonString));
+
 					byte[] data = dataBuilder.toString().getBytes();
 
 					httpURLConnection = (HttpURLConnection) url
@@ -104,7 +112,7 @@ public class UrlImageViewHelperSample extends Activity {
 						InputStream inptStream = httpURLConnection
 								.getInputStream();
 						String responseString = dealResponseResult(inptStream); // 处理服务器的响应结果
-						Log.d("out", responseString);
+						Log.d("debugout", responseString);
 
 						new Handler(getMainLooper()).post(new Runnable() {
 							@Override
@@ -343,7 +351,7 @@ public class UrlImageViewHelperSample extends Activity {
 					responseData.put("responseData", results);
 					Log.d("out", responseData.toString());
 					uploadString(
-							"http://checknewversion.duapp.com/image/wordUpload.php",
+							"http://checknewversion.duapp.com/image/wordUploader.php",
 							searchText.getText().toString(),
 							responseData.toString());
 				} catch (Exception e) {

@@ -131,6 +131,8 @@
 
 -(void)gameover
 {
+    //TODO今日挑战结束，明日再来
+    
     [self backHome:nil];
 }
 
