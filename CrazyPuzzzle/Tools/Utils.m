@@ -10,10 +10,13 @@
 
 #import <ifaddrs.h>
 #import <arpa/inet.h>
+
+#define CurrentGoldenStringKey @"CurrentGolden"
+
 static NSString* ipAddress;
 @implementation Utils
-
-// Get IP Address
+    
+    // Get IP Address
 + (NSString *)getIPAddress {
     if (ipAddress && ipAddress.length>0) {
         return ipAddress;
@@ -42,46 +45,63 @@ static NSString* ipAddress;
     return ipAddress;
 }
 + (NSString *)encodeToPercentEscapeString: (NSString *) input
-{
-    // Encode all the reserved characters, per RFC 3986
-    // (<http://www.ietf.org/rfc/rfc3986.txt>)
-    NSString *outputStr = (NSString *)
-    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                              (CFStringRef)input,
-                                                              NULL,
-                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                              kCFStringEncodingUTF8));
-    return outputStr;
-}
-
-+ (NSString *)decodeFromPercentEscapeString: (NSString *) input
-{
-    NSMutableString *outputStr = [NSMutableString stringWithString:input];
-    [outputStr replaceOccurrencesOfString:@"+"
-                               withString:@" "
-                                  options:NSLiteralSearch
-                                    range:NSMakeRange(0, [outputStr length])];
+    {
+        // Encode all the reserved characters, per RFC 3986
+        // (<http://www.ietf.org/rfc/rfc3986.txt>)
+        NSString *outputStr = (NSString *)
+        CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                  (CFStringRef)input,
+                                                                  NULL,
+                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                  kCFStringEncodingUTF8));
+        return outputStr;
+    }
     
-    return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-}
-
++ (NSString *)decodeFromPercentEscapeString: (NSString *) input
+    {
+        NSMutableString *outputStr = [NSMutableString stringWithString:input];
+        [outputStr replaceOccurrencesOfString:@"+"
+                                   withString:@" "
+                                      options:NSLiteralSearch
+                                        range:NSMakeRange(0, [outputStr length])];
+        
+        return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    
 +(void)removeSubviews:(UIView*)view
-{
-    if (view) {
-        NSArray* array = [view subviews];
-        for (UIView* t in array) {
-            if (t) {
-                [t removeFromSuperview];
+    {
+        if (view) {
+            NSArray* array = [view subviews];
+            for (UIView* t in array) {
+                if (t) {
+                    [t removeFromSuperview];
+                }
             }
         }
     }
-}
 +(NSUInteger)currentCoins
-{
-    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey]){
-        return [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey] intValue];
+    {
+        id value = [Utils objectForKey:CurrentGoldenStringKey];
+        
+        if(value){
+            return [value intValue];
+        }
+        
+        [Utils setValue:[NSNumber numberWithInt:CP_Initial_Golden] forKey:CurrentGoldenStringKey];
+        return CP_Initial_Golden;
     }
-    [USER_DEFAULT setInteger:CP_Initial_Golden forKey:CurrentGoldenStringKey];
-    return CP_Initial_Golden;
-}
-@end
++(void)setCurrentCoins:(NSInteger)coins
+    {
+        [Utils setValue:[NSNumber numberWithInt:coins] forKey:CurrentGoldenStringKey];
+    }
+    
++ (id)objectForKey:(NSString *)defaultName
+    {
+        return [USER_DEFAULT objectForKey:defaultName];
+    }
++(void)setValue:(id)value forKey:(NSString *)defaultName
+    {
+        [USER_DEFAULT setValue:value forKey:defaultName];
+        [USER_DEFAULT synchronize];
+    }
+    @end

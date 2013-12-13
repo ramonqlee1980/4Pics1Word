@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "Flurry.h"
 #import <StoreKit/StoreKit.h>
+#import "Utils.h"
 
 #define CP_Number_Of_Rows 5
 #define CP_Height_Of_Row  88
@@ -83,11 +84,10 @@
         NSArray *values = CP_Golden_values;
         int value = [[values objectAtIndex:index] intValue];
         
-        int currentGold = [[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue];
+        int currentGold = [Utils currentCoins];
         currentGold+= value;
         
-        [USER_DEFAULT setInteger:currentGold forKey:CurrentGoldenStringKey];
-        [USER_DEFAULT synchronize];
+        [Utils setCurrentCoins:currentGold];
         
         
         //更新UI

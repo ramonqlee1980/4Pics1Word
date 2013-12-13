@@ -387,7 +387,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     // 奖励玩家
     NSUInteger coins = [Utils currentCoins]+CP_Gift_Per_Idioms;
-    [USER_DEFAULT setInteger:coins forKey:CurrentGoldenStringKey];
+    [Utils setCurrentCoins:coins];
     
     _myGoldLable.text = [NSString stringWithFormat:@"%d",coins];
     
@@ -465,7 +465,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         return;
     }
     
-    if([[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue]>=[_promptCostLabel.text intValue]){
+    if([Utils currentCoins]>=[_promptCostLabel.text intValue]){
         //把还没有填词的btn 的tag装入array（)
         //需要考虑已经填充过一些的情况
         NSMutableArray *array = [NSMutableArray array];
@@ -512,7 +512,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         }
         
         _myGoldLable.text = [NSString stringWithFormat:@"%d",_currentCoins];
-        [USER_DEFAULT setInteger:_currentCoins forKey:CurrentGoldenStringKey];
+        [Utils setCurrentCoins:_currentCoins];
         [self hidePrompView];
     }else{// 跳到商店
         
@@ -835,7 +835,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (void)showPrompView{
     [self.view bringSubviewToFront:_prompView];
-    _prompContentLabel.text = [[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue]>=[_promptCostLabel.text intValue]? [NSString stringWithFormat:NSLocalizedString(@"Dlg_Body_Exchange_Text", ""),_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost] : NSLocalizedString(@"Dlg_Body_No_Enough_Coins_Text", "");
+    _prompContentLabel.text = [Utils currentCoins]>=[_promptCostLabel.text intValue]? [NSString stringWithFormat:NSLocalizedString(@"Dlg_Body_Exchange_Text", ""),_firstPrompt?CP_First_Prompt_Cost:CP_NoFirst_Prompt_Cost] : NSLocalizedString(@"Dlg_Body_No_Enough_Coins_Text", "");
     
 }
 

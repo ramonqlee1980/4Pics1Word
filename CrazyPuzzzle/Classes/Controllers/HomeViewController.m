@@ -55,15 +55,7 @@ static AVAudioPlayer *_audioPlayer = nil;
         
         [USER_DEFAULT setInteger:CP_Initial_Level forKey:CurrentLevelStringKey];
     }
-    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey]){
-       [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentGoldenStringKey] intValue];
-        
-    }else{
-        
-        [USER_DEFAULT setInteger:CP_Initial_Golden forKey:CurrentGoldenStringKey];
-    }
-    
-    
+
     if(![[NSUserDefaults standardUserDefaults] objectForKey:CurrentAudioStatusKey]){
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CurrentAudioStatusKey];

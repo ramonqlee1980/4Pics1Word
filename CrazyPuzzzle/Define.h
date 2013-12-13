@@ -108,7 +108,6 @@
 #define kCPPaidForGoldsNotificatioin @"kCPPaidForGoldsNotificatioin"
 
 #define CurrentLevelStringKey @"CurrentLevel"
-#define CurrentGoldenStringKey @"CurrentGolden"
 #define CurrentAudioStatusKey @"AudioStatus"
 #define kBackgroundMusic @"bg0"
 #define kClickSound @"mainclick"

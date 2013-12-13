@@ -27,5 +27,11 @@ return s##className;\
 + (NSString *)decodeFromPercentEscapeString: (NSString *) input;
 
 +(void)removeSubviews:(UIView*)view;
+
+//coins access
++(void)setCurrentCoins:(NSInteger)coins;
 +(NSUInteger)currentCoins;
+    
++(id)objectForKey:(NSString *)defaultName;
++(void)setValue:(id)value forKey:(NSString *)defaultName;
 @end

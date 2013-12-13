@@ -118,14 +118,14 @@
 -(void)willEnterNextGuess:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
 {
     //更新本地数据和ui显示数据
-    [USER_DEFAULT setInteger:currentCoins forKey:CurrentGoldenStringKey];
+    [Utils setCurrentCoins:currentCoins];
     [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
 }
 
 -(void)coinsChanged:(NSUInteger)currentCoins
 {
     //更新本地数据和ui显示数据
-    [USER_DEFAULT setInteger:currentCoins forKey:CurrentGoldenStringKey];
+    [Utils setCurrentCoins:currentCoins];
     [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
 }
 
