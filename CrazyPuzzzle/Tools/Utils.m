@@ -12,6 +12,8 @@
 #import <arpa/inet.h>
 
 #define CurrentGoldenStringKey @"CurrentGolden"
+#define CurrentLevelStringKey @"CurrentLevel"
+
 
 static NSString* ipAddress;
 @implementation Utils
@@ -79,7 +81,18 @@ static NSString* ipAddress;
             }
         }
     }
-+(NSUInteger)currentCoins
+    
++ (id)objectForKey:(NSString *)defaultName
+    {
+        return [USER_DEFAULT objectForKey:defaultName];
+    }
++(void)setValue:(id)value forKey:(NSString *)defaultName
+    {
+        [USER_DEFAULT setValue:value forKey:defaultName];
+        [USER_DEFAULT synchronize];
+    }
+    
+    +(NSUInteger)currentCoins
     {
         id value = [Utils objectForKey:CurrentGoldenStringKey];
         
@@ -95,13 +108,19 @@ static NSString* ipAddress;
         [Utils setValue:[NSNumber numberWithInt:coins] forKey:CurrentGoldenStringKey];
     }
     
-+ (id)objectForKey:(NSString *)defaultName
+    +(NSUInteger)currentLevel
     {
-        return [USER_DEFAULT objectForKey:defaultName];
+        id value = [Utils objectForKey:CurrentLevelStringKey];
+        
+        if(value){
+            return [value intValue];
+        }
+        
+        [Utils setValue:[NSNumber numberWithInt:CP_Initial_Level] forKey:CurrentLevelStringKey];
+        return CP_Initial_Level;
     }
-+(void)setValue:(id)value forKey:(NSString *)defaultName
++(void)setCurrentLevel:(NSInteger)level
     {
-        [USER_DEFAULT setValue:value forKey:defaultName];
-        [USER_DEFAULT synchronize];
+        [Utils setValue:[NSNumber numberWithInt:level] forKey:CurrentLevelStringKey];
     }
     @end

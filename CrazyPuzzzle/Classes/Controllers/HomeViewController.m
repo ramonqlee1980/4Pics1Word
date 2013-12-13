@@ -45,17 +45,7 @@ static AVAudioPlayer *_audioPlayer = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    
-    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey]){
-        [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey] intValue];
-        
-    }else{
-        
-        [USER_DEFAULT setInteger:CP_Initial_Level forKey:CurrentLevelStringKey];
-    }
-
+	// Do any additional setup after loading the view
     if(![[NSUserDefaults standardUserDefaults] objectForKey:CurrentAudioStatusKey]){
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:CurrentAudioStatusKey];

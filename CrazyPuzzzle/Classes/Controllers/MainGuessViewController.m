@@ -115,15 +115,12 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
-    // 配置好下一题的环境(下面的内容可以放在一个单独的函数中，与viewdidload中的复用)
-    _currentLevel ++;
-    
+    [Utils setCurrentLevel:++_currentLevel];
     if (_currentLevel > [self.dataSource count]) {
         SLog(@"这已经是最后一关！");
         [self back:nil];//返回主界面了
         return;
     }
-    [USER_DEFAULT setInteger:_currentLevel forKey:CurrentLevelStringKey];
     
     [self startNewLevel];
 }
@@ -846,13 +843,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 #pragma mark  加载本地数据，比如关数，金币等
 -(void)loadLocalSettings
 {
-    if([[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey]){
-        _currentLevel = [[[NSUserDefaults standardUserDefaults] objectForKey:CurrentLevelStringKey] intValue];
-        
-    }else{
-        _currentLevel = CP_Initial_Level;
-        [USER_DEFAULT setInteger:CP_Initial_Level forKey:CurrentLevelStringKey];
-    }
+    _currentLevel = [Utils currentLevel];
 }
 #pragma mark 请求网络数据返回后的处理
 -(void)responseReceived:(NSNotification*)notification

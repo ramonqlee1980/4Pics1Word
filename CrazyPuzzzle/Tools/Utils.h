@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define CP_Initial_Level 1
+
 #define Decl_Singleton(className) +(className*)sharedInstance;
 
 #define Impl_Singleton(className) static className* s##className;\
@@ -31,6 +33,11 @@ return s##className;\
 //coins access
 +(void)setCurrentCoins:(NSInteger)coins;
 +(NSUInteger)currentCoins;
+
+//level access
++(void)setCurrentLevel:(NSInteger)level;
++(NSUInteger)currentLevel;
+    
     
 +(id)objectForKey:(NSString *)defaultName;
 +(void)setValue:(id)value forKey:(NSString *)defaultName;
