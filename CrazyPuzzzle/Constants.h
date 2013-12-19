@@ -62,11 +62,11 @@
     @{CP_Price_Key:@"3.99",CP_Value_Key:NSLocalizedString(@"IAP_3999","")},\
     @{CP_Price_Key:@"4.99",CP_Value_Key:NSLocalizedString(@"IAP_11888","")}];
 
-#define CP_Golden_ProductIDs @[@"com.idreems.288Coins",\
-  @"com.idreems.666Coins",\
-  @"com.idreems.1888Coins",\
-  @"com.idreems.3999Coins",\
-  @"com.idreems.11888Coins"]
+#define CP_Golden_ProductIDs @[@"com.idreems.Coins288",\
+  @"com.idreems.Coins666",\
+  @"com.idreems.Coins1888",\
+  @"com.idreems.Coins3999",\
+  @"com.idreems.Coins11888"]
 
 #define CP_Golden_price(index) [@[@"0.99",@"1.99",@"2.99",@"3.99",@"4.99"] objectAtIndex:index]
 #define CP_Golden_values @[@"288",@"666",@"1888",@"3999",@"11888"]
