@@ -46,8 +46,7 @@
 //    _promptLabel.hidden = YES;
     
     _coinLeftLbl.text = [NSString stringWithFormat:NSLocalizedString(@"Gold_Left", "")];
-    _myCoinLbl.text = [NSString stringWithFormat:@"%@",[USER_DEFAULT objectForKey:@"CurrentGolden"]];
-    
+    _myCoinLbl.text = [NSString stringWithFormat:@"%d",[Utils currentCoins]];
     _currentSelected = 1;
 //    [_tasksBtn setTitle:@"任务" forState:UIControlStateNormal];
 //    _tasksBtn.hidden = YES;

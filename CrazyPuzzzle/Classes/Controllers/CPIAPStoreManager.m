@@ -71,17 +71,7 @@
     SLog(@"购买完成。。transaction data=%@",transaction.transactionReceipt);
     
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-    
-//    NSString *productID = transaction.payment.productIdentifier;
-//    NSArray *IDs = CP_Golden_ProductIDs;
-//    int index = [IDs indexOfObject:productID];
-//    
-//    NSArray *values = CP_Golden_values;
-//    int value = [[values objectAtIndex:index] intValue];
-//    
-//    int currentGold = [[USER_DEFAULT objectForKey:CurrentGoldenStringKey] intValue];
-//    [USER_DEFAULT setInteger:(currentGold+value) forKey:@"CurrentGolden"];
-//    [USER_DEFAULT synchronize];
+
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kCPPaidForGoldsNotificatioin object:transaction];
     [Flurry logEvent:kCompleteIAPTransaction];
