@@ -43,6 +43,7 @@
 /**************** flurry event ********************/
 #define kFlurryShareBySNS @"ShareBySNS"
 #define kFlurryLevel @"Level"
+#define kCoinsAmount @"Coins"
 
 /**************** constants for game ********************/
 #define CP_Gift_Per_Idioms 10

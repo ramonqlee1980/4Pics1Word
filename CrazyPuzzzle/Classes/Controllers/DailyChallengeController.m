@@ -66,10 +66,13 @@
 -(void)responseReceived:(NSNotification*)notification
 {
     //从服务器端请求数据
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     NSMutableArray * array = [[NSMutableArray alloc]init];
     if([notification.object isKindOfClass:[NSArray class]])
     {
-        [array addObjectsFromArray:(NSArray*)notification.object];
+        //TODO::随机一项作为每日挑战的题目，后续待改进
+        NSArray* obj = (NSArray*)notification.object;
+        [array addObject: [obj objectAtIndex:rand()%[obj count]]];
     }
     
     //TODO::暂时测试用
@@ -134,6 +137,7 @@
     //TODO今日挑战结束，明日再来
     
     [self backHome:nil];
+    [Utils setDailyChallengeOff];
 }
 
 #pragma set methods

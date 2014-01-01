@@ -156,7 +156,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self setupAnswerViews:rc];
     [self setupCandidateContainerView];
     
-    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:_currentLevel],[NSNumber numberWithInt:totalLevel], nil];
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:_currentLevel],[NSNumber numberWithInt:totalLevel],kCoinsAmount, [NSNumber numberWithInt:[Utils currentCoins]],nil];
     [Flurry logEvent:kFlurryLevel withParameters:dict];
 }
 

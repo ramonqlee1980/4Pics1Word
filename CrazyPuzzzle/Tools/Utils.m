@@ -13,7 +13,7 @@
 
 #define CurrentGoldenStringKey @"CurrentGolden"
 #define CurrentLevelStringKey @"CurrentLevel"
-
+#define kDailyChallengeDateKey @"DailyChallengeDateKey"
 
 static NSString* ipAddress;
 @implementation Utils
@@ -123,4 +123,21 @@ static NSString* ipAddress;
     {
         [Utils setValue:[NSNumber numberWithInt:level] forKey:CurrentLevelStringKey];
     }
++(void)setDailyChallengeOff
+{
+    [Utils setValue:[Utils today] forKey:kDailyChallengeDateKey];
+}
++(BOOL)dailyChallengeOn
+{
+    return ![[Utils today] isEqualToString:[Utils objectForKey:kDailyChallengeDateKey]];
+}
++(NSString*)today
+{
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setLocale:[NSLocale currentLocale]];
+    [outputFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *str = [outputFormatter stringFromDate:[NSDate date]];
+    NSLog(@"testDate:%@", str);
+    return str;
+}
     @end

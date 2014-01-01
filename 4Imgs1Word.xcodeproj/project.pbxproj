@@ -409,6 +409,7 @@
 		30D51F4D1857CC9B00F0584B /* DailyChallengeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyChallengeController.h; sourceTree = "<group>"; };
 		30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyChallengeController.m; sourceTree = "<group>"; };
 		30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyChallengeController.xib; sourceTree = "<group>"; };
+		30F18418187405CD009E695A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1230,6 +1231,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				303286FF1853DE1000EC2C56 /* en */,
+				30F18418187405CD009E695A /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

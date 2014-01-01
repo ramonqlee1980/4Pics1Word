@@ -6,4 +6,4 @@
   Copyright (c) 2013 idreems. All rights reserved.
 */
 /* Localized versions of Info.plist keys */
-CFBundleDisplayName = "4 Imgs 1 Word";
+CFBundleDisplayName = "猜单词";

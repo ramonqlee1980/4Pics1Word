@@ -66,6 +66,9 @@ static AVAudioPlayer *_audioPlayer = nil;
 {
     [super viewDidAppear:animated];
     
+    //daily challenged??
+    _dailyChallengeBtn.enabled =[Utils dailyChallengeOn];
+    
     //截屏，留作动画用
     UIGraphicsBeginImageContext(self.view.frame.size);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -213,6 +216,12 @@ static AVAudioPlayer *_audioPlayer = nil;
 {
     if (_startGameBtn) {
         [_startGameBtn setTitle:NSLocalizedString(@"Start_Game", "") forState:UIControlStateNormal];
+    }
+    if (_dailyChallengeBtn) {
+        [_dailyChallengeBtn setTitle:NSLocalizedString(@"Start_Game", "") forState:UIControlStateNormal];
+    }
+    if (_dailyChallengeLabel) {
+        [_dailyChallengeLabel setText:NSLocalizedString(@"Daily_Challenge", "")];
     }
 }
 
