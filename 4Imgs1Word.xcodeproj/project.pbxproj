@@ -169,6 +169,9 @@
 		30D51F4A1857C7E800F0584B /* RMGuessWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F491857C7E800F0584B /* RMGuessWordView.m */; };
 		30D51F501857CC9B00F0584B /* DailyChallengeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */; };
 		30D51F511857CC9B00F0584B /* DailyChallengeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */; };
+		30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841A187626DE009E695A /* ClassifiedCell.m */; };
+		30F1841D1876273A009E695A /* ClassifiedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F1841C1876273A009E695A /* ClassifiedCell.xib */; };
+		30F1842018762AE4009E695A /* ClassifedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841F18762AE4009E695A /* ClassifedController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -410,6 +413,11 @@
 		30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyChallengeController.m; sourceTree = "<group>"; };
 		30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyChallengeController.xib; sourceTree = "<group>"; };
 		30F18418187405CD009E695A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		30F18419187626DE009E695A /* ClassifiedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifiedCell.h; sourceTree = "<group>"; };
+		30F1841A187626DE009E695A /* ClassifiedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifiedCell.m; sourceTree = "<group>"; };
+		30F1841C1876273A009E695A /* ClassifiedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifiedCell.xib; sourceTree = "<group>"; };
+		30F1841E18762AE4009E695A /* ClassifedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifedController.h; sourceTree = "<group>"; };
+		30F1841F18762AE4009E695A /* ClassifedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifedController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -556,6 +564,8 @@
 				30D51F4D1857CC9B00F0584B /* DailyChallengeController.h */,
 				30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */,
 				30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */,
+				30F1841E18762AE4009E695A /* ClassifedController.h */,
+				30F1841F18762AE4009E695A /* ClassifedController.m */,
 			);
 			name = Controllers;
 			path = Classes/Controllers;
@@ -1001,6 +1011,9 @@
 			children = (
 				30D51F481857C7E800F0584B /* RMGuessWordView.h */,
 				30D51F491857C7E800F0584B /* RMGuessWordView.m */,
+				30F18419187626DE009E695A /* ClassifiedCell.h */,
+				30F1841A187626DE009E695A /* ClassifiedCell.m */,
+				30F1841C1876273A009E695A /* ClassifiedCell.xib */,
 			);
 			name = RMCustomViews;
 			path = ../../iOS_Lib/RMCustomViews;
@@ -1111,6 +1124,7 @@
 				041E34A317B7F3150067EF7C /* answer_press.png in Resources */,
 				041E34A417B7F3150067EF7C /* background.png in Resources */,
 				041E34A917B7F3150067EF7C /* btn_back.png in Resources */,
+				30F1841D1876273A009E695A /* ClassifiedCell.xib in Resources */,
 				3032869F18528E1D00EC2C56 /* UMSLoginViewController.xib in Resources */,
 				302827C8185BEBE0000046E0 /* Default-568h@2x.png in Resources */,
 				041E34AA17B7F3150067EF7C /* btn_back_press.png in Resources */,
@@ -1167,11 +1181,13 @@
 			files = (
 				30CBF44B184A91140043B0D3 /* ReachabilityAs.m in Sources */,
 				041E33FF17B7D99D0067EF7C /* main.m in Sources */,
+				30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */,
 				30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */,
 				30CBF467184AA1000043B0D3 /* Utils.m in Sources */,
 				30CBF43E184A91140043B0D3 /* ASIDownloadCache.m in Sources */,
 				30CBF44D184A91140043B0D3 /* ASIS3BucketObject.m in Sources */,
 				30CBF43F184A91140043B0D3 /* ASIFormDataRequest.m in Sources */,
+				30F1842018762AE4009E695A /* ClassifedController.m in Sources */,
 				30D51F501857CC9B00F0584B /* DailyChallengeController.m in Sources */,
 				30CBF449184A91140043B0D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */,

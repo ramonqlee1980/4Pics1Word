@@ -60,6 +60,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleHudView:) name:kInAppPurchaseEvent object:nil];
     
+    [Flurry logEvent:kEnterIAPViewEvent];
+    
 }
 
 - (void)didReceiveMemoryWarning

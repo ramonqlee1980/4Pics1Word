@@ -3,9 +3,12 @@ Release 1.1.1
 a.界面同猜词界面，仅仅有有限个可以猜
 2.融合gif：https://github.com/giphy/GiphyAPI（daily challenge和日常的猜单词中？）
 3.互动环节：我出你猜,加录音功能？
-4.bug fix
-1.解决同步网络数据时，可能无法收到回应的bug
-
+4.增加做任务得积分：看iap情况；
+    tapjoy和flurry，admob
+5.修改网络数据传输为加密传输（DES）；
+6.增加我出你猜：类似我画你猜；
+7.分类打包
+8.过一定关，奖励
 
 Release 1.0.1
 1.增加daily challenge功能

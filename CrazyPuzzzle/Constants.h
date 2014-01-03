@@ -41,9 +41,13 @@
 
 
 /**************** flurry event ********************/
-#define kFlurryShareBySNS @"ShareBySNS"
+#define kShareBySNSResponse @"ShareBySNSResponse"
 #define kFlurryLevel @"Level"
 #define kCoinsAmount @"Coins"
+#define kRevealLetterEvent @"RevealLetterEvent"
+#define kSNSShareEvent @"SNSShareEvent"
+#define kSNSPlatform @"SNSPlatform"
+#define kEnterIAPViewEvent @"EnterIAPViewEvent"
 
 /**************** constants for game ********************/
 #define CP_Gift_Per_Idioms 10
@@ -54,7 +58,7 @@
 #define CP_Lose_To_You 11
 
 
-#define CP_Initial_Golden 288
+#define CP_Initial_Golden 50
 
 /**************** IAP相关 ********************/
 #define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\
