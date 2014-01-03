@@ -461,7 +461,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     {
         return;
     }
-    
+    [Flurry logEvent:kRevealLetterEvent];
     if([Utils currentCoins]>=[_promptCostLabel.text intValue]){
         //把还没有填词的btn 的tag装入array（)
         //需要考虑已经填充过一些的情况
@@ -545,6 +545,7 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
+    [Flurry logEvent:kSNSShareEvent withParameters:[NSDictionary dictionaryWithObjectsAndKeys:platformName,kSNSPlatform, nil]];
     //weixin
     if ([platformName isEqualToString:UMShareToWechatSession] ||
         [platformName isEqualToString:UMShareToWechatTimeline] ) {
@@ -562,8 +563,8 @@ static NSString *_globalWordsString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     {
         //得到分享到的微博平台名
         NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
-        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[[response.data allKeys] objectAtIndex:0],kFlurryShareBySNS, nil];
-        [Flurry logEvent:kFlurryShareBySNS withParameters:dict];
+        NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[[response.data allKeys] objectAtIndex:0],kShareBySNSResponse, nil];
+        [Flurry logEvent:kShareBySNSResponse withParameters:dict];
     }
 }
 

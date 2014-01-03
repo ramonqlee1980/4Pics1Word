@@ -9,6 +9,9 @@
 #import "ClassifedController.h"
 #import "ClassifiedCell.h"
 
+static NSString *CellIdentifier = @"ClassfiedCellIdentifier";
+static NSString *CellNIBName = @"ClassifiedCell";
+
 @interface ClassifedController ()
 
 @end
@@ -33,8 +36,16 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                       target:self action:@selector(shopButtonClicked:)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
 }
 
+- (IBAction)shopButtonClicked:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    [self presentViewController:[storyBoard instantiateViewControllerWithIdentifier:@"CPPropStoreViewController"] animated:NO completion:nil];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -54,10 +65,18 @@
     // Return the number of rows in the section.
     return 10;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ClassfiedCellIdentifier";
+    static BOOL isRegNib = NO;
+    if (!isRegNib) {
+        UINib *nib = [UINib nibWithNibName:CellNIBName bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+        isRegNib = YES;
+    }
     ClassifiedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...

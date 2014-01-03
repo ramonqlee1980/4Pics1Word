@@ -12,6 +12,7 @@
 #import "MainGuessViewController.h"
 #import "DailyChallengeController.h"
 #import "RMQuestionsRequest.h"
+#import "ClassifedController.h"
 
 @interface HomeViewController ()
 
@@ -131,7 +132,16 @@ static AVAudioPlayer *_audioPlayer = nil;
     
     [self presentModalViewController:mainVC animated:NO];
 }
-
+- (IBAction)EnterGradeView:(id)sender
+{
+    [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
+    
+    //TODO::缺少首次进入的动画
+    ClassifedController *vc = [[ClassifedController alloc]init];
+    UINavigationController* navi = [[UINavigationController alloc]initWithRootViewController:vc];
+    
+    [self presentModalViewController:navi animated:YES];
+}
 -(IBAction)startDailyChallenge:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
