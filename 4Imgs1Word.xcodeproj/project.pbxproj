@@ -171,7 +171,8 @@
 		30D51F511857CC9B00F0584B /* DailyChallengeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */; };
 		30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841A187626DE009E695A /* ClassifiedCell.m */; };
 		30F1841D1876273A009E695A /* ClassifiedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F1841C1876273A009E695A /* ClassifiedCell.xib */; };
-		30F1842018762AE4009E695A /* ClassifedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841F18762AE4009E695A /* ClassifedController.m */; };
+		30F1842018762AE4009E695A /* ClassifiedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841F18762AE4009E695A /* ClassifiedController.m */; };
+		30F1842218778540009E695A /* ClassifiedController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F1842118778540009E695A /* ClassifiedController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -416,8 +417,9 @@
 		30F18419187626DE009E695A /* ClassifiedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifiedCell.h; sourceTree = "<group>"; };
 		30F1841A187626DE009E695A /* ClassifiedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifiedCell.m; sourceTree = "<group>"; };
 		30F1841C1876273A009E695A /* ClassifiedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifiedCell.xib; sourceTree = "<group>"; };
-		30F1841E18762AE4009E695A /* ClassifedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifedController.h; sourceTree = "<group>"; };
-		30F1841F18762AE4009E695A /* ClassifedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifedController.m; sourceTree = "<group>"; };
+		30F1841E18762AE4009E695A /* ClassifiedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifiedController.h; sourceTree = "<group>"; };
+		30F1841F18762AE4009E695A /* ClassifiedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifiedController.m; sourceTree = "<group>"; };
+		30F1842118778540009E695A /* ClassifiedController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifiedController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,8 +566,9 @@
 				30D51F4D1857CC9B00F0584B /* DailyChallengeController.h */,
 				30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */,
 				30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */,
-				30F1841E18762AE4009E695A /* ClassifedController.h */,
-				30F1841F18762AE4009E695A /* ClassifedController.m */,
+				30F1841E18762AE4009E695A /* ClassifiedController.h */,
+				30F1841F18762AE4009E695A /* ClassifiedController.m */,
+				30F1842118778540009E695A /* ClassifiedController.xib */,
 			);
 			name = Controllers;
 			path = Classes/Controllers;
@@ -1098,6 +1101,7 @@
 				041E347817B7F30E0067EF7C /* board.png in Resources */,
 				041E347917B7F30E0067EF7C /* btn_feedback.png in Resources */,
 				302827CC185BEC66000046E0 /* Default.png in Resources */,
+				30F1842218778540009E695A /* ClassifiedController.xib in Resources */,
 				041E347A17B7F30E0067EF7C /* btn_music_off.png in Resources */,
 				041E347B17B7F30E0067EF7C /* btn_music_on.png in Resources */,
 				30D51F3C185493D300F0584B /* Icon-72@2x.png in Resources */,
@@ -1187,7 +1191,7 @@
 				30CBF43E184A91140043B0D3 /* ASIDownloadCache.m in Sources */,
 				30CBF44D184A91140043B0D3 /* ASIS3BucketObject.m in Sources */,
 				30CBF43F184A91140043B0D3 /* ASIFormDataRequest.m in Sources */,
-				30F1842018762AE4009E695A /* ClassifedController.m in Sources */,
+				30F1842018762AE4009E695A /* ClassifiedController.m in Sources */,
 				30D51F501857CC9B00F0584B /* DailyChallengeController.m in Sources */,
 				30CBF449184A91140043B0D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */,

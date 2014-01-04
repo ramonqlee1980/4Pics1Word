@@ -6,31 +6,35 @@
 //  Copyright (c) 2014 idreems. All rights reserved.
 //
 
-#import "ClassifedController.h"
+#import "ClassifiedController.h"
 #import "ClassifiedCell.h"
+#import "Utils.h"
 
 static NSString *CellIdentifier = @"ClassfiedCellIdentifier";
 static NSString *CellNIBName = @"ClassifiedCell";
 
-@interface ClassifedController ()
+@interface ClassifiedController ()
 
 @end
 
-@implementation ClassifedController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@implementation ClassifiedController
+@synthesize currentCoinsLabel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    if(currentCoinsLabel)
+    {
+        currentCoinsLabel.text = [NSString stringWithFormat:@"%d",[Utils currentCoins]];
+    }
+    
+//    static BOOL isRegNib = NO;
+//    if (!isRegNib) {
+//        UINib *nib = [UINib nibWithNibName:CellNIBName bundle:nil];
+//        [self.tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+//        isRegNib = YES;
+//    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -40,8 +44,20 @@ static NSString *CellNIBName = @"ClassifiedCell";
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                        target:self action:@selector(shopButtonClicked:)];
     self.navigationItem.rightBarButtonItem = refreshButton;
+    
+    UIButton *a1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [a1 setFrame:CGRectMake(0.0f, 0.0f, 35.0f, 25.0f)];
+    [a1 addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [a1 setImage:[UIImage imageNamed:@"btn_back"] forState:UIControlStateNormal];
+    refreshButton = [[UIBarButtonItem alloc] initWithCustomView:a1];
+
+    self.navigationItem.leftBarButtonItem = refreshButton;
 }
 
+-(IBAction)back:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
 - (IBAction)shopButtonClicked:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     [self presentViewController:[storyBoard instantiateViewControllerWithIdentifier:@"CPPropStoreViewController"] animated:NO completion:nil];
@@ -71,12 +87,6 @@ static NSString *CellNIBName = @"ClassifiedCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static BOOL isRegNib = NO;
-    if (!isRegNib) {
-        UINib *nib = [UINib nibWithNibName:CellNIBName bundle:nil];
-        [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
-        isRegNib = YES;
-    }
     ClassifiedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
