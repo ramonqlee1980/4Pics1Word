@@ -17,8 +17,8 @@
 
 static NSString* ipAddress;
 @implementation Utils
-    
-    // Get IP Address
+
+// Get IP Address
 + (NSString *)getIPAddress {
     if (ipAddress && ipAddress.length>0) {
         return ipAddress;
@@ -47,82 +47,82 @@ static NSString* ipAddress;
     return ipAddress;
 }
 + (NSString *)encodeToPercentEscapeString: (NSString *) input
-    {
-        // Encode all the reserved characters, per RFC 3986
-        // (<http://www.ietf.org/rfc/rfc3986.txt>)
-        NSString *outputStr = (NSString *)
-        CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                  (CFStringRef)input,
-                                                                  NULL,
-                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                  kCFStringEncodingUTF8));
-        return outputStr;
-    }
-    
+{
+    // Encode all the reserved characters, per RFC 3986
+    // (<http://www.ietf.org/rfc/rfc3986.txt>)
+    NSString *outputStr = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)input,
+                                                              NULL,
+                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                              kCFStringEncodingUTF8));
+    return outputStr;
+}
+
 + (NSString *)decodeFromPercentEscapeString: (NSString *) input
-    {
-        NSMutableString *outputStr = [NSMutableString stringWithString:input];
-        [outputStr replaceOccurrencesOfString:@"+"
-                                   withString:@" "
-                                      options:NSLiteralSearch
-                                        range:NSMakeRange(0, [outputStr length])];
-        
-        return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
+{
+    NSMutableString *outputStr = [NSMutableString stringWithString:input];
+    [outputStr replaceOccurrencesOfString:@"+"
+                               withString:@" "
+                                  options:NSLiteralSearch
+                                    range:NSMakeRange(0, [outputStr length])];
     
+    return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
 +(void)removeSubviews:(UIView*)view
-    {
-        if (view) {
-            NSArray* array = [view subviews];
-            for (UIView* t in array) {
-                if (t) {
-                    [t removeFromSuperview];
-                }
+{
+    if (view) {
+        NSArray* array = [view subviews];
+        for (UIView* t in array) {
+            if (t) {
+                [t removeFromSuperview];
             }
         }
     }
-    
+}
+
 + (id)objectForKey:(NSString *)defaultName
-    {
-        return [USER_DEFAULT objectForKey:defaultName];
-    }
+{
+    return [USER_DEFAULT objectForKey:defaultName];
+}
 +(void)setValue:(id)value forKey:(NSString *)defaultName
-    {
-        [USER_DEFAULT setValue:value forKey:defaultName];
-        [USER_DEFAULT synchronize];
+{
+    [USER_DEFAULT setValue:value forKey:defaultName];
+    [USER_DEFAULT synchronize];
+}
+
++(NSUInteger)currentCoins
+{
+    id value = [Utils objectForKey:CurrentGoldenStringKey];
+    
+    if(value){
+        return [value intValue];
     }
     
-    +(NSUInteger)currentCoins
-    {
-        id value = [Utils objectForKey:CurrentGoldenStringKey];
-        
-        if(value){
-            return [value intValue];
-        }
-        
-        [Utils setValue:[NSNumber numberWithInt:CP_Initial_Golden] forKey:CurrentGoldenStringKey];
-        return CP_Initial_Golden;
-    }
+    [Utils setValue:[NSNumber numberWithInt:CP_Initial_Golden] forKey:CurrentGoldenStringKey];
+    return CP_Initial_Golden;
+}
 +(void)setCurrentCoins:(NSInteger)coins
-    {
-        [Utils setValue:[NSNumber numberWithInt:coins] forKey:CurrentGoldenStringKey];
+{
+    [Utils setValue:[NSNumber numberWithInt:coins] forKey:CurrentGoldenStringKey];
+}
+
++(NSUInteger)currentLevel
+{
+    id value = [Utils objectForKey:CurrentLevelStringKey];
+    
+    if(value){
+        return [value intValue];
     }
     
-    +(NSUInteger)currentLevel
-    {
-        id value = [Utils objectForKey:CurrentLevelStringKey];
-        
-        if(value){
-            return [value intValue];
-        }
-        
-        [Utils setValue:[NSNumber numberWithInt:CP_Initial_Level] forKey:CurrentLevelStringKey];
-        return CP_Initial_Level;
-    }
+    [Utils setValue:[NSNumber numberWithInt:CP_Initial_Level] forKey:CurrentLevelStringKey];
+    return CP_Initial_Level;
+}
 +(void)setCurrentLevel:(NSInteger)level
-    {
-        [Utils setValue:[NSNumber numberWithInt:level] forKey:CurrentLevelStringKey];
-    }
+{
+    [Utils setValue:[NSNumber numberWithInt:level] forKey:CurrentLevelStringKey];
+}
 +(void)setDailyChallengeOff
 {
     [Utils setValue:[Utils today] forKey:kDailyChallengeDateKey];
@@ -140,4 +140,14 @@ static NSString* ipAddress;
     NSLog(@"testDate:%@", str);
     return str;
 }
-    @end
+
+//关卡相关
++(void)unlockLevel:(NSString*)levelName
+{
+    [Utils setValue:levelName forKey:levelName];
+}
+-(BOOL)levelUnlocked:(NSString*)levelName
+{
+    return [levelName isEqualToString:[Utils objectForKey:levelName]];
+}
+@end

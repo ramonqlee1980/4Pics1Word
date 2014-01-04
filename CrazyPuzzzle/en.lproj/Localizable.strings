@@ -25,6 +25,9 @@
 "Load_Fail"="FAIL";
 "Daily_Challenge"="Daily Challenge";
 
+//分类闯关界面
+"Dlg_Body_Unlock_Text"="Do you want to unlock it for %d coins?";
+
 //IAP
 "Gold_Left"="Coins:";
 "IAP_288"="+288";

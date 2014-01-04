@@ -42,7 +42,10 @@ return s##className;\
 +(id)objectForKey:(NSString *)defaultName;
 +(void)setValue:(id)value forKey:(NSString *)defaultName;
 
-
 +(void)setDailyChallengeOff;//关闭每日挑战
 +(BOOL)dailyChallengeOn;//是否可以进入每日挑战
+
+//关卡相关
++(void)unlockLevel:(NSString*)levelName;
+-(BOOL)levelUnlocked:(NSString*)levelName;
 @end

@@ -382,7 +382,7 @@ public class UrlImageViewHelperSample extends Activity {
 							// results
 							int start = 0;
 							final ArrayList<String> urls = new ArrayList<String>();
-							while (start < 50) {
+							while (start < 10) {
 								DefaultHttpClient client = new DefaultHttpClient();
 								HttpGet get = new HttpGet(
 										String.format(

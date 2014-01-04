@@ -39,9 +39,7 @@
     __weak IBOutlet UILabel *_shareTitleLabel;
     __weak IBOutlet UILabel *_shareContentLabel;
     
-    
     NSInteger _currentLevel;  // 当前level
-//    NSInteger _currentGolden; // 当前金币数量
     NSString *_currentAnswer; // 答案
     
     BOOL _isWrong;

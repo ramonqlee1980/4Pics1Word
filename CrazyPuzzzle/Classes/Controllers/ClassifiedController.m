@@ -9,6 +9,7 @@
 #import "ClassifiedController.h"
 #import "ClassifiedCell.h"
 #import "Utils.h"
+#import "UIImageView+WebCache.h"
 
 static NSString *CellIdentifier = @"ClassfiedCellIdentifier";
 static NSString *CellNIBName = @"ClassifiedCell";
@@ -80,63 +81,16 @@ static NSString *CellNIBName = @"ClassifiedCell";
 {
     ClassifiedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
-
+    //TODO::需要传递当前level的编号，用于解锁时记录用
+//    cell.tag = ;
+    
     // Configure the cell...
     cell.topLabel.text = [NSString stringWithFormat:@"label %d",indexPath.row];
-    
+    cell.bottomLabel.text = @"";
+    NSString* url = @"http://checknewversion.duapp.com/images/beautie_meirong.jpg";
+    [cell.imageView setImageWithURL:[NSURL URLWithString:url]];
     return cell;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a story board-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- 
- */
 
 #pragma mark left&right button responder
 -(IBAction)back:(id)sender
@@ -152,12 +106,40 @@ static NSString *CellNIBName = @"ClassifiedCell";
 - (void)TableViewCell:(UITableViewCell *)cell buttonPressed:(id)sender
 {
     //TODO::积分兑换可以进入此关，否则提示积分不足，需要购买，并可以跳转到购买界面
-    if ([Utils currentCoins]<CP_Enable_Grade_Cost) {
-        //积分不足
+    NSString* body = NSLocalizedString(@"Dlg_Body_No_Enough_Coins_Text","");//积分不足
+    if ([Utils currentCoins]>=CP_Enable_Grade_Cost) {
+        body = [NSString stringWithFormat:NSLocalizedString(@"Dlg_Body_Unlock_Text",""),CP_Enable_Grade_Cost];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:body delegate:self cancelButtonTitle:NSLocalizedString(@"OK", "")otherButtonTitles:NSLocalizedString(@"Cancel", ""), nil];
+    alert.tag = cell.tag;
+    [alert show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //需要购买积分？
+    NSUInteger coins = [Utils currentCoins];
+    
+    if(coins<CP_Enable_Grade_Cost)
+    {
+        switch (buttonIndex) {
+            case 0:
+                [self shopButtonClicked:nil];
+                break;
+            case 1:
+                NSLog(@"Button 1 Pressed");
+                break;
+            default:
+                break;
+        }
     }
     else
     {
-        //扣减积分，并开启此关
+        //TODO::积分足够，直接扣减后，进入当前关
+        //记录下当前关已经激活了
+        [Utils setCurrentCoins:(coins-CP_Enable_Grade_Cost)];
+        [Utils unlockLevel:[NSString stringWithFormat:@"%d",alertView.tag]];
     }
+    
 }
 @end
