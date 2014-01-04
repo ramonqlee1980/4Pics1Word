@@ -59,6 +59,7 @@
 
 
 #define CP_Initial_Golden 50
+#define CP_Enable_Grade_Cost 300//开启某一关需要的积分数
 
 /**************** IAP相关 ********************/
 #define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\

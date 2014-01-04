@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ClassifiedController : UIViewController
+@interface ClassifiedController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     UILabel* currentCoinsLabel;
+    UITableView* currentTableView;
 }
 
 @property(nonatomic,retain)IBOutlet UILabel* currentCoinsLabel;
+@property(nonatomic,retain)IBOutlet UITableView* currentTableView;
 
 -(IBAction)back:(id)sender;
 - (IBAction)shopButtonClicked:(id)sender;
