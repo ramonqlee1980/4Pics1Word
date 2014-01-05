@@ -11,12 +11,16 @@
 #import "Utils.h"
 #import "UIImageView+WebCache.h"
 #import "RMQuestionsRequest.h"
+#import "RMCategoryRequest.h"
+#import "RMCategory.h"
 
 static NSString *CellIdentifier = @"ClassfiedCellIdentifier";
 static NSString *CellNIBName = @"ClassifiedCell";
 
 @interface ClassifiedController ()<TableViewCellDelegate>
-
+{
+    NSMutableArray* categoryArray;
+}
 @end
 
 @implementation ClassifiedController
@@ -27,6 +31,11 @@ static NSString *CellNIBName = @"ClassifiedCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if(!categoryArray)
+    {
+        categoryArray = [NSMutableArray new];
+    }
     
     //update current coins
     if(currentCoinsLabel)
@@ -53,8 +62,23 @@ static NSString *CellNIBName = @"ClassifiedCell";
     refreshButton = [[UIBarButtonItem alloc] initWithCustomView:a1];
     
     self.navigationItem.leftBarButtonItem = refreshButton;
+    
+    //请求网络数据
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(categoryResponseReceived:) name:CATEGORY_RESPONSE_NOTIFICATION object:nil];
+    [[RMCategoryRequest sharedInstance]startAsynchronous];
 }
-
+#pragma mark 请求网络数据返回后的处理
+-(void)categoryResponseReceived:(NSNotification*)notification
+{
+    //从服务器端请求数据
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    if([notification.object isKindOfClass:[NSArray class]])
+    {
+        [categoryArray removeAllObjects];
+        [categoryArray addObjectsFromArray:(NSArray*)notification.object];
+        [currentTableView reloadData];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -72,7 +96,7 @@ static NSString *CellNIBName = @"ClassifiedCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
+    return categoryArray?categoryArray.count:0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60.0;
@@ -82,14 +106,19 @@ static NSString *CellNIBName = @"ClassifiedCell";
 {
     ClassifiedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
-    //TODO::需要传递当前level的编号，用于解锁时记录用
-//    cell.tag = ;
+
+    id obj = [categoryArray objectAtIndex:indexPath.row];
+    RMCategory* item = [RMCategory categoryWithDict:obj];
     
-    // Configure the cell...
-    cell.topLabel.text = [NSString stringWithFormat:@"label %d",indexPath.row];
-    cell.bottomLabel.text = @"";
-    NSString* url = @"http://checknewversion.duapp.com/images/beautie_meirong.jpg";
-    [cell.imageView setImageWithURL:[NSURL URLWithString:url]];
+    if (item) {
+        // Configure the cell...
+        cell.topLabel.text = item.name;
+        cell.bottomLabel.text = item.description;
+        [cell.imageView setImageWithURL:[NSURL URLWithString:item.iconUrl]];
+        //需要传递当前level的编号，用于解锁时记录用
+        cell.tag = item.identifier;
+    }
+    
     return cell;
 }
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //挑战的种类
-#define kFreeGuessGame @"FreeGuessGame"//初始的自由猜单词
+#define kFreeGuessGame @"ImageWords"//初始的自由猜单词
 #define kDailyGuessGame @"DailyGuessGame"//每日挑战
 
 

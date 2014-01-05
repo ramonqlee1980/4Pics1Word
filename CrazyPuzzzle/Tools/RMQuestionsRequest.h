@@ -31,6 +31,7 @@
 
 Decl_Singleton(RMQuestionsRequest);
 
-- (void)startAsynchronous;//请求问题列表，数据将通过通知的方式异步返回，通知名：QUESTION_RESPONSE_NOTIFICATION
+- (void)startAsynchronous;//请求缺省的问题列表，数据将通过通知的方式异步返回，通知名：QUESTION_RESPONSE_NOTIFICATION
 
+- (void)startAsynchronous:(NSString*)category;//请求指定类别的问题列表，数据将通过通知的方式异步返回，通知名：QUESTION_RESPONSE_NOTIFICATION
 @end

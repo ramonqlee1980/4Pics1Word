@@ -170,6 +170,8 @@
 		30D51F511857CC9B00F0584B /* ChallengeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F4F1857CC9B00F0584B /* ChallengeController.xib */; };
 		30D6BC13187971EB00AF35AB /* DailyChallengeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC12187971EB00AF35AB /* DailyChallengeDelegate.m */; };
 		30D6BC161879730600AF35AB /* FreeGuessChallengeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC151879730600AF35AB /* FreeGuessChallengeDelegate.m */; };
+		30D6BC19187A092800AF35AB /* RMCategoryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC18187A092800AF35AB /* RMCategoryRequest.m */; };
+		30D6BC1C187A09C600AF35AB /* RMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC1B187A09C600AF35AB /* RMCategory.m */; };
 		30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841A187626DE009E695A /* ClassifiedCell.m */; };
 		30F1841D1876273A009E695A /* ClassifiedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F1841C1876273A009E695A /* ClassifiedCell.xib */; };
 		30F1842018762AE4009E695A /* ClassifiedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841F18762AE4009E695A /* ClassifiedController.m */; };
@@ -416,6 +418,10 @@
 		30D6BC12187971EB00AF35AB /* DailyChallengeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyChallengeDelegate.m; sourceTree = "<group>"; };
 		30D6BC141879730600AF35AB /* FreeGuessChallengeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeGuessChallengeDelegate.h; sourceTree = "<group>"; };
 		30D6BC151879730600AF35AB /* FreeGuessChallengeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeGuessChallengeDelegate.m; sourceTree = "<group>"; };
+		30D6BC17187A092800AF35AB /* RMCategoryRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategoryRequest.h; sourceTree = "<group>"; };
+		30D6BC18187A092800AF35AB /* RMCategoryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategoryRequest.m; sourceTree = "<group>"; };
+		30D6BC1A187A09C600AF35AB /* RMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategory.h; sourceTree = "<group>"; };
+		30D6BC1B187A09C600AF35AB /* RMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategory.m; sourceTree = "<group>"; };
 		30F18418187405CD009E695A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		30F18419187626DE009E695A /* ClassifiedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifiedCell.h; sourceTree = "<group>"; };
 		30F1841A187626DE009E695A /* ClassifiedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifiedCell.m; sourceTree = "<group>"; };
@@ -1005,6 +1011,10 @@
 			children = (
 				30CBF469184B37050043B0D3 /* RMQuestionsRequest.h */,
 				30CBF46A184B37050043B0D3 /* RMQuestionsRequest.m */,
+				30D6BC17187A092800AF35AB /* RMCategoryRequest.h */,
+				30D6BC18187A092800AF35AB /* RMCategoryRequest.m */,
+				30D6BC1A187A09C600AF35AB /* RMCategory.h */,
+				30D6BC1B187A09C600AF35AB /* RMCategory.m */,
 			);
 			name = AnswersRequest;
 			sourceTree = "<group>";
@@ -1206,6 +1216,7 @@
 			files = (
 				30CBF44B184A91140043B0D3 /* ReachabilityAs.m in Sources */,
 				041E33FF17B7D99D0067EF7C /* main.m in Sources */,
+				30D6BC19187A092800AF35AB /* RMCategoryRequest.m in Sources */,
 				30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */,
 				30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */,
 				30CBF467184AA1000043B0D3 /* Utils.m in Sources */,
@@ -1215,6 +1226,7 @@
 				30F1842018762AE4009E695A /* ClassifiedController.m in Sources */,
 				30D51F501857CC9B00F0584B /* ChallengeController.m in Sources */,
 				30CBF449184A91140043B0D3 /* ASICloudFilesObjectRequest.m in Sources */,
+				30D6BC1C187A09C600AF35AB /* RMCategory.m in Sources */,
 				30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */,
 				30CBF442184A91140043B0D3 /* ASINetworkQueue.m in Sources */,
 				30D6BC13187971EB00AF35AB /* DailyChallengeDelegate.m in Sources */,

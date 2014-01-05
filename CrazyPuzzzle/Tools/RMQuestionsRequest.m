@@ -7,29 +7,36 @@
 //
 
 #import "RMQuestionsRequest.h"
-#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
 #define HTTP_OK 200
 #define CP_Words_Max_Length 16//允许的最大单词长度
 
 #define kQuestionListUrl @"http://checknewversion.duapp.com/image/questionlist2.php"//请求问题列表url
 
+#define kCategoryKey @"category"
 
 @implementation RMQuestionsRequest
 #pragma mark get image lists
 Impl_Singleton(RMQuestionsRequest)
-
-- (void)startAsynchronous
+- (void)startAsynchronous:(NSString*)category
 {
     if (self.questionsArray && self.questionsArray.count>0) {
         [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:self.questionsArray];
         return;
     }
+    
     NSURL *url = [NSURL URLWithString:kQuestionListUrl];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [ASIHTTPRequest setDefaultTimeOutSeconds:30];
     [request setDelegate:self];
+    [request setPostValue:category forKey:kCategoryKey];
     [request startAsynchronous];
+}
+
+- (void)startAsynchronous
+{
+    [self startAsynchronous:kFreeGuessGame];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request

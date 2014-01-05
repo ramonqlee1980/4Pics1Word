@@ -84,4 +84,5 @@
 #define CP_Price_Key @"price"
 #define CP_Value_Key @"value"
 
+#define HTTP_OK 200
 #endif//__CONSTANTS__
