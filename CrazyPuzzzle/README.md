@@ -1,16 +1,17 @@
 Release 1.1.1
-0.代码重构
-a.界面同猜词界面，仅仅有有限个可以猜
-2.融合gif：https://github.com/giphy/GiphyAPI（daily challenge和日常的猜单词中？）
+1.融合gif：https://github.com/giphy/GiphyAPI（daily challenge和日常的猜单词中？）
 3.互动环节：我出你猜,加录音功能？
 4.增加做任务得积分：看iap情况；
     tapjoy和flurry，admob
 5.修改网络数据传输为加密传输（DES）；
 6.增加我出你猜：类似我画你猜；
-7.分类打包
-8.过一定关，奖励
-9.超过8个字母的单词的界面适配
+7.增加分类挑战模式
+9.界面适配最大支持16个字母的单词(done)
 10.RMGuessWordView封装，支持：普通砖积分游戏；每日挑战；分类挑战等
+游戏模式：封装为一个单独的界面，后续只要输入数据，重写delegate记录闯关数据等即可
+
+11.服务器端数据按照类别进行分类的php脚本和数据库设计；
+
 
 Release 1.0.1
 1.增加daily challenge功能

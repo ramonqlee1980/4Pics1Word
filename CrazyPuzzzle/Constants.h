@@ -58,7 +58,7 @@
 #define CP_Lose_To_You 11
 
 
-#define CP_Initial_Golden 50
+#define CP_Initial_Golden [RMQuestionsRequest sharedInstance].awardCoins
 #define CP_Enable_Grade_Cost 300//开启某一关需要的积分数
 
 /**************** IAP相关 ********************/

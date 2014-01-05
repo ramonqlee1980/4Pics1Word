@@ -11,7 +11,7 @@
 
 #define HTTP_OK 200
 
-#define kQuestionListUrl @"http://checknewversion.duapp.com/image/questionlist.php"//请求问题列表url
+#define kQuestionListUrl @"http://checknewversion.duapp.com/image/questionlist2.php"//请求问题列表url
 
 
 @implementation RMQuestionsRequest
@@ -45,14 +45,27 @@ Impl_Singleton(RMQuestionsRequest)
     if (responseData) {
         NSError* error;
         id res = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
-        if (res && [res isKindOfClass:[NSArray class]]) {
+        
+        NSArray* dataList = nil;
+        
+        if (res && [res isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary* dict = (NSDictionary*)res;
+            id temp = [dict objectForKey:@"awardCoins"];
+            if (temp && [temp isKindOfClass:[NSNumber class]]) {
+                self.awardCoins = ((NSNumber*)temp).integerValue;
+            }
+            dataList = [dict objectForKey:@"data"];
+        }
+        
+        if (dataList) {
             if(!self.questionsArray)
             {
                 _questionsArray = [[NSMutableArray alloc]init];
             }
             
             [self.questionsArray removeAllObjects];
-            [self.questionsArray addObjectsFromArray:(NSArray*)res];
+            [self.questionsArray addObjectsFromArray:(NSArray*)dataList];
             [self postProcess];
             
             //bingo,now read image list
