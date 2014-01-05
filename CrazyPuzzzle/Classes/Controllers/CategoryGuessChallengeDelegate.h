@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "RMGuessWordView.h"
 
-@interface FreeGuessChallengeDelegate : NSObject<GuessWordViewDelegate>
+@interface CategoryGuessChallengeDelegate : NSObject<GuessWordViewDelegate>
+
+@property(nonatomic,copy)NSString* category;
 
 @end

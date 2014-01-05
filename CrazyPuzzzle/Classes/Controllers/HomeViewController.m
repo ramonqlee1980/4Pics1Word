@@ -13,7 +13,7 @@
 #import "RMQuestionsRequest.h"
 #import "ClassifiedController.h"
 #import "DailyChallengeDelegate.h"
-#import "FreeGuessChallengeDelegate.h"
+#import "CategoryGuessChallengeDelegate.h"
 
 @interface HomeViewController ()
 {
@@ -48,7 +48,7 @@ static AVAudioPlayer *_audioPlayer = nil;
     
     [self internationalize];
     [self startAnimation];
-    [self monitorDataLoading];
+    [self monitorDataLoading:kFreeGuessGame];
 }
 
 
@@ -117,7 +117,10 @@ static AVAudioPlayer *_audioPlayer = nil;
     
     freeGuessChallengeController = [[ChallengeController alloc]initWithNibName:@"ChallengeController" bundle:nil];
     [self presentModalViewController:freeGuessChallengeController animated:YES];
-    freeGuessChallengeController.delegate = [FreeGuessChallengeDelegate new];
+    CategoryGuessChallengeDelegate* delegate = [CategoryGuessChallengeDelegate new];
+    delegate.category = kFreeGuessGame;
+    freeGuessChallengeController.delegate = delegate;
+
     //请求网络数据
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(freeGuessResponseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
     [[RMQuestionsRequest sharedInstance]startAsynchronous];
@@ -254,9 +257,9 @@ static AVAudioPlayer *_audioPlayer = nil;
 }
 
 #pragma mark dataloading
--(void) monitorDataLoading
+-(void) monitorDataLoading:(NSString*)category
 {
-    if(![RMQuestionsRequest sharedInstance].questionsArray)
+//    if(![RMQuestionsRequest sharedInstance].)
     {
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(responseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
         

@@ -13,7 +13,6 @@
 
 @interface RMCategoryRequest : NSObject
 
-
 Decl_Singleton(RMCategoryRequest);
 
 - (void)startAsynchronous;//请求问题列表，数据将通过通知的方式异步返回，通知名：CATEGORY_RESPONSE_NOTIFICATION

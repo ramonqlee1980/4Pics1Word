@@ -13,6 +13,8 @@
 #import "RMQuestionsRequest.h"
 #import "RMCategoryRequest.h"
 #import "RMCategory.h"
+#import "ChallengeController.h"
+#import "CategoryGuessChallengeDelegate.h"
 
 static NSString *CellIdentifier = @"ClassfiedCellIdentifier";
 static NSString *CellNIBName = @"ClassifiedCell";
@@ -20,6 +22,8 @@ static NSString *CellNIBName = @"ClassifiedCell";
 @interface ClassifiedController ()<TableViewCellDelegate>
 {
     NSMutableArray* categoryArray;
+    ChallengeController* challengeController;
+    RMCategory* selectedCategory;
 }
 @end
 
@@ -116,7 +120,7 @@ static NSString *CellNIBName = @"ClassifiedCell";
         cell.bottomLabel.text = item.description;
         [cell.imageView setImageWithURL:[NSURL URLWithString:item.iconUrl]];
         //需要传递当前level的编号，用于解锁时记录用
-        cell.tag = item.identifier;
+        cell.extra = item;
     }
     
     return cell;
@@ -142,7 +146,10 @@ static NSString *CellNIBName = @"ClassifiedCell";
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:body delegate:self cancelButtonTitle:NSLocalizedString(@"OK", "")otherButtonTitles:NSLocalizedString(@"Cancel", ""), nil];
-    alert.tag = cell.tag;
+    if([cell isKindOfClass:[ClassifiedCell class]])
+    {
+        selectedCategory = ((ClassifiedCell*)cell).extra;
+    }
     [alert show];
 }
 
@@ -169,6 +176,30 @@ static NSString *CellNIBName = @"ClassifiedCell";
         //记录下当前关已经激活了
         [Utils setCurrentCoins:(coins-Coins_Cost_For_Unlock_Category)];
         [Utils unlockCategory:[NSString stringWithFormat:@"%d",alertView.tag]];
+        
+        //TODO::缺少首次进入的动画
+        challengeController = [[ChallengeController alloc]initWithNibName:@"ChallengeController" bundle:nil];
+        [self presentModalViewController:challengeController animated:YES];
+        CategoryGuessChallengeDelegate* delegate = [CategoryGuessChallengeDelegate new];
+        delegate.category = selectedCategory.category;
+        
+        challengeController.delegate = delegate;
+        
+        //请求网络数据
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dailyResponseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
+        [[RMQuestionsRequest sharedInstance]startAsynchronous:selectedCategory.category];
+    }
+    
+}
+
+#pragma mark 请求网络数据返回后的处理
+-(void)dailyResponseReceived:(NSNotification*)notification
+{
+    //从服务器端请求数据
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    if([notification.object isKindOfClass:[NSArray class]])
+    {
+        [challengeController invalidate:(NSArray*)notification.object withLevel:[challengeController.delegate startLevel]];
     }
     
 }

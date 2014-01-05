@@ -15,16 +15,27 @@
 #define kQuestionListUrl @"http://checknewversion.duapp.com/image/questionlist2.php"//请求问题列表url
 
 #define kCategoryKey @"category"
+@interface RMQuestionsRequest()
+{
+   
+}
+
+@end
 
 @implementation RMQuestionsRequest
 #pragma mark get image lists
 Impl_Singleton(RMQuestionsRequest)
 - (void)startAsynchronous:(NSString*)category
 {
-    if (self.questionsArray && self.questionsArray.count>0) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:self.questionsArray];
-        return;
+    if (self.category2QuestionArrayDict && self.category2QuestionArrayDict.count>0) {
+        id obj = [self.category2QuestionArrayDict objectForKey:category];
+        if (obj) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:obj];
+            return;
+        }
     }
+    
+    self.category = category;
     
     NSURL *url = [NSURL URLWithString:kQuestionListUrl];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -83,26 +94,29 @@ Impl_Singleton(RMQuestionsRequest)
         }
         
         if (dataList) {
-            if(!self.questionsArray)
-            {
-                _questionsArray = [[NSMutableArray alloc]init];
-            }
             
-            [self.questionsArray removeAllObjects];
-            [self.questionsArray addObjectsFromArray:(NSArray*)dataList];
-            [self postProcess];
+            NSMutableArray* questionsArray = [[NSMutableArray alloc]init];
+            
+            [questionsArray addObjectsFromArray:(NSArray*)dataList];
+            [self postProcess:questionsArray];
+            
+            //map it
+            if (!self.category2QuestionArrayDict) {
+                _category2QuestionArrayDict = [NSMutableDictionary new];
+            }
+            [self.category2QuestionArrayDict setObject:questionsArray forKey:self.category];
             
             //bingo,now read image list
-            [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:self.questionsArray];
+            [[NSNotificationCenter defaultCenter]postNotificationName:QUESTION_RESPONSE_NOTIFICATION object:questionsArray];
         }
     }
 }
     //过滤超长的单词
--(void)postProcess
+-(void)postProcess:(NSMutableArray*)questionsArray
 {
-    for (int i= self.questionsArray.count-1; i>=0; i--) {
-        if ([[self.questionsArray objectAtIndex:i]length]>CP_Words_Max_Length) {
-            [self.questionsArray removeObjectAtIndex:i];
+    for (int i= questionsArray.count-1; i>=0; i--) {
+        if ([[questionsArray objectAtIndex:i]length]>CP_Words_Max_Length) {
+            [questionsArray removeObjectAtIndex:i];
         }
     }
 }
