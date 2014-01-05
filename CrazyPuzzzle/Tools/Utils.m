@@ -12,7 +12,6 @@
 #import <arpa/inet.h>
 
 #define CurrentGoldenStringKey @"CurrentGolden"
-#define CurrentLevelStringKey @"CurrentLevel"
 #define kDailyChallengeDateKey @"DailyChallengeDateKey"
 
 static NSString* ipAddress;
@@ -108,21 +107,25 @@ static NSString* ipAddress;
     [Utils setValue:[NSNumber numberWithInt:coins] forKey:CurrentGoldenStringKey];
 }
 
-+(NSUInteger)currentLevel
+#pragma mark level setting
++(NSUInteger)level:(NSString*)name
 {
-    id value = [Utils objectForKey:CurrentLevelStringKey];
+    id value = [Utils objectForKey:name];
     
     if(value){
         return [value intValue];
     }
     
-    [Utils setValue:[NSNumber numberWithInt:CP_Initial_Level] forKey:CurrentLevelStringKey];
-    return CP_Initial_Level;
+    [Utils setValue:[NSNumber numberWithInt:CP_Initial_Level_FROM_ZERO] forKey:name];
+    return CP_Initial_Level_FROM_ZERO;
 }
-+(void)setCurrentLevel:(NSInteger)level
+
++(void)setLevel:(NSInteger)level  forCategory:(NSString*)name
 {
-    [Utils setValue:[NSNumber numberWithInt:level] forKey:CurrentLevelStringKey];
+    [Utils setValue:[NSNumber numberWithInt:level] forKey:name];
 }
+
+#pragma mark daily challenge setting
 +(void)setDailyChallengeOff
 {
     [Utils setValue:[Utils today] forKey:kDailyChallengeDateKey];
@@ -142,11 +145,11 @@ static NSString* ipAddress;
 }
 
 //关卡相关
-+(void)unlockLevel:(NSString*)levelName
++(void)unlockCategory:(NSString*)levelName
 {
     [Utils setValue:levelName forKey:levelName];
 }
--(BOOL)levelUnlocked:(NSString*)levelName
+-(BOOL)categoryUnlocked:(NSString*)levelName
 {
     return [levelName isEqualToString:[Utils objectForKey:levelName]];
 }

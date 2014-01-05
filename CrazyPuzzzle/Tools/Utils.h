@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-#define CP_Initial_Level 1
+//挑战的种类
+#define kFreeGuessGame @"FreeGuessGame"//初始的自由猜单词
+#define kDailyGuessGame @"DailyGuessGame"//每日挑战
+
+
+#define CP_Initial_Level_FROM_ZERO 0
+#define CP_Initial_Level_FROM_ONE 1
 
 #define Decl_Singleton(className) +(className*)sharedInstance;
 
@@ -35,8 +41,8 @@ return s##className;\
 +(NSUInteger)currentCoins;
 
 //level access
-+(void)setCurrentLevel:(NSInteger)level;
-+(NSUInteger)currentLevel;
++(void)setLevel:(NSInteger)level forCategory:(NSString*)name;
++(NSUInteger)level:(NSString*)name;
     
     
 +(id)objectForKey:(NSString *)defaultName;
@@ -46,6 +52,7 @@ return s##className;\
 +(BOOL)dailyChallengeOn;//是否可以进入每日挑战
 
 //关卡相关
-+(void)unlockLevel:(NSString*)levelName;
--(BOOL)levelUnlocked:(NSString*)levelName;
++(void)unlockCategory:(NSString*)levelName;
+-(BOOL)categoryUnlocked:(NSString*)levelName;
 @end
+

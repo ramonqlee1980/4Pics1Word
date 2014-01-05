@@ -1,6 +1,7 @@
 #ifndef __CONSTANTS__
 #define __CONSTANTS__
 
+#import "RMQuestionsRequest.h"
 
 /***********  系统通用设置  *********************/
 #define kColorManagerFileName @""
@@ -50,16 +51,12 @@
 #define kEnterIAPViewEvent @"EnterIAPViewEvent"
 
 /**************** constants for game ********************/
-#define CP_Gift_Per_Idioms 10
-#define CP_First_Prompt_Cost 10
-#define CP_NoFirst_Prompt_Cost 15
-#define CP_Gift_For_Share_To_FriendZone 20
+#define CP_Initial_Golden [RMQuestionsRequest sharedInstance].initAwardCoins
+#define CP_Gift_Per_Idioms [RMQuestionsRequest sharedInstance].awardCoinsPerWord
+#define CP_First_Prompt_Cost [RMQuestionsRequest sharedInstance].coinsPerTip
+#define CP_NoFirst_Prompt_Cost CP_First_Prompt_Cost
 
-#define CP_Lose_To_You 11
-
-
-#define CP_Initial_Golden [RMQuestionsRequest sharedInstance].awardCoins
-#define CP_Enable_Grade_Cost 300//开启某一关需要的积分数
+#define CP_Unlock_Category_Cost [RMQuestionsRequest sharedInstance].coinsForUnlockCategory//开启某一关需要的积分数
 
 /**************** IAP相关 ********************/
 #define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\

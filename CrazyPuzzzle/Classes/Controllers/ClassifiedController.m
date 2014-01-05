@@ -107,8 +107,8 @@ static NSString *CellNIBName = @"ClassifiedCell";
 {
     //TODO::积分兑换可以进入此关，否则提示积分不足，需要购买，并可以跳转到购买界面
     NSString* body = NSLocalizedString(@"Dlg_Body_No_Enough_Coins_Text","");//积分不足
-    if ([Utils currentCoins]>=CP_Enable_Grade_Cost) {
-        body = [NSString stringWithFormat:NSLocalizedString(@"Dlg_Body_Unlock_Text",""),CP_Enable_Grade_Cost];
+    if ([Utils currentCoins]>=CP_Unlock_Category_Cost) {
+        body = [NSString stringWithFormat:NSLocalizedString(@"Dlg_Body_Unlock_Text",""),CP_Unlock_Category_Cost];
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:body delegate:self cancelButtonTitle:NSLocalizedString(@"OK", "")otherButtonTitles:NSLocalizedString(@"Cancel", ""), nil];
@@ -120,7 +120,7 @@ static NSString *CellNIBName = @"ClassifiedCell";
     //需要购买积分？
     NSUInteger coins = [Utils currentCoins];
     
-    if(coins<CP_Enable_Grade_Cost)
+    if(coins<CP_Unlock_Category_Cost)
     {
         switch (buttonIndex) {
             case 0:
@@ -137,8 +137,8 @@ static NSString *CellNIBName = @"ClassifiedCell";
     {
         //TODO::积分足够，直接扣减后，进入当前关
         //记录下当前关已经激活了
-        [Utils setCurrentCoins:(coins-CP_Enable_Grade_Cost)];
-        [Utils unlockLevel:[NSString stringWithFormat:@"%d",alertView.tag]];
+        [Utils setCurrentCoins:(coins-CP_Unlock_Category_Cost)];
+        [Utils unlockCategory:[NSString stringWithFormat:@"%d",alertView.tag]];
     }
     
 }

@@ -60,6 +60,9 @@
 }
 
 #pragma 更新显示的关数
+/**
+ level:zero-based
+ */
 -(void)setLevelView:(NSUInteger)level
 {
     UIView* view = [self guesswordView];
@@ -70,11 +73,11 @@
     }
     UILabel* label = (UILabel*)[self.view viewWithTag:kLevelLabelTag];
     if (label) {
-        [label setText:[NSString stringWithFormat:@"%d/%d",level,levelCount]];
+        [label setText:[NSString stringWithFormat:@"%d/%d",level+CP_Initial_Level_FROM_ONE,levelCount]];
     }
 }
 
--(void)invalidate:(NSArray*)array
+-(void)invalidate:(NSArray*)array withLevel:(NSInteger)level
 {
     //TODO::暂时测试用
     UIView* view = [self guesswordView];
@@ -85,10 +88,22 @@
         guessView.controller = self;
         guessView.coins = [Utils currentCoins];
         
-        [self setLevelView:1];//1代表第一关
+        [self setLevelView:level];
     }
 }
 
+-(void)setDelegate:(id<GuessWordViewDelegate>)delegate
+{
+    _delegate = delegate;
+    UIView* view = [self guesswordView];
+    if (view) {
+        RMGuessWordView* guessView = ((RMGuessWordView*)view);
+        NSInteger level = [delegate startLevel];
+        guessView.stage = level;
+        
+        [self setLevelView:level];
+    }
+}
 -(UIView*)guesswordView
 {
     UIView* guesswordContainer = [self.view viewWithTag:kGuesswordContainerTag];
@@ -122,17 +137,23 @@
 }
 
 #pragma mark GuessWordViewDelegate
--(void)willEnterNextGuess:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
+-(void)willEnterNewLevel:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
 {
     //更新本地数据和ui显示数据
     [Utils setCurrentCoins:currentCoins];
     [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
     
     if (self.delegate) {
-        [self.delegate willEnterNextGuess:currentCoins onCurrentStage:pos];
+        [self.delegate willEnterNewLevel:currentCoins onCurrentStage:pos];
     }
-    
-    [self setLevelView:++pos];
+}
+
+-(void)didEnterNewLevel:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
+{
+    [self setLevelView:pos];
+    if (self.delegate) {
+        [self.delegate didEnterNewLevel:currentCoins onCurrentStage:pos];
+    }
 }
 
 -(void)coinsChanged:(NSUInteger)currentCoins
@@ -155,8 +176,5 @@
     if (self.delegate) {
         [self.delegate gameover];
     }
-    
-    //TODO:: 每日挑战相关，待移走
-//    [Utils setDailyChallengeOff];
 }
 @end

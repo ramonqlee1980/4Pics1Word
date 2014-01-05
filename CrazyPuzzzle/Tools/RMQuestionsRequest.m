@@ -51,10 +51,26 @@ Impl_Singleton(RMQuestionsRequest)
         if (res && [res isKindOfClass:[NSDictionary class]])
         {
             NSDictionary* dict = (NSDictionary*)res;
-            id temp = [dict objectForKey:@"awardCoins"];
+            id temp = [dict objectForKey:@"initAwardCoins"];
             if (temp && [temp isKindOfClass:[NSNumber class]]) {
-                self.awardCoins = ((NSNumber*)temp).integerValue;
+                self.initAwardCoins = ((NSNumber*)temp).integerValue;
             }
+            
+            temp = [dict objectForKey:@"awardCoinsPerWord"];
+            if (temp && [temp isKindOfClass:[NSNumber class]]) {
+                self.awardCoinsPerWord = ((NSNumber*)temp).integerValue;
+            }
+            
+            temp = [dict objectForKey:@"coinsPerTip"];
+            if (temp && [temp isKindOfClass:[NSNumber class]]) {
+                self.coinsPerTip = ((NSNumber*)temp).integerValue;
+            }
+            
+            temp = [dict objectForKey:@"coinsForUnlockCategory"];
+            if (temp && [temp isKindOfClass:[NSNumber class]]) {
+                self.coinsForUnlockCategory = ((NSNumber*)temp).integerValue;
+            }
+            
             dataList = [dict objectForKey:@"data"];
         }
         

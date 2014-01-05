@@ -12,7 +12,7 @@
 @interface ChallengeController : UIViewController
 {
 }
-@property(nonatomic,assign)id<GuessWordViewDelegate> delegate;
--(void)invalidate:(NSArray*)array;//更新数据
+@property(nonatomic,retain)id<GuessWordViewDelegate> delegate;
+-(void)invalidate:(NSArray*)array  withLevel:(NSInteger)level;//更新数据
 - (IBAction)backHome:(id)sender;
 @end

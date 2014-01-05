@@ -168,6 +168,8 @@
 		30D51F4A1857C7E800F0584B /* RMGuessWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F491857C7E800F0584B /* RMGuessWordView.m */; };
 		30D51F501857CC9B00F0584B /* ChallengeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F4E1857CC9B00F0584B /* ChallengeController.m */; };
 		30D51F511857CC9B00F0584B /* ChallengeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F4F1857CC9B00F0584B /* ChallengeController.xib */; };
+		30D6BC13187971EB00AF35AB /* DailyChallengeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC12187971EB00AF35AB /* DailyChallengeDelegate.m */; };
+		30D6BC161879730600AF35AB /* FreeGuessChallengeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC151879730600AF35AB /* FreeGuessChallengeDelegate.m */; };
 		30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841A187626DE009E695A /* ClassifiedCell.m */; };
 		30F1841D1876273A009E695A /* ClassifiedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F1841C1876273A009E695A /* ClassifiedCell.xib */; };
 		30F1842018762AE4009E695A /* ClassifiedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841F18762AE4009E695A /* ClassifiedController.m */; };
@@ -410,6 +412,10 @@
 		30D51F4D1857CC9B00F0584B /* ChallengeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeController.h; sourceTree = "<group>"; };
 		30D51F4E1857CC9B00F0584B /* ChallengeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeController.m; sourceTree = "<group>"; };
 		30D51F4F1857CC9B00F0584B /* ChallengeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeController.xib; sourceTree = "<group>"; };
+		30D6BC11187971EB00AF35AB /* DailyChallengeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyChallengeDelegate.h; sourceTree = "<group>"; };
+		30D6BC12187971EB00AF35AB /* DailyChallengeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyChallengeDelegate.m; sourceTree = "<group>"; };
+		30D6BC141879730600AF35AB /* FreeGuessChallengeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeGuessChallengeDelegate.h; sourceTree = "<group>"; };
+		30D6BC151879730600AF35AB /* FreeGuessChallengeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeGuessChallengeDelegate.m; sourceTree = "<group>"; };
 		30F18418187405CD009E695A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		30F18419187626DE009E695A /* ClassifiedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifiedCell.h; sourceTree = "<group>"; };
 		30F1841A187626DE009E695A /* ClassifiedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifiedCell.m; sourceTree = "<group>"; };
@@ -556,6 +562,7 @@
 		041E342017B7D99D0067EF7C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				30D6BC10187971C800AF35AB /* Delegates */,
 				30D6BC0F18795C4900AF35AB /* ChallengeController */,
 				041E343317B7DC000067EF7C /* HomeViewController.h */,
 				041E343417B7DC000067EF7C /* HomeViewController.m */,
@@ -1032,6 +1039,17 @@
 			name = ChallengeController;
 			sourceTree = "<group>";
 		};
+		30D6BC10187971C800AF35AB /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				30D6BC11187971EB00AF35AB /* DailyChallengeDelegate.h */,
+				30D6BC12187971EB00AF35AB /* DailyChallengeDelegate.m */,
+				30D6BC141879730600AF35AB /* FreeGuessChallengeDelegate.h */,
+				30D6BC151879730600AF35AB /* FreeGuessChallengeDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1199,6 +1217,7 @@
 				30CBF449184A91140043B0D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */,
 				30CBF442184A91140043B0D3 /* ASINetworkQueue.m in Sources */,
+				30D6BC13187971EB00AF35AB /* DailyChallengeDelegate.m in Sources */,
 				30CBF450184A91140043B0D3 /* ASIS3Request.m in Sources */,
 				30D51F4A1857C7E800F0584B /* RMGuessWordView.m in Sources */,
 				041E340417B7D99D0067EF7C /* AppDelegate.m in Sources */,
@@ -1221,6 +1240,7 @@
 				30CBF443184A91140043B0D3 /* ASIWebPageRequest.m in Sources */,
 				30CBF44F184A91140043B0D3 /* ASIS3ObjectRequest.m in Sources */,
 				303285DE185184D900EC2C56 /* coinView.m in Sources */,
+				30D6BC161879730600AF35AB /* FreeGuessChallengeDelegate.m in Sources */,
 				0432D99E17BBB628002E65CC /* MyTableViewController.m in Sources */,
 				30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */,
 				0432D9A217BC7535002E65CC /* UIImageAdditions.m in Sources */,
