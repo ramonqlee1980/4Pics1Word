@@ -137,22 +137,22 @@
 }
 
 #pragma mark GuessWordViewDelegate
--(void)willEnterNewLevel:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
+-(void)willEnterLevel:(NSUInteger)index withCoins:(NSUInteger)count
 {
     //更新本地数据和ui显示数据
-    [Utils setCurrentCoins:currentCoins];
-    [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
+    [Utils setCurrentCoins:count];
+    [self setCoinsLabelText:[NSString stringWithFormat:@"%d",count]];
     
     if (self.delegate) {
-        [self.delegate willEnterNewLevel:currentCoins onCurrentStage:pos];
+        [self.delegate willEnterLevel:index withCoins:count];
     }
 }
 
--(void)didEnterNewLevel:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
+-(void)didEnterLevel:(NSUInteger)index withCoins:(NSUInteger)totalCount
 {
-    [self setLevelView:pos];
+    [self setLevelView:index];
     if (self.delegate) {
-        [self.delegate didEnterNewLevel:currentCoins onCurrentStage:pos];
+        [self.delegate didEnterLevel:index withCoins:totalCount];
     }
 }
 

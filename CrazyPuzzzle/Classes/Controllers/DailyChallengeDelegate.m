@@ -14,13 +14,13 @@
 {
     return [Utils level:kDailyGuessGame];
 }
--(void)willEnterNewLevel:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
+-(void)willEnterLevel:(NSUInteger)index withCoins:(NSUInteger)totalCount
 {
 }
--(void)didEnterNewLevel:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
+-(void)didEnterLevel:(NSUInteger)index withCoins:(NSUInteger)totalCount
 {
     //记录所闯关的序号
-    [Utils setLevel:pos forCategory:kDailyGuessGame];
+    [Utils setLevel:index forCategory:kDailyGuessGame];
 }
 -(void)coinsChanged:(NSUInteger)currentCoins
 {

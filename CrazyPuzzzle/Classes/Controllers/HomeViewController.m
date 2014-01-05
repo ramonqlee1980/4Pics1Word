@@ -157,6 +157,7 @@ static AVAudioPlayer *_audioPlayer = nil;
         NSArray* obj = (NSArray*)notification.object;
         [array addObject: [obj objectAtIndex:rand()%[obj count]]];
     }
+    
     [dailyChallengeController invalidate:array withLevel:[dailyChallengeController.delegate startLevel]];
 }
 -(void)freeGuessResponseReceived:(NSNotification*)notification
