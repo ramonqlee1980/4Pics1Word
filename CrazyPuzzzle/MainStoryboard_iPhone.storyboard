@@ -169,7 +169,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" id="I5G-Kc-meb">
-                                <rect key="frame" x="10" y="354.9999998285856" width="300" height="167"/>
+                                <rect key="frame" x="10" y="354.99999973138983" width="300" height="167"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>

@@ -6,23 +6,24 @@
 //  Copyright (c) 2013 idreems. All rights reserved.
 //
 
-#import "DailyChallengeController.h"
-#import "MainGuessViewController.h"
+#import "ChallengeController.h"
 #import "RMGuessWordView.h"
 #import "RMQuestionsRequest.h"
 
 #define kBackButtonTag  1000
 #define kCoinsButtonTag 1001
-#define kCoinsLabelTag  1003
 #define kGuesswordContainerTag 1002
+#define kCoinsLabelTag  1003
+#define kLevelLabelTag  1004
 
-@interface DailyChallengeController ()
+@interface ChallengeController ()<GuessWordViewDelegate>
 {
     UILabel* coinsLabel;
 }
+- (IBAction)backHome:(id)sender; // back to home
 @end
 
-@implementation DailyChallengeController
+@implementation ChallengeController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,36 +57,37 @@
             [guesswordContainer addSubview:guesswordView];
         }
     }
-    
-    //请求网络数据
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(responseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
-    [[RMQuestionsRequest sharedInstance]startAsynchronous];
-    
 }
-#pragma mark 请求网络数据返回后的处理
--(void)responseReceived:(NSNotification*)notification
+
+#pragma 更新显示的关数
+-(void)setLevelView:(NSUInteger)level
 {
-    //从服务器端请求数据
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-    NSMutableArray * array = [[NSMutableArray alloc]init];
-    if([notification.object isKindOfClass:[NSArray class]])
-    {
-        //TODO::随机一项作为每日挑战的题目，后续待改进
-        NSArray* obj = (NSArray*)notification.object;
-        [array addObject: [obj objectAtIndex:rand()%[obj count]]];
+    UIView* view = [self guesswordView];
+    NSUInteger levelCount = level;
+    if (view) {
+        RMGuessWordView* guessView = ((RMGuessWordView*)view);
+        levelCount = guessView.dataset.count;
     }
-    
+    UILabel* label = (UILabel*)[self.view viewWithTag:kLevelLabelTag];
+    if (label) {
+        [label setText:[NSString stringWithFormat:@"%d/%d",level,levelCount]];
+    }
+}
+
+-(void)invalidate:(NSArray*)array
+{
     //TODO::暂时测试用
     UIView* view = [self guesswordView];
     if (view) {
         RMGuessWordView* guessView = ((RMGuessWordView*)view);
         guessView.delegate = self;
-        guessView.dataset = array;
+        [guessView updateDataset:array];
         guessView.controller = self;
         guessView.coins = [Utils currentCoins];
+        
+        [self setLevelView:1];//1代表第一关
     }
 }
-
 
 -(UIView*)guesswordView
 {
@@ -108,21 +110,22 @@
 - (IBAction)backHome:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    MainGuessViewController *homeVC = [sb instantiateViewControllerWithIdentifier:@"CPHomeViewController"];
-    
-    [self presentViewController:homeVC animated:YES
-                     completion:nil];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark GuessWordViewDelegate
 
+#pragma mark GuessWordViewDelegate
 -(void)willEnterNextGuess:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
 {
     //更新本地数据和ui显示数据
     [Utils setCurrentCoins:currentCoins];
     [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
+    
+    if (self.delegate) {
+        [self.delegate willEnterNextGuess:currentCoins onCurrentStage:pos];
+    }
+    
+    [self setLevelView:++pos];
 }
 
 -(void)coinsChanged:(NSUInteger)currentCoins
@@ -130,14 +133,24 @@
     //更新本地数据和ui显示数据
     [Utils setCurrentCoins:currentCoins];
     [self setCoinsLabelText:[NSString stringWithFormat:@"%d",currentCoins]];
+    
+    if(self.delegate)
+    {
+        [self.delegate coinsChanged:currentCoins];
+    }
 }
 
 -(void)gameover
 {
     //TODO今日挑战结束，明日再来
-    
     [self backHome:nil];
-    [Utils setDailyChallengeOff];
+    
+    if (self.delegate) {
+        [self.delegate gameover];
+    }
+    
+    //TODO:: 每日挑战相关，待移走
+//    [Utils setDailyChallengeOff];
 }
 
 #pragma set methods

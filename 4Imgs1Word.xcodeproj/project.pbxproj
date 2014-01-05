@@ -167,8 +167,8 @@
 		30D51F40185493D300F0584B /* Icon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F39185493D300F0584B /* Icon@2x~iphone.png */; };
 		30D51F421854943000F0584B /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F411854943000F0584B /* Icon-80.png */; };
 		30D51F4A1857C7E800F0584B /* RMGuessWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F491857C7E800F0584B /* RMGuessWordView.m */; };
-		30D51F501857CC9B00F0584B /* DailyChallengeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */; };
-		30D51F511857CC9B00F0584B /* DailyChallengeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */; };
+		30D51F501857CC9B00F0584B /* ChallengeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D51F4E1857CC9B00F0584B /* ChallengeController.m */; };
+		30D51F511857CC9B00F0584B /* ChallengeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D51F4F1857CC9B00F0584B /* ChallengeController.xib */; };
 		30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841A187626DE009E695A /* ClassifiedCell.m */; };
 		30F1841D1876273A009E695A /* ClassifiedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F1841C1876273A009E695A /* ClassifiedCell.xib */; };
 		30F1842018762AE4009E695A /* ClassifiedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841F18762AE4009E695A /* ClassifiedController.m */; };
@@ -410,9 +410,9 @@
 		30D51F411854943000F0584B /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-80.png"; path = "Configuration/Icon-80.png"; sourceTree = "<group>"; };
 		30D51F481857C7E800F0584B /* RMGuessWordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGuessWordView.h; sourceTree = "<group>"; };
 		30D51F491857C7E800F0584B /* RMGuessWordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMGuessWordView.m; sourceTree = "<group>"; };
-		30D51F4D1857CC9B00F0584B /* DailyChallengeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyChallengeController.h; sourceTree = "<group>"; };
-		30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyChallengeController.m; sourceTree = "<group>"; };
-		30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyChallengeController.xib; sourceTree = "<group>"; };
+		30D51F4D1857CC9B00F0584B /* ChallengeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeController.h; sourceTree = "<group>"; };
+		30D51F4E1857CC9B00F0584B /* ChallengeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeController.m; sourceTree = "<group>"; };
+		30D51F4F1857CC9B00F0584B /* ChallengeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeController.xib; sourceTree = "<group>"; };
 		30F18418187405CD009E695A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		30F18419187626DE009E695A /* ClassifiedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifiedCell.h; sourceTree = "<group>"; };
 		30F1841A187626DE009E695A /* ClassifiedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifiedCell.m; sourceTree = "<group>"; };
@@ -559,13 +559,11 @@
 		041E342017B7D99D0067EF7C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				30D6BC0F18795C4900AF35AB /* ChallengeController */,
 				041E343317B7DC000067EF7C /* HomeViewController.h */,
 				041E343417B7DC000067EF7C /* HomeViewController.m */,
 				041E343917B7DCE40067EF7C /* MainGuessViewController.h */,
 				041E343A17B7DCE40067EF7C /* MainGuessViewController.m */,
-				30D51F4D1857CC9B00F0584B /* DailyChallengeController.h */,
-				30D51F4E1857CC9B00F0584B /* DailyChallengeController.m */,
-				30D51F4F1857CC9B00F0584B /* DailyChallengeController.xib */,
 				30F1841E18762AE4009E695A /* ClassifiedController.h */,
 				30F1841F18762AE4009E695A /* ClassifiedController.m */,
 				30F1842118778540009E695A /* ClassifiedController.xib */,
@@ -1029,6 +1027,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		30D6BC0F18795C4900AF35AB /* ChallengeController */ = {
+			isa = PBXGroup;
+			children = (
+				30D51F4D1857CC9B00F0584B /* ChallengeController.h */,
+				30D51F4E1857CC9B00F0584B /* ChallengeController.m */,
+				30D51F4F1857CC9B00F0584B /* ChallengeController.xib */,
+			);
+			name = ChallengeController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1141,7 +1149,7 @@
 				041E34AD17B7F3150067EF7C /* btn_share.png in Resources */,
 				30D51F421854943000F0584B /* Icon-80.png in Resources */,
 				041E34AE17B7F3150067EF7C /* btn_share_press.png in Resources */,
-				30D51F511857CC9B00F0584B /* DailyChallengeController.xib in Resources */,
+				30D51F511857CC9B00F0584B /* ChallengeController.xib in Resources */,
 				303285BC185139BD00EC2C56 /* buttonCtaSmall@2x.png in Resources */,
 				303287061853DF4300EC2C56 /* Info.plist in Resources */,
 				303286ED18528E6B00EC2C56 /* 开发指南.html in Resources */,
@@ -1192,7 +1200,7 @@
 				30CBF44D184A91140043B0D3 /* ASIS3BucketObject.m in Sources */,
 				30CBF43F184A91140043B0D3 /* ASIFormDataRequest.m in Sources */,
 				30F1842018762AE4009E695A /* ClassifiedController.m in Sources */,
-				30D51F501857CC9B00F0584B /* DailyChallengeController.m in Sources */,
+				30D51F501857CC9B00F0584B /* ChallengeController.m in Sources */,
 				30CBF449184A91140043B0D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */,
 				30CBF442184A91140043B0D3 /* ASINetworkQueue.m in Sources */,
