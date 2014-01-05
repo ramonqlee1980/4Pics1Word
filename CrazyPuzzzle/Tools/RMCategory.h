@@ -15,7 +15,6 @@
 @property(nonatomic,assign)NSInteger identifier;//该category的标示
 @property(nonatomic,copy)NSString* description;//optional
 @property(nonatomic,copy)NSString* category;//用于请求category时的参数
-@property(nonatomic,retain)NSMutableArray* wordArray;//deprecated
 
 +(id)categoryWithDict:(NSDictionary*)item;
 @end

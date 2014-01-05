@@ -14,13 +14,12 @@
 @synthesize  identifier;//该category的标示
 @synthesize  description;//optional
 @synthesize category;
-@synthesize  wordArray;
+
 -(id)init
 {
     self = [super init];
     if(self)
     {
-        self.wordArray = [NSMutableArray new];
     }
     
     return self;
@@ -54,11 +53,6 @@
         temp.category = (NSString*)obj;
     }
     
-//    obj = [item objectForKey:@"data"];
-//    if (obj&&[obj isKindOfClass:[NSArray class]]) {
-//        [temp.wordArray removeAllObjects];
-//        [temp.wordArray addObjectsFromArray:(NSArray*)obj];
-//    }
     return temp;
 }
 @end
