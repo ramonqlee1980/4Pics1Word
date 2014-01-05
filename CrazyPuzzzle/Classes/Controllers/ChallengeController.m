@@ -113,6 +113,13 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+#pragma set methods
+-(void)setCoinsLabelText:(NSString*)value
+{
+    if (coinsLabel) {
+        [((UILabel*)coinsLabel) setText:value];
+    }
+}
 
 #pragma mark GuessWordViewDelegate
 -(void)willEnterNextGuess:(NSUInteger)currentCoins onCurrentStage:(NSUInteger)pos
@@ -151,13 +158,5 @@
     
     //TODO:: 每日挑战相关，待移走
 //    [Utils setDailyChallengeOff];
-}
-
-#pragma set methods
--(void)setCoinsLabelText:(NSString*)value
-{
-    if (coinsLabel) {
-        [((UILabel*)coinsLabel) setText:value];
-    }
 }
 @end

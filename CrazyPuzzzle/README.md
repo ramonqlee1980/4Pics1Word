@@ -12,6 +12,7 @@ Release 1.1.1
 11.服务器端数据按照类别进行分类的php脚本和数据库设计；
 12.imageview图片下载中，增加进度显示；(改进建议)
 
+
 Release 1.0.1
 1.增加daily challenge功能
 2.增加简体中文支持；

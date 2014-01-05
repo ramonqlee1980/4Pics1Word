@@ -16,7 +16,6 @@
 		041E342117B7D99D0067EF7C /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 041E342017B7D99D0067EF7C /* Controllers */; };
 		041E342B17B7D99D0067EF7C /* Tools in Resources */ = {isa = PBXBuildFile; fileRef = 041E342A17B7D99D0067EF7C /* Tools */; };
 		041E343517B7DC000067EF7C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343417B7DC000067EF7C /* HomeViewController.m */; };
-		041E343B17B7DCE40067EF7C /* MainGuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343A17B7DCE40067EF7C /* MainGuessViewController.m */; };
 		041E343E17B7DD7A0067EF7C /* CPPropStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E343D17B7DD7A0067EF7C /* CPPropStoreViewController.m */; };
 		041E347817B7F30E0067EF7C /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346017B7F30E0067EF7C /* board.png */; };
 		041E347917B7F30E0067EF7C /* btn_feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 041E346117B7F30E0067EF7C /* btn_feedback.png */; };
@@ -187,8 +186,6 @@
 		041E341E17B7D99D0067EF7C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		041E343317B7DC000067EF7C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		041E343417B7DC000067EF7C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		041E343917B7DCE40067EF7C /* MainGuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainGuessViewController.h; sourceTree = "<group>"; };
-		041E343A17B7DCE40067EF7C /* MainGuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainGuessViewController.m; sourceTree = "<group>"; };
 		041E343C17B7DD7A0067EF7C /* CPPropStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPPropStoreViewController.h; path = Classes/Controllers/CPPropStoreViewController.h; sourceTree = "<group>"; };
 		041E343D17B7DD7A0067EF7C /* CPPropStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPPropStoreViewController.m; path = Classes/Controllers/CPPropStoreViewController.m; sourceTree = "<group>"; };
 		041E346017B7F30E0067EF7C /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
@@ -562,8 +559,6 @@
 				30D6BC0F18795C4900AF35AB /* ChallengeController */,
 				041E343317B7DC000067EF7C /* HomeViewController.h */,
 				041E343417B7DC000067EF7C /* HomeViewController.m */,
-				041E343917B7DCE40067EF7C /* MainGuessViewController.h */,
-				041E343A17B7DCE40067EF7C /* MainGuessViewController.m */,
 				30F1841E18762AE4009E695A /* ClassifiedController.h */,
 				30F1841F18762AE4009E695A /* ClassifiedController.m */,
 				30F1842118778540009E695A /* ClassifiedController.xib */,
@@ -1221,7 +1216,6 @@
 				30CBF451184A91140043B0D3 /* ASIS3ServiceRequest.m in Sources */,
 				303286F71853D94F00EC2C56 /* MBProgressHUD.m in Sources */,
 				30CBF440184A91140043B0D3 /* ASIHTTPRequest.m in Sources */,
-				041E343B17B7DCE40067EF7C /* MainGuessViewController.m in Sources */,
 				30CBF455184A91140043B0D3 /* SDImageCache.m in Sources */,
 				041E343E17B7DD7A0067EF7C /* CPPropStoreViewController.m in Sources */,
 				30CBF443184A91140043B0D3 /* ASIWebPageRequest.m in Sources */,
