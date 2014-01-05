@@ -127,6 +127,11 @@
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     [self dismissModalViewControllerAnimated:YES];
 }
+-(IBAction)gotoShop:(id)sender
+{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    [self presentViewController:[storyBoard instantiateViewControllerWithIdentifier:@"CPPropStoreViewController"] animated:NO completion:nil];
+}
 
 #pragma set methods
 -(void)setCoinsLabelText:(NSString*)value

@@ -15,4 +15,5 @@
 @property(nonatomic,retain)id<GuessWordViewDelegate> delegate;
 -(void)invalidate:(NSArray*)array  withLevel:(NSInteger)level;//更新数据
 - (IBAction)backHome:(id)sender;
+- (IBAction)gotoShop:(id)sender;
 @end

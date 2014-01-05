@@ -10,6 +10,7 @@
 #import "ASIHTTPRequest.h"
 
 #define HTTP_OK 200
+#define CP_Words_Max_Length 16//允许的最大单词长度
 
 #define kQuestionListUrl @"http://checknewversion.duapp.com/image/questionlist2.php"//请求问题列表url
 

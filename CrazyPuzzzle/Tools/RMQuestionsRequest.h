@@ -9,8 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "Utils.h"
 
+
+/**************** constants for game ********************/
+#define Coins_Init_Award [RMQuestionsRequest sharedInstance].initAwardCoins
+#define Coins_Awarded_Per_Word [RMQuestionsRequest sharedInstance].awardCoinsPerWord
+#define Coins_Cost_Per_Tip [RMQuestionsRequest sharedInstance].coinsPerTip
+#define NonFirst_Coins_Cost_Per_Tip Coins_Cost_Per_Tip
+#define Coins_Cost_For_Unlock_Category [RMQuestionsRequest sharedInstance].coinsForUnlockCategory//开启某一关需要的积分数
+
+
 #define QUESTION_RESPONSE_NOTIFICATION @"QUESTION_RESPONSE_NOTIFICATION"
-#define CP_Words_Max_Length 16//允许的最大单词长度
+
 
 @interface RMQuestionsRequest : NSObject
 

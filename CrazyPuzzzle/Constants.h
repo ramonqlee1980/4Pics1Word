@@ -1,7 +1,22 @@
 #ifndef __CONSTANTS__
 #define __CONSTANTS__
 
-#import "RMQuestionsRequest.h"
+/**************** 应用采用的id  ********************/
+#define CP_Weixin_App_Id @"wxd32d6d3e8108ffcb"
+#define CP_UMeng_App_Key @"529b291156240b5737148f50"
+#define kFlurryAppId @"PQKG4KVJJNSMCMKTMFH9"
+#define kAppleId @"776660126"
+
+
+/**************** flurry event ********************/
+#define kShareBySNSResponse @"ShareBySNSResponse"
+#define kFlurryLevel @"Level"
+#define kCoinsAmount @"Coins"
+#define kRevealLetterEvent @"RevealLetterEvent"
+#define kSNSShareEvent @"SNSShareEvent"
+#define kSNSPlatform @"SNSPlatform"
+#define kEnterIAPViewEvent @"EnterIAPViewEvent"
+
 
 /***********  系统通用设置  *********************/
 #define kColorManagerFileName @""
@@ -32,31 +47,6 @@
 #define SLog(xx,…)	((void)0)
 #define SLLog(xx,…)	((void)0)
 #endif
-
-
-/**************** 应用采用的id  ********************/
-#define CP_Weixin_App_Id @"wxd32d6d3e8108ffcb"
-#define CP_UMeng_App_Key @"529b291156240b5737148f50"
-#define kFlurryAppId @"PQKG4KVJJNSMCMKTMFH9"
-#define kAppleId @"776660126"
-
-
-/**************** flurry event ********************/
-#define kShareBySNSResponse @"ShareBySNSResponse"
-#define kFlurryLevel @"Level"
-#define kCoinsAmount @"Coins"
-#define kRevealLetterEvent @"RevealLetterEvent"
-#define kSNSShareEvent @"SNSShareEvent"
-#define kSNSPlatform @"SNSPlatform"
-#define kEnterIAPViewEvent @"EnterIAPViewEvent"
-
-/**************** constants for game ********************/
-#define CP_Initial_Golden [RMQuestionsRequest sharedInstance].initAwardCoins
-#define CP_Gift_Per_Idioms [RMQuestionsRequest sharedInstance].awardCoinsPerWord
-#define CP_First_Prompt_Cost [RMQuestionsRequest sharedInstance].coinsPerTip
-#define CP_NoFirst_Prompt_Cost CP_First_Prompt_Cost
-
-#define CP_Unlock_Category_Cost [RMQuestionsRequest sharedInstance].coinsForUnlockCategory//开启某一关需要的积分数
 
 /**************** IAP相关 ********************/
 #define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\

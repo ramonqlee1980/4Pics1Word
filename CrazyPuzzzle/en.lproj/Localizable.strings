@@ -8,7 +8,7 @@
 
 //主界面字符串资源
 "Dlg_Tip_Title"="Alert";
-"Dlg_Body_Exchange_Text"="Show a correct letter (%d coins)?";
+"Dlg_Body_Exchange_Text"="Show a correct letter for %d coins?";
 "Dlg_Body_No_Enough_Coins_Text"="You don't have enough coins, get some now？";
 
 "SNS_Help"="Got An interesting app named Word Guess. Guess a word with four pictures in common. Give it a try now. https://itunes.apple.com/us/app/wordguess-can-you-guess-word/id786147929?ls=1";
@@ -29,9 +29,10 @@
 "Dlg_Body_Unlock_Text"="Do you want to unlock it for %d coins?";
 
 //IAP
+"Button_Txt_Buy"="Buy";
 "Gold_Left"="Coins:";
-"IAP_288"="+288";
-"IAP_666"="+666";
-"IAP_1888"="+1888";
-"IAP_3999"="+3999";
-"IAP_11888"="+11888";
+"IAP_288"="288 Coins";
+"IAP_666"="666 Coins";
+"IAP_1888"="1888 Coins";
+"IAP_3999"="3999 Coins";
+"IAP_11888"="11888 Coins";

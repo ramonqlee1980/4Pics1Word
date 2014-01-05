@@ -99,8 +99,8 @@ static NSString* ipAddress;
         return [value intValue];
     }
     
-    [Utils setValue:[NSNumber numberWithInt:CP_Initial_Golden] forKey:CurrentGoldenStringKey];
-    return CP_Initial_Golden;
+    [Utils setValue:[NSNumber numberWithInt:Coins_Init_Award] forKey:CurrentGoldenStringKey];
+    return Coins_Init_Award;
 }
 +(void)setCurrentCoins:(NSInteger)coins
 {
