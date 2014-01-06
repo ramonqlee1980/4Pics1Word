@@ -11,12 +11,9 @@
 #include <CommonCrypto/CommonDigest.h>
 
 
-
-
 @interface Utility : NSObject {
     
 }
-+ (NSString *) udid;
 + (NSString *) md5:(NSString *)str;
 + (NSString *) doCipher:(NSString *)sTextIn key:(NSString *)sKey context:(CCOperation)encryptOrDecrypt;
 + (NSString *) encryptStr:(NSString *) str;

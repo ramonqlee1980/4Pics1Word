@@ -31,10 +31,7 @@ static const short _base64DecodingTable[256] = {
 
 
 @implementation Utility
-//+ (NSString *) udid
-//{
-//    return[UtilityencryptStr:[[UIDevicecurrentDevice] uniqueIdentifier]];
-//}
+
 + (NSString *) md5:(NSString *)str
 
 
