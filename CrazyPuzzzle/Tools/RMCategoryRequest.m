@@ -9,6 +9,7 @@
 #import "RMCategoryRequest.h"
 #import "ASIHTTPRequest.h"
 #import "RMCategory.h"
+#import "Utility.h"
 
 #define kCategoryListUrl @"http://checknewversion.duapp.com/image/refer.php?table=WordGuess"//请求分类列表
 
@@ -46,6 +47,7 @@ Impl_Singleton(RMCategoryRequest)
     //客户端解包，保存
     if (responseData) {
         NSError* error;
+        
         id res = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         
         NSArray* dataList = nil;

@@ -172,6 +172,7 @@
 		30D6BC161879730600AF35AB /* CategoryGuessChallengeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC151879730600AF35AB /* CategoryGuessChallengeDelegate.m */; };
 		30D6BC19187A092800AF35AB /* RMCategoryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC18187A092800AF35AB /* RMCategoryRequest.m */; };
 		30D6BC1C187A09C600AF35AB /* RMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC1B187A09C600AF35AB /* RMCategory.m */; };
+		30D6BC1F187AD03A00AF35AB /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D6BC1E187AD03A00AF35AB /* Utility.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30F1841B187626DE009E695A /* ClassifiedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841A187626DE009E695A /* ClassifiedCell.m */; };
 		30F1841D1876273A009E695A /* ClassifiedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F1841C1876273A009E695A /* ClassifiedCell.xib */; };
 		30F1842018762AE4009E695A /* ClassifiedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F1841F18762AE4009E695A /* ClassifiedController.m */; };
@@ -422,6 +423,8 @@
 		30D6BC18187A092800AF35AB /* RMCategoryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategoryRequest.m; sourceTree = "<group>"; };
 		30D6BC1A187A09C600AF35AB /* RMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategory.h; sourceTree = "<group>"; };
 		30D6BC1B187A09C600AF35AB /* RMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategory.m; sourceTree = "<group>"; };
+		30D6BC1D187AD03A00AF35AB /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		30D6BC1E187AD03A00AF35AB /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		30F18418187405CD009E695A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		30F18419187626DE009E695A /* ClassifiedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifiedCell.h; sourceTree = "<group>"; };
 		30F1841A187626DE009E695A /* ClassifiedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifiedCell.m; sourceTree = "<group>"; };
@@ -596,6 +599,8 @@
 				30CBF465184AA1000043B0D3 /* Utils.h */,
 				30CBF466184AA1000043B0D3 /* Utils.m */,
 				0432D98717BB1EBC002E65CC /* WeChatSDK */,
+				30D6BC1D187AD03A00AF35AB /* Utility.h */,
+				30D6BC1E187AD03A00AF35AB /* Utility.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1228,6 +1233,7 @@
 				30CBF449184A91140043B0D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				30D6BC1C187A09C600AF35AB /* RMCategory.m in Sources */,
 				30CBF46B184B37050043B0D3 /* RMQuestionsRequest.m in Sources */,
+				30D6BC1F187AD03A00AF35AB /* Utility.m in Sources */,
 				30CBF442184A91140043B0D3 /* ASINetworkQueue.m in Sources */,
 				30D6BC13187971EB00AF35AB /* DailyChallengeDelegate.m in Sources */,
 				30CBF450184A91140043B0D3 /* ASIS3Request.m in Sources */,

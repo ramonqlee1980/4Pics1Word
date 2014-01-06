@@ -8,8 +8,8 @@
 
 #import "RMQuestionsRequest.h"
 #import "ASIFormDataRequest.h"
+#import "Utility.h"
 
-#define HTTP_OK 200
 #define CP_Words_Max_Length 16//允许的最大单词长度
 
 #define kQuestionListUrl @"http://checknewversion.duapp.com/image/questionlist2.php"//请求问题列表url
@@ -63,7 +63,11 @@ Impl_Singleton(RMQuestionsRequest)
     //客户端解包，保存
     if (responseData) {
         NSError* error;
-        id res = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+        
+        NSString* aStr = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
+        aStr = [Utility decryptStr:aStr];
+        NSData* aData = [aStr dataUsingEncoding: NSASCIIStringEncoding];
+        id res = [NSJSONSerialization JSONObjectWithData:aData options:NSJSONReadingMutableContainers error:&error];
         
         NSArray* dataList = nil;
         
