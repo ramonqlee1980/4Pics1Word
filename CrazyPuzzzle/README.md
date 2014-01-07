@@ -13,6 +13,7 @@ Release 1.1.1
 12.imageview图片下载中，增加进度显示；(改进建议)
 13.重新设计主界面，更加符合游戏的界面风格
 14.客户端分类猜单词的unlock，play逻辑完善
+15.游戏界面增加倒计时功能;
 
 Release 1.0.1
 1.增加daily challenge功能

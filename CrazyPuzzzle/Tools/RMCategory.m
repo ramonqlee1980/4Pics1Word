@@ -53,6 +53,12 @@
         temp.category = (NSString*)obj;
     }
     
+    obj = [item objectForKey:@"Coins"];
+    if (obj&&[obj isKindOfClass:[NSNumber class]]) {
+        temp.coins = ((NSNumber*)obj).integerValue;
+    }
+
+    
     return temp;
 }
 @end
