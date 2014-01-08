@@ -53,6 +53,6 @@ return s##className;\
 
 //关卡相关
 +(void)unlockCategory:(NSString*)levelName;
--(BOOL)categoryUnlocked:(NSString*)levelName;
++(BOOL)categoryUnlocked:(NSString*)levelName;
 @end
 

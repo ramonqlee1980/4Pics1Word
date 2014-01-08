@@ -16,6 +16,7 @@
     
     __weak IBOutlet UIButton *_startGameBtn;
     __weak IBOutlet UIButton *_dailyChallengeBtn;
+    __weak IBOutlet UIButton *_moreChallengeBtn;
     __weak IBOutlet UILabel *_dailyChallengeLabel;
     
     BOOL _audioStatus; // 1 播放 0 停止

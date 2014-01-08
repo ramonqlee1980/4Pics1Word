@@ -7,23 +7,20 @@
 */
 
 //主界面字符串资源
-"Dlg_Tip_Title"="Alert";
 "Dlg_Body_Exchange_Text"="Show a correct letter for %d coins?";
 "Dlg_Body_No_Enough_Coins_Text"="You don't have enough coins, get some now？";
 
 "SNS_Help"="Got An interesting app named Word Guess. Guess a word with four pictures in common. Give it a try now. https://itunes.apple.com/us/app/wordguess-can-you-guess-word/id786147929?ls=1";
 "Share_Image_Title"="Guess a word implied by these pictures";
-"SNS_Help_Title_Weixin"="Help by WeiXin";
-"SNS_Share_Award_Text"="%d coins awared by sharing with WeiXin";
-"Answer_Correct_Title"="Correct";
 "OK"="Confirm";
 "Cancel"="Cancel";
 
 //进入界面
 "Load_Game"="LOADING";
-"Start_Game"="PLAY";
 "Load_Fail"="FAIL";
-"Daily_Challenge"="Daily Challenge";
+"Daily_Challenge"="Daily";
+"Junior_Challenge"="Junior";
+"Senior_Challenge"="Senior";
 
 //分类闯关界面
 "Dlg_Body_Unlock_Text"="Do you want to unlock it for %d coins?";

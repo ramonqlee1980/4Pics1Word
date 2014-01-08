@@ -16,6 +16,10 @@
 #import "ChallengeController.h"
 #import "CategoryGuessChallengeDelegate.h"
 
+//标示：用于区别当前的提示是何种类型
+#define kAlertViewForShopping 0
+#define kAlertViewForPlay 1
+
 static NSString *CellIdentifier = @"ClassfiedCellIdentifier";
 static NSString *CellNIBName = @"ClassifiedCell";
 
@@ -117,7 +121,15 @@ static NSString *CellNIBName = @"ClassifiedCell";
         if (item) {
             // Configure the cell...
             cell.topLabel.text = item.name;
-            cell.bottomLabel.text = item.description;
+            
+            if (!item.description || item.description.length==0) {
+                cell.bottomLabel.text = [NSString stringWithFormat:@"%d Coins",item.coins];
+            }
+            else
+            {
+                cell.bottomLabel.text = item.description;
+            }
+            
             [cell.imageView setImageWithURL:[NSURL URLWithString:item.iconUrl]];
             //需要传递当前level的编号，用于解锁时记录用
             cell.extra = item;
@@ -145,27 +157,28 @@ static NSString *CellNIBName = @"ClassifiedCell";
             selectedCategory = ((ClassifiedCell*)cell).extra;
         }
         
+        //category unlocked?
+        BOOL unlocked = [Utils categoryUnlocked:[NSString stringWithFormat:@"%d",selectedCategory.identifier]];
         NSString* body = NSLocalizedString(@"Dlg_Body_No_Enough_Coins_Text","");//积分不足
         NSUInteger coins2Unlock = selectedCategory.coins;
-        if (coins2Unlock==0) {//no coins needed,just enter
-            [self startGame:0 withCategory:cell.tag];
+        if (unlocked || coins2Unlock==0) {//no coins needed,just enter
+            [self startGame:0 withCategory:selectedCategory.identifier];
             return;
         }
         
-        
+        NSInteger alertViewTag = kAlertViewForShopping;
         if ([Utils currentCoins]>=coins2Unlock) {
             body = [NSString stringWithFormat:NSLocalizedString(@"Dlg_Body_Unlock_Text",""),coins2Unlock];
+            alertViewTag = kAlertViewForPlay;
         }
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:body delegate:self cancelButtonTitle:NSLocalizedString(@"OK", "")otherButtonTitles:NSLocalizedString(@"Cancel", ""), nil];
+        alert.tag = alertViewTag;
         [alert show];
     }
     
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    //需要购买积分？
-    NSUInteger coins = [Utils currentCoins];
-    
-    if(coins<selectedCategory.coins)
+    if(alertView.tag==kAlertViewForShopping)
     {
         switch (buttonIndex) {
             case 0:
@@ -180,7 +193,17 @@ static NSString *CellNIBName = @"ClassifiedCell";
     }
     else
     {
-        [self startGame:selectedCategory.coins withCategory:alertView.tag];
+        switch (buttonIndex) {
+            case 0:
+            [self startGame:selectedCategory.coins withCategory:selectedCategory.identifier];
+            break;
+            case 1:
+            NSLog(@"Button 1 Pressed");
+            break;
+            default:
+            break;
+        }
+        
     }
 }
 -(void)startGame:(NSUInteger)coins withCategory:(NSUInteger)identifier

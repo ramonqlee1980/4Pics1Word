@@ -246,13 +246,17 @@ static AVAudioPlayer *_audioPlayer = nil;
 -(void)internationalize
 {
     if (_startGameBtn) {
-        [_startGameBtn setTitle:NSLocalizedString(@"Start_Game", "") forState:UIControlStateNormal];
+        [_startGameBtn setTitle:NSLocalizedString(@"Junior_Challenge", "") forState:UIControlStateNormal];
     }
     if (_dailyChallengeBtn) {
-        [_dailyChallengeBtn setTitle:NSLocalizedString(@"Start_Game", "") forState:UIControlStateNormal];
+        [_dailyChallengeBtn setTitle:NSLocalizedString(@"Daily_Challenge", "") forState:UIControlStateNormal];
     }
-    if (_dailyChallengeLabel) {
-        [_dailyChallengeLabel setText:NSLocalizedString(@"Daily_Challenge", "")];
+//    if (_dailyChallengeLabel) {
+//        [_dailyChallengeLabel setText:NSLocalizedString(@"Daily_Challenge", "")];
+//    }
+    if(_moreChallengeBtn)
+    {
+        [_moreChallengeBtn setTitle:NSLocalizedString(@"Senior_Challenge", "") forState:UIControlStateNormal];
     }
 }
 
@@ -281,7 +285,7 @@ static AVAudioPlayer *_audioPlayer = nil;
     {
         if (_startGameBtn) {
             _startGameBtn.userInteractionEnabled = YES;
-            [_startGameBtn setTitle:NSLocalizedString(@"Start_Game", "") forState:UIControlStateNormal];
+            [_startGameBtn setTitle:NSLocalizedString(@"Junior_Challenge", "") forState:UIControlStateNormal];
         }
     }
     else

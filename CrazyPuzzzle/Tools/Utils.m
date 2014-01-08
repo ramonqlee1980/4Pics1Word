@@ -149,8 +149,9 @@ static NSString* ipAddress;
 {
     [Utils setValue:levelName forKey:levelName];
 }
--(BOOL)categoryUnlocked:(NSString*)levelName
++(BOOL)categoryUnlocked:(NSString*)levelName
 {
-    return [levelName isEqualToString:[Utils objectForKey:levelName]];
+    id obj = [Utils objectForKey:levelName];
+    return [levelName isEqualToString:obj];
 }
 @end
