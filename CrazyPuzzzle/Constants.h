@@ -1,5 +1,17 @@
 #ifndef __CONSTANTS__
 #define __CONSTANTS__
+/**************    调试    ************************/
+
+#define NEED_OUTPUT_LOG 0
+
+#if NEED_OUTPUT_LOG
+
+#define SLog(xx,...)	NSLog(xx,##__VA_ARGS__)
+#define SLLog(xx,...)	NSLog(@"%s(%d):" xx,__PRETTY_FUNCTION__,__LINE__,##VA_ARGS__)
+#else
+#define SLog(xx,...)
+#define SLLog(xx,...)
+#endif
 
 /**************** 应用采用的id  ********************/
 #define CP_Weixin_App_Id @"wxd32d6d3e8108ffcb"
@@ -35,18 +47,7 @@
 #define APP_SCREEN_CONTENT_HEIGHT   ([UIScreen mainScreen].bounds.size.height-20.0)
 
 
-/**************    调试    ************************/
 
-#define NEED_OUTPUT_LOG 1
-
-#if NEED_OUTPUT_LOG
-
-#define SLog(xx,...)	NSLog(xx,##__VA_ARGS__)
-#define SLLog(xx,...)	NSLog(@"%s(%d):" xx,__PRETTY_FUNCTION__,__LINE__,##VA_ARGS__)
-#else
-#define SLog(xx,…)	((void)0)
-#define SLLog(xx,…)	((void)0)
-#endif
 
 /**************** IAP相关 ********************/
 #define CP_Gold_Table_List  @[@{CP_Price_Key:@"0.99",CP_Value_Key:NSLocalizedString(@"IAP_288", "")},\

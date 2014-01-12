@@ -169,7 +169,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" id="I5G-Kc-meb">
-                                <rect key="frame" x="10" y="354.99999962562902" width="300" height="167"/>
+                                <rect key="frame" x="10" y="354.99999951054826" width="300" height="167"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -432,8 +432,8 @@
                                 <rect key="frame" x="230" y="489" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon-80.png" id="5lG-vl-kKX">
-                                <rect key="frame" x="103" y="50" width="115" height="115"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon-72@2x" id="5lG-vl-kKX">
+                                <rect key="frame" x="88" y="20" width="144" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="t4w-JI-BaX">
@@ -653,7 +653,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-80.png" width="80" height="80"/>
+        <image name="Icon-72@2x" width="384" height="512"/>
         <image name="answer.png" width="32" height="32"/>
         <image name="answer_press.png" width="32" height="32"/>
         <image name="background.png" width="384" height="512"/>

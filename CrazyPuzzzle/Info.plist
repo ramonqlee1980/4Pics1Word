@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -14,8 +12,11 @@
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
+			<key>UIPrerenderedIcon</key>
+			<true/>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>Icon-Small</string>
 				<string>Icon-80</string>
 				<string>Icon</string>
 			</array>
@@ -56,6 +57,8 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard_iPhone</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
