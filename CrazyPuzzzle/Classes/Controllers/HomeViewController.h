@@ -24,8 +24,8 @@
 
 @property (nonatomic,strong) UIImage *homeScreenShot;
 
-- (IBAction)startGame:(id)sender;
-- (IBAction)EnterGradeView:(id)sender;
+- (IBAction)startJuniorGame:(id)sender;
+- (IBAction)startSeniorGame:(id)sender;
 - (IBAction)openMusic:(id)sender;
 - (IBAction)closeMusic:(id)sender;
 

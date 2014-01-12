@@ -15,6 +15,7 @@
 #import "RMCategory.h"
 #import "ChallengeController.h"
 #import "CategoryGuessChallengeDelegate.h"
+#import "Flurry.h"
 
 //标示：用于区别当前的提示是何种类型
 #define kAlertViewForShopping 0
@@ -195,7 +196,11 @@ static NSString *CellNIBName = @"ClassifiedCell";
     {
         switch (buttonIndex) {
             case 0:
-            [self startGame:selectedCategory.coins withCategory:selectedCategory.identifier];
+            {
+                NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:selectedCategory.coins],selectedCategory.category, nil];
+                [Flurry logEvent:kUnlockCategory withParameters:dict];
+                [self startGame:selectedCategory.coins withCategory:selectedCategory.identifier];
+            }
             break;
             case 1:
             NSLog(@"Button 1 Pressed");

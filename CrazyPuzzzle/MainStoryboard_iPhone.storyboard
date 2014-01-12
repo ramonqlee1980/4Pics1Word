@@ -448,7 +448,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startGame:" destination="2io-xE-UgP" eventType="touchUpInside" id="5xf-mh-fSM"/>
+                                    <action selector="startJuniorGame:" destination="2io-xE-UgP" eventType="touchUpInside" id="RTW-5P-LfY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="dzr-jb-tGb">
@@ -463,7 +463,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="EnterGradeView:" destination="2io-xE-UgP" eventType="touchUpInside" id="YtK-IQ-yeF"/>
+                                    <action selector="startSeniorGame:" destination="2io-xE-UgP" eventType="touchUpInside" id="SUK-Za-9Ad"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jV8-7R-0Kr">
@@ -478,7 +478,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startDailyChallenge:" destination="2io-xE-UgP" eventType="touchUpInside" id="UPs-bA-2TV"/>
+                                    <action selector="startDailyGame:" destination="2io-xE-UgP" eventType="touchUpInside" id="zMa-oa-Hyb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RK2-j1-d07">

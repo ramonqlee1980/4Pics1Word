@@ -109,9 +109,9 @@ static AVAudioPlayer *_audioPlayer = nil;
     [_audioPlayer stop];
 }
 
-#pragma mark action
+#pragma mark button action
 
-- (IBAction)startGame:(id)sender
+- (IBAction)startJuniorGame:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
@@ -126,7 +126,7 @@ static AVAudioPlayer *_audioPlayer = nil;
     [[RMQuestionsRequest sharedInstance]startAsynchronous];
 }
 
-- (IBAction)EnterGradeView:(id)sender
+- (IBAction)startSeniorGame:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
@@ -134,7 +134,7 @@ static AVAudioPlayer *_audioPlayer = nil;
     ClassifiedController *vc = [[ClassifiedController alloc]initWithNibName:@"ClassifiedController" bundle:nil];
     [self presentModalViewController:vc animated:YES];
 }
--(IBAction)startDailyChallenge:(id)sender
+-(IBAction)startDailyGame:(id)sender
 {
     [AudioSoundHelper playSoundWithFileName:kClickSound ofType:kMp3Suffix];
     
@@ -148,30 +148,7 @@ static AVAudioPlayer *_audioPlayer = nil;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dailyResponseReceived:) name:QUESTION_RESPONSE_NOTIFICATION object:nil];
     [[RMQuestionsRequest sharedInstance]startAsynchronous];
 }
-#pragma mark 请求网络数据返回后的处理
--(void)dailyResponseReceived:(NSNotification*)notification
-{
-    //从服务器端请求数据
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-    NSMutableArray * array = [[NSMutableArray alloc]init];
-    if([notification.object isKindOfClass:[NSArray class]])
-    {
-        //TODO::随机一项作为每日挑战的题目，后续待改进
-        NSArray* obj = (NSArray*)notification.object;
-        [array addObject: [obj objectAtIndex:rand()%[obj count]]];
-    }
-    
-    [dailyChallengeController invalidate:array withLevel:[dailyChallengeController.delegate startLevel]];
-}
--(void)freeGuessResponseReceived:(NSNotification*)notification
-{
-    //从服务器端请求数据
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-    if([notification.object isKindOfClass:[NSArray class]])
-    {
-        [freeGuessChallengeController invalidate:(NSArray*)notification.object withLevel:[freeGuessChallengeController.delegate startLevel]];
-    }
-}
+
 
 - (IBAction)openMusic:(id)sender
 {
@@ -197,6 +174,30 @@ static AVAudioPlayer *_audioPlayer = nil;
     
 }
 
+#pragma mark 请求网络数据返回后的处理
+-(void)dailyResponseReceived:(NSNotification*)notification
+{
+    //从服务器端请求数据
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    NSMutableArray * array = [[NSMutableArray alloc]init];
+    if([notification.object isKindOfClass:[NSArray class]])
+    {
+        //TODO::随机一项作为每日挑战的题目，后续待改进
+        NSArray* obj = (NSArray*)notification.object;
+        [array addObject: [obj objectAtIndex:rand()%[obj count]]];
+    }
+    
+    [dailyChallengeController invalidate:array withLevel:[dailyChallengeController.delegate startLevel]];
+}
+-(void)freeGuessResponseReceived:(NSNotification*)notification
+{
+    //从服务器端请求数据
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    if([notification.object isKindOfClass:[NSArray class]])
+    {
+        [freeGuessChallengeController invalidate:(NSArray*)notification.object withLevel:[freeGuessChallengeController.delegate startLevel]];
+    }
+}
 
 #pragma mark anmimation( timer )
 

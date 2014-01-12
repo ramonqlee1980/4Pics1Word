@@ -16,7 +16,7 @@
 #define kSNSShareEvent @"SNSShareEvent"
 #define kSNSPlatform @"SNSPlatform"
 #define kEnterIAPViewEvent @"EnterIAPViewEvent"
-
+#define kUnlockCategory @"UnlockCategory"
 
 /***********  系统通用设置  *********************/
 #define kColorManagerFileName @""
