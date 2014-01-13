@@ -5,6 +5,7 @@ Release 1.1.2
 3.1增加倒计时功能:时间到了，显示争取正确答案，跳转到下一关？并扣减一部分积分。
 3.2增加学习功能：示例，读音等；
 4.增加我出你猜功能
+5.分享将获获赠和猜中单词一样的积分；
 
 Release 1.1.1
 1.融合gif：https://github.com/giphy/GiphyAPI（daily challenge和日常的猜单词中？）

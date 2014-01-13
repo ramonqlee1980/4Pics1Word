@@ -128,12 +128,23 @@ static NSString* ipAddress;
 #pragma mark daily challenge setting
 +(void)setDailyChallengeOff
 {
-    [Utils setValue:[Utils today] forKey:kDailyChallengeDateKey];
+    [Utils setDailySwitch:kDailyChallengeDateKey switchOn:NO];
 }
 +(BOOL)dailyChallengeOn
 {
-    return ![[Utils today] isEqualToString:[Utils objectForKey:kDailyChallengeDateKey]];
+    return [Utils dailySwitch:kDailyChallengeDateKey];
 }
+
++(void)setDailySwitch:(NSString*)key switchOn:(BOOL)on//设置今日和key相关的开关
+{
+    [Utils setValue:on?@"":[Utils today] forKey:key];
+}
++(BOOL)dailySwitch:(NSString*)key//和key相关的开关是否开启
+{
+    NSString* value = [Utils objectForKey:key];
+    return ![[Utils today] isEqualToString:value];
+}
+
 +(NSString*)today
 {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];

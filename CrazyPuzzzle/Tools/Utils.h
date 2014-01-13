@@ -54,5 +54,9 @@ return s##className;\
 //关卡相关
 +(void)unlockCategory:(NSString*)levelName;
 +(BOOL)categoryUnlocked:(NSString*)levelName;
+
+//和每日有关的开关
++(void)setDailySwitch:(NSString*)key switchOn:(BOOL)on;//设置今日和key相关的开关
++(BOOL)dailySwitch:(NSString*)key;//和key相关的开关是否开启
 @end
 

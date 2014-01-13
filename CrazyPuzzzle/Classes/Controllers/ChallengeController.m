@@ -188,4 +188,10 @@
         [self.delegate logEvent:eventName withParameters:parameters];
     }
 }
+-(void)share2FriendBySNS:(NSString*)name
+{
+    if (self.delegate) {
+        [self.delegate share2FriendBySNS:name];
+    }
+}
 @end

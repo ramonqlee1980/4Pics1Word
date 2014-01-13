@@ -51,4 +51,7 @@
 -(void)gameover
 {
 }
+-(void)share2FriendBySNS:(NSString*)name
+{
+}
 @end
