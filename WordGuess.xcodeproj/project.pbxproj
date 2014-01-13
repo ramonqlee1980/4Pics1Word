@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		041E33FF17B7D99D0067EF7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E33FE17B7D99D0067EF7C /* main.m */; };
-		041E340117B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 041E340017B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch */; };
+		041E340117B7D99D0067EF7C /* WordGuess-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 041E340017B7D99D0067EF7C /* WordGuess-Prefix.pch */; };
 		041E340417B7D99D0067EF7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E340317B7D99D0067EF7C /* AppDelegate.m */; };
 		041E341C17B7D99D0067EF7C /* images in Resources */ = {isa = PBXBuildFile; fileRef = 041E341B17B7D99D0067EF7C /* images */; };
 		041E342117B7D99D0067EF7C /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 041E342017B7D99D0067EF7C /* Controllers */; };
@@ -181,9 +181,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		041E33F517B7D99C0067EF7C /* 4Imgs1Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4Imgs1Word.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		041E33F517B7D99C0067EF7C /* WordGuess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordGuess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		041E33FE17B7D99D0067EF7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		041E340017B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "4Imgs1Word-Prefix.pch"; sourceTree = "<group>"; };
+		041E340017B7D99D0067EF7C /* WordGuess-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WordGuess-Prefix.pch"; sourceTree = "<group>"; };
 		041E340217B7D99D0067EF7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		041E340317B7D99D0067EF7C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		041E341D17B7D99D0067EF7C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -321,6 +321,8 @@
 		303286F61853D94F00EC2C56 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		303286FF1853DE1000EC2C56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		303287051853DF4300EC2C56 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3092E21A188429BC00C68F6B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		3092E21B188429BC00C68F6B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		30CBF3F3184A91140043B0D3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		30CBF3F5184A91140043B0D3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -475,7 +477,7 @@
 		041E33EC17B7D99C0067EF7C = {
 			isa = PBXGroup;
 			children = (
-				041E33F717B7D99C0067EF7C /* 4Imgs1Word */,
+				041E33F717B7D99C0067EF7C /* WordGuess */,
 				30CBF3F1184A90BA0043B0D3 /* Frameworks */,
 				041E33F617B7D99C0067EF7C /* Products */,
 			);
@@ -484,12 +486,12 @@
 		041E33F617B7D99C0067EF7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				041E33F517B7D99C0067EF7C /* 4Imgs1Word.app */,
+				041E33F517B7D99C0067EF7C /* WordGuess.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		041E33F717B7D99C0067EF7C /* 4Imgs1Word */ = {
+		041E33F717B7D99C0067EF7C /* WordGuess */ = {
 			isa = PBXGroup;
 			children = (
 				041E341D17B7D99D0067EF7C /* README.md */,
@@ -499,7 +501,7 @@
 				041E341F17B7D99D0067EF7C /* Classes */,
 				041E33F817B7D99D0067EF7C /* Supporting Files */,
 			);
-			name = 4Imgs1Word;
+			name = WordGuess;
 			path = CrazyPuzzzle;
 			sourceTree = "<group>";
 		};
@@ -507,7 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				041E33FE17B7D99D0067EF7C /* main.m */,
-				041E340017B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch */,
+				041E340017B7D99D0067EF7C /* WordGuess-Prefix.pch */,
 				041E340217B7D99D0067EF7C /* AppDelegate.h */,
 				041E340317B7D99D0067EF7C /* AppDelegate.m */,
 			);
@@ -1080,9 +1082,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		041E33F417B7D99C0067EF7C /* 4Imgs1Word */ = {
+		041E33F417B7D99C0067EF7C /* WordGuess */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 041E342E17B7D99D0067EF7C /* Build configuration list for PBXNativeTarget "4Imgs1Word" */;
+			buildConfigurationList = 041E342E17B7D99D0067EF7C /* Build configuration list for PBXNativeTarget "WordGuess" */;
 			buildPhases = (
 				041E33F117B7D99C0067EF7C /* Sources */,
 				041E33F217B7D99C0067EF7C /* Frameworks */,
@@ -1092,9 +1094,9 @@
 			);
 			dependencies = (
 			);
-			name = 4Imgs1Word;
+			name = WordGuess;
 			productName = CrazyPuzzzle;
-			productReference = 041E33F517B7D99C0067EF7C /* 4Imgs1Word.app */;
+			productReference = 041E33F517B7D99C0067EF7C /* WordGuess.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1106,20 +1108,21 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = idreems;
 			};
-			buildConfigurationList = 041E33F017B7D99C0067EF7C /* Build configuration list for PBXProject "4Imgs1Word" */;
+			buildConfigurationList = 041E33F017B7D99C0067EF7C /* Build configuration list for PBXProject "WordGuess" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 041E33EC17B7D99C0067EF7C;
 			productRefGroup = 041E33F617B7D99C0067EF7C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				041E33F417B7D99C0067EF7C /* 4Imgs1Word */,
+				041E33F417B7D99C0067EF7C /* WordGuess */,
 			);
 		};
 /* End PBXProject section */
@@ -1129,7 +1132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				041E340117B7D99D0067EF7C /* 4Imgs1Word-Prefix.pch in Resources */,
+				041E340117B7D99D0067EF7C /* WordGuess-Prefix.pch in Resources */,
 				303285BA185139BD00EC2C56 /* buttonCtaCps@2x.png in Resources */,
 				303285CB1851417100EC2C56 /* MainStoryboard_iPhone.storyboard in Resources */,
 				303285E2185184D900EC2C56 /* coin.png in Resources */,
@@ -1305,6 +1308,7 @@
 			children = (
 				303286FF1853DE1000EC2C56 /* en */,
 				30F18418187405CD009E695A /* zh-Hans */,
+				3092E21A188429BC00C68F6B /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1314,6 +1318,7 @@
 			children = (
 				30CBF470184C26D80043B0D3 /* en */,
 				30CBF472184C26ED0043B0D3 /* zh-Hans */,
+				3092E21B188429BC00C68F6B /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1383,7 +1388,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ming Li (6ZAM6HQ2F7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CrazyPuzzzle/4Imgs1Word-Prefix.pch";
+				GCC_PREFIX_HEADER = "CrazyPuzzzle/WordGuess-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -1405,7 +1410,7 @@
 					"-lxml2",
 					"-ObjC",
 				);
-				PRODUCT_NAME = 4Imgs1Word;
+				PRODUCT_NAME = WordGuess;
 				PROVISIONING_PROFILE = "234DEDEB-C299-4682-961E-82C48E489BEB";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1417,7 +1422,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ming Li (6ZAM6HQ2F7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CrazyPuzzzle/4Imgs1Word-Prefix.pch";
+				GCC_PREFIX_HEADER = "CrazyPuzzzle/WordGuess-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -1439,7 +1444,7 @@
 					"-lxml2",
 					"-ObjC",
 				);
-				PRODUCT_NAME = 4Imgs1Word;
+				PRODUCT_NAME = WordGuess;
 				PROVISIONING_PROFILE = "B7F0BDCE-B568-45D8-8FF2-788EB02981A1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1449,7 +1454,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		041E33F017B7D99C0067EF7C /* Build configuration list for PBXProject "4Imgs1Word" */ = {
+		041E33F017B7D99C0067EF7C /* Build configuration list for PBXProject "WordGuess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				041E342C17B7D99D0067EF7C /* Debug */,
@@ -1458,7 +1463,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		041E342E17B7D99D0067EF7C /* Build configuration list for PBXNativeTarget "4Imgs1Word" */ = {
+		041E342E17B7D99D0067EF7C /* Build configuration list for PBXNativeTarget "WordGuess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				041E342F17B7D99D0067EF7C /* Debug */,

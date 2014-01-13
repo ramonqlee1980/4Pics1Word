@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
                BuildableName = "4Imgs1Word.app"
-               BlueprintName = "4Imgs1Word"
-               ReferencedContainer = "container:4Imgs1Word.xcodeproj">
+               BlueprintName = "WordGuess"
+               ReferencedContainer = "container:WordGuess.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
             BuildableName = "4Imgs1Word.app"
-            BlueprintName = "4Imgs1Word"
-            ReferencedContainer = "container:4Imgs1Word.xcodeproj">
+            BlueprintName = "WordGuess"
+            ReferencedContainer = "container:WordGuess.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,8 +53,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
             BuildableName = "4Imgs1Word.app"
-            BlueprintName = "4Imgs1Word"
-            ReferencedContainer = "container:4Imgs1Word.xcodeproj">
+            BlueprintName = "WordGuess"
+            ReferencedContainer = "container:WordGuess.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,8 +71,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "041E33F417B7D99C0067EF7C"
             BuildableName = "4Imgs1Word.app"
-            BlueprintName = "4Imgs1Word"
-            ReferencedContainer = "container:4Imgs1Word.xcodeproj">
+            BlueprintName = "WordGuess"
+            ReferencedContainer = "container:WordGuess.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

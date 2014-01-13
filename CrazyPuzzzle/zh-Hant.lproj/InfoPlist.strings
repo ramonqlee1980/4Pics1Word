@@ -6,4 +6,4 @@
   Copyright (c) 2013 idreems. All rights reserved.
 */
 /* Localized versions of Info.plist keys */
-CFBundleDisplayName = "单词猜猜";
+CFBundleDisplayName = "單詞猜猜";

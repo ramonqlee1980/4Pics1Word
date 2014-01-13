@@ -5,29 +5,29 @@
   Created by Ramonqlee on 12/2/13.
   Copyright (c) 2013 xiaoran. All rights reserved.
 */
-"Dlg_Body_Exchange_Text"="确认消费 %d 金币获取一个文字提示?";
-"Dlg_Body_No_Enough_Coins_Text"="没有足够的金币，现在购买？";
+"Dlg_Body_Exchange_Text"="確認消費 %d 金幣獲取一個文字提示?";
+"Dlg_Body_No_Enough_Coins_Text"="沒有足夠的金幣，現在購買？";
 
-"SNS_Help"="发现一款有趣的应用 猜单词，看图猜单词。你也来猜猜看吧！https://itunes.apple.com/us/app/wordguess-can-you-guess-word/id786147929?ls=1";
-"Share_Image_Title"="猜猜这些图代表什么单词？";
-"OK"="确定";
+"SNS_Help"="發現一款有趣的應用 猜單詞，看圖猜單詞。你也來猜猜看吧！https://itunes.apple.com/us/app/wordguess-can-you-guess-word/id786147929?ls=1";
+"Share_Image_Title"="猜猜這些圖代表什麽單詞？";
+"OK"="確定";
 "Cancel"="取消";
 
-//进入界面
-"Load_Game"="加载...";
-"Load_Fail"="网络故障";
+//進入界面
+"Load_Game"="加載...";
+"Load_Fail"="網絡故障";
 "Daily_Challenge"="每日一猜";
-"Junior_Challenge"="初级";
-"Senior_Challenge"="高级";
+"Junior_Challenge"="初級";
+"Senior_Challenge"="高級";
 
-//分类闯关界面
-"Dlg_Body_Unlock_Text"="消费 %d 金币解锁当前关卡?";
+//分類闖關界面
+"Dlg_Body_Unlock_Text"="消費 %d 金幣解鎖當前關卡?";
 
 //IAP
-"Button_Txt_Buy"="购买";
-"Gold_Left"="金币:";
-"IAP_288"="288金币";
-"IAP_666"="666金币";
-"IAP_1888"="1888金币";
-"IAP_3999"="3999金币";
-"IAP_11888"="11888金币";
+"Button_Txt_Buy"="購買";
+"Gold_Left"="金幣:";
+"IAP_288"="288金幣";
+"IAP_666"="666金幣";
+"IAP_1888"="1888金幣";
+"IAP_3999"="3999金幣";
+"IAP_11888"="11888金幣";
