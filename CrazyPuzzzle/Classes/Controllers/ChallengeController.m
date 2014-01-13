@@ -161,7 +161,7 @@
     }
 }
 
--(void)coinsChanged:(NSUInteger)currentCoins
+-(void)coinsChanged:(NSUInteger)currentCoins fromCoins:(NSUInteger)originalCoins
 {
     //更新本地数据和ui显示数据
     [Utils setCurrentCoins:currentCoins];
@@ -169,7 +169,7 @@
     
     if(self.delegate)
     {
-        [self.delegate coinsChanged:currentCoins];
+        [self.delegate coinsChanged:currentCoins fromCoins:originalCoins];
     }
 }
 
@@ -180,6 +180,12 @@
     
     if (self.delegate) {
         [self.delegate gameover];
+    }
+}
+- (void)logEvent:(NSString *)eventName withParameters:(NSDictionary *)parameters
+{
+    if (self.delegate) {
+        [self.delegate logEvent:eventName withParameters:parameters];
     }
 }
 @end

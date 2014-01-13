@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "RMGuessWordView.h"
+#import "ChallengeBaseDelegate.h"
 
-@interface DailyChallengeDelegate : NSObject <GuessWordViewDelegate>
+@interface DailyChallengeDelegate : ChallengeBaseDelegate <GuessWordViewDelegate>
 
 @end

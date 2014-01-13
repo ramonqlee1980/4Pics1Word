@@ -5,10 +5,10 @@
 #define NEED_OUTPUT_LOG 0
 
 #if NEED_OUTPUT_LOG
-
 #define SLog(xx,...)	NSLog(xx,##__VA_ARGS__)
 #define SLLog(xx,...)	NSLog(@"%s(%d):" xx,__PRETTY_FUNCTION__,__LINE__,##VA_ARGS__)
 #else
+#define NSLog(xx,...)
 #define SLog(xx,...)
 #define SLLog(xx,...)
 #endif
@@ -21,14 +21,19 @@
 
 
 /**************** flurry event ********************/
-#define kShareBySNSResponse @"ShareBySNSResponse"
-#define kFlurryLevel @"Level"
-#define kCoinsAmount @"Coins"
+#define kShareBySNSResponseEvent @"ShareBySNSResponse"
+#define kFlurryLevelEvent @"Level"
+#define kCoinsAmountKey @"Coins"
 #define kRevealLetterEvent @"RevealLetterEvent"
 #define kSNSShareEvent @"SNSShareEvent"
-#define kSNSPlatform @"SNSPlatform"
+#define kSNSPlatformKey @"SNSPlatform"
 #define kEnterIAPViewEvent @"EnterIAPViewEvent"
-#define kUnlockCategory @"UnlockCategory"
+#define kUnlockCategoryEvent @"UnlockCategory"
+
+//金币变更事件，将记录变更前后的金币数量
+#define kCoinsChangeEvent @"CoinsChangeEvent"
+#define kCurrentCoinsKey @"CurrentCoins"
+#define kOriginalCoinsKey @"OriginalCoins"
 
 /***********  系统通用设置  *********************/
 #define kColorManagerFileName @""

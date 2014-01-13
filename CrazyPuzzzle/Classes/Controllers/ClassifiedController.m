@@ -198,7 +198,7 @@ static NSString *CellNIBName = @"ClassifiedCell";
             case 0:
             {
                 NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:selectedCategory.coins],selectedCategory.category, nil];
-                [Flurry logEvent:kUnlockCategory withParameters:dict];
+                [Flurry logEvent:kUnlockCategoryEvent withParameters:dict];
                 [self startGame:selectedCategory.coins withCategory:selectedCategory.identifier];
             }
             break;

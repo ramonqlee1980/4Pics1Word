@@ -116,6 +116,7 @@
 		303286F71853D94F00EC2C56 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 303286F61853D94F00EC2C56 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		303286FE1853DE1000EC2C56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303287001853DE1000EC2C56 /* InfoPlist.strings */; };
 		303287061853DF4300EC2C56 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 303287051853DF4300EC2C56 /* Info.plist */; };
+		3092E21E1884A6F600C68F6B /* ChallengeBaseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3092E21D1884A6F600C68F6B /* ChallengeBaseDelegate.m */; };
 		30CBF43B184A91140043B0D3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F7184A91140043B0D3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30CBF43D184A91140043B0D3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CBF3F9184A91140043B0D3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -323,6 +324,8 @@
 		303287051853DF4300EC2C56 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3092E21A188429BC00C68F6B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3092E21B188429BC00C68F6B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		3092E21C1884A6F600C68F6B /* ChallengeBaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeBaseDelegate.h; sourceTree = "<group>"; };
+		3092E21D1884A6F600C68F6B /* ChallengeBaseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeBaseDelegate.m; sourceTree = "<group>"; };
 		30CBF3F3184A91140043B0D3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		30CBF3F4184A91140043B0D3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		30CBF3F5184A91140043B0D3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1057,6 +1060,8 @@
 				30D6BC12187971EB00AF35AB /* DailyChallengeDelegate.m */,
 				30D6BC141879730600AF35AB /* CategoryGuessChallengeDelegate.h */,
 				30D6BC151879730600AF35AB /* CategoryGuessChallengeDelegate.m */,
+				3092E21C1884A6F600C68F6B /* ChallengeBaseDelegate.h */,
+				3092E21D1884A6F600C68F6B /* ChallengeBaseDelegate.m */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -1278,6 +1283,7 @@
 				0432D99E17BBB628002E65CC /* MyTableViewController.m in Sources */,
 				30CBF43C184A91140043B0D3 /* ASIDataCompressor.m in Sources */,
 				0432D9A217BC7535002E65CC /* UIImageAdditions.m in Sources */,
+				3092E21E1884A6F600C68F6B /* ChallengeBaseDelegate.m in Sources */,
 				0432D9A517BCAE30002E65CC /* CPIAPStoreManager.m in Sources */,
 				30CBF441184A91140043B0D3 /* ASIInputStream.m in Sources */,
 				30CBF444184A91140043B0D3 /* ASICloudFilesCDNRequest.m in Sources */,
